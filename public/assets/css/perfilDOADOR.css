@@ -1,0 +1,41 @@
+body {
+    min-height: 100vh;
+    background-color: var(--offWhite);
+  }
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+header main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--verde);
+    padding: 5px 60px;
+  }
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 80px;
+}
+
+header nav a {
+    color: var(--offWhite);
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+header .slogan {
+    background-color: var(--verdeClaro);
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+  }

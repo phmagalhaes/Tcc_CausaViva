@@ -1,0 +1,329 @@
+body{
+    min-height: 100vh;
+    background-color: var(--offWhite);
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+header main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--verde);
+    padding: 5px 60px;
+}
+header nav{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 80px;
+}
+header nav a{
+    color: var(--offWhite);
+    font-size: 20px;
+    font-weight: 500;
+}
+header .slogan{
+    background-color: var(--verdeClaro);
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    color: var(--verdeEscuro);
+}
+
+.meta{
+    margin-top: 20px;
+    width: 100%;
+    background-color: var(--bege);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.meta p{
+    color: var(--azul);
+    font-size: 20px;    
+
+}
+
+.titulo{
+    margin-top: 30px;
+    font-size: 50px;
+    color: var(--azulEscuro);  
+}
+
+.titulo2{
+    margin-top: 60px;
+    margin-left: 120px;
+    margin-bottom: 60px;
+    font-size: 40px;
+    color: var(--azulEscuro);
+}
+
+
+.meta-img{
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.meta .imgprincipal{
+    width: 800px;
+    border-radius: 14px;
+    border-radius: 10px;  /* Bordas arredondadas */
+    overflow: hidden;  /* Para esconder as partes arredondadas da imagem */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);  /* Sombra sutil */
+    transition: all 0.3s ease;
+}
+.meta .imgprincipal:hover{
+    transform: scale(1.05);  /* Aumenta a imagem ligeiramente */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5); 
+}
+
+.buttoneinfo{
+    margin-left: 30px;
+}
+
+.buttoneinfo button{
+    margin-top:20px;
+    width: 300px;
+    height: 65px;
+    border: 0px;
+    border-radius: 8px;
+    font-size: 25px;
+    color: var(--begeClaro);
+    background-color: var(--verdeNeon);
+    box-shadow: 0px 0px 0px rgb(255, 255, 255);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;     
+}
+
+.buttoneinfo button:hover{
+    box-shadow: 10px 10px 20px rgb(217, 255, 212);
+    transform: scale(1.06); /* O botão cresce 20% */
+}
+
+.infometa{
+    background-color: var(--begeClaro);
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    height: 340px;
+    width: 520px;
+    font-size: 20px;
+}
+
+.infometa h1, .infometa h2{
+    color: var(--azulEscuro);
+}
+
+.infometa h1{
+    margin-top: 10px;
+}
+
+.infometa .metainicial{
+    color: var(--azulClaro)
+}
+
+.textometa{
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div .metas{
+    width: 100%;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.metas .grafico{
+    margin-top: 30px;
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+}
+.metas .grafico .total{
+    height: 100%;
+    background-color: var(--verdeNeon);
+    border-radius: 20px;
+}
+.metas .legenda{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.eventos{
+    width: 100%
+}
+
+.cards{
+    display: flex;
+    justify-content: space-around;
+}
+
+.card{
+    background-color: var(--begeClaro);
+    border-radius: 20px;
+    height: 450px;
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card p{
+ display: flex;
+ width: 350px;
+ display: flex;
+ text-align: center;
+ color: var(--azulEscuro);
+ margin:5px
+}
+
+.card img{
+    border-radius: 20px 20px 0px 0px;
+    width: 400px;
+}
+
+.titulo-card{
+    color: var(--azulEscuro);
+    font-size: 35px;
+}
+
+.card-bottom{
+    margin-top: 0px;
+    background-color: var(--bege);
+    width: 100%;
+    height: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 0px 20px 20px;
+    transition: all 300ms ease;
+}
+
+.card-bottom:hover{
+    background-color: var(--azulClaro);
+    color: var(--begeClaro);
+    cursor: pointer;
+    user-select: none;
+}
+
+.card_icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 10px auto;
+}
+.card_icons p{
+    width: 70%;
+}
+.local, .data{
+    width: 50px;
+    background-size: 20px 20px;  /* Tamanho do ícone */
+    background-repeat: no-repeat;
+    background-position: left center;  /* Posição do ícone à esquerda */
+    padding-left: 30px;   /* Espaço para o ícone não se sobrepor ao texto */
+    color: rgb(130, 130, 130);
+}
+
+.local{
+    background-image: url(./assetstr/icons/location_icon.png);
+}
+
+.data{
+    background-image: url(./assetstr/icons/date_icon.png);
+}
+
+.sobre_ong{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.sobre_ong h2{
+    color: var(--azul);
+    width: 700px;
+    text-align:start;
+    user-select: none;
+}
+
+.sobre_ong_img{
+    width: 800px;
+    overflow: hidden;  /* Para esconder as partes arredondadas da imagem */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  /* Sombra sutil */
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.sobre_ong_img:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);  /* Sombra sutil */
+    transform: scale(1.06);
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--verde);
+
+  margin-top: 150px;
+  padding: 20px;
+}
+footer .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid var(--offWhite);
+  width: 80%;
+  padding-top: 40px;
+  margin-top: 40px;
+  gap: 10px;
+}
+footer .logo p {
+  color: var(--offWhite);
+  font-family: "MoonDance";
+  font-size: 50px;
+}
+footer .links{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+.link_title{
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--offWhite);
+}
+footer .links div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 15px;
+  width: 20%;
+}
+footer .links div a{
+  font-size: 24px;
+  font-family: 'Montserrat-Light';
+  text-decoration: none;
+  color: var(--offWhite);
+}

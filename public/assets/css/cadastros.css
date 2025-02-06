@@ -1,0 +1,33 @@
+body{
+    background-color: var(--verdeEscuro);
+    background-image: url("../images/fundoAuth.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: initial;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    min-height: 100vh;
+}
+
+h1{
+    color: var(--begeClaro);
+}
+
+main{
+    background-color: var(--verdeClaro);
+    padding: 45px 30px;
+    border-radius: 30px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}

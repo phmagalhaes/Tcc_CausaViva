@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/font/Montserrat-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('./assets/font/Montserrat-ExtraLight.ttf');
+}
+@font-face {
+  font-family: 'MoonDance';
+  src: url('./assets/font/MoonDance-Regular.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+:root{
+    --verdeEscuro: #334742;
+    --verde: #5D8975;
+    --verdeClaro: #92B5A4;
+    --verdeNeon: #28BA78;
+    --azulEscuro: #2C465B;
+    --azul: #416B8B;
+    --azulClaro: #6696B7;
+    --bege: #ECE3D4;
+    --offWhite: #F1EAE0;
+    --begeClaro: #F9F6F1;
+    --amarelo: #F0F8A3;
+}
