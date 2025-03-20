@@ -15,6 +15,34 @@ body {
 
 }
 
+.errorMsg_modal{
+  width: 50%;
+  border-radius: 0px 0px 10px 10px;
+  background-color: rgb(255, 148, 148);
+  border: 2px solid rgb(170, 0, 0);
+  border-top: none;
+  text-align: center;
+  top: 0;
+  padding: 10px;
+  font-size: 20px;
+  animation: msg 3s linear both;
+  position: absolute;
+}
+.errorMsg_modal p{
+  color: rgb(170, 0, 0);
+}
+@keyframes msg {
+  0%{
+    opacity: 1;
+  }
+  75%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
 h1 {
   color: var(--begeClaro);
   text-shadow: 8px 6px 7px rgba(0, 0, 0, 0.5);
@@ -73,7 +101,7 @@ form div{
 }
 
 .causa{
-  width: 30%;
+  width: 35%;
 }
 
 .data{
@@ -81,6 +109,10 @@ form div{
 }
 
 .cep{
+  width: 30%;
+}
+
+.CPF_CNPJ{
   width: 30%;
 }
 
@@ -162,7 +194,7 @@ input::placeholder, textarea::placeholder{
   color: var(--verdeEscuro);
 }
 
-img{
+.logo_link{
   width: 120px;
   position: absolute;
   top: 20px;
@@ -170,7 +202,7 @@ img{
   transition: transform 0.3s ease
 }
 
-img:hover {
+.logo_link:hover {
   transform: scale(1.2); /* Aumenta a imagem em 20% */
 }
 
@@ -181,48 +213,68 @@ img:hover {
   width: 100%;
 }
 
-
 #picture__input {
   display: none;
 }
 
 .picture {
-  width: 50%;
+  width: 200px;
+  height: 200px;
   aspect-ratio: 16/9;
-  background: #ddd;
+  background: var(--verde);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #aaa;
+  color: var(--begeClaro);
   border: 2px dashed currentcolor;
   cursor: pointer;
   font-family: sans-serif;
   transition: color 300ms ease-in-out, background 300ms ease-in-out;
   outline: none;
   overflow: hidden;
+  padding: 20px;
+  text-align: center;
 }
 
 .picture:hover {
-  color: #777;
-  background: #ccc;
+  color: var(--verdeEscuro);
+  background: var(--begeClaro);
 }
 
 .picture:active {
-  border-color: turquoise;
-  color: turquoise;
+  border-color: var(--verdeClaro);
+  color: var(--verdeEscuro);
   background: #eee;
 }
 
 .picture:focus {
-  color: #777;
-  background: #ccc;
+  color: var(--offWhite);
+  background: var(--verdeEscuro);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .picture__img {
-  max-width: 100%;
+  width: 160px;
 }
 
+.file-upload {
+  display: none;
+}
+
+.upload-container:hover {
+  background-color: var(--begeClaro);
+}
+.labelLogo{
+  display: inline-block;
+  padding: 100px 100px;
+  background-color: var(--verde);
+  color: rgb(36, 21, 21);
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: auto;
+}
 
 .nome, .dono{
   width: 100%;
@@ -240,7 +292,7 @@ img:hover {
 
 button{
   border: none;
-  background-color: var(--verde);
+  background-color: var(--verdeEscuro);
   color: var(--begeClaro);
   font-size: 17px;
   width: 100%;
@@ -250,8 +302,8 @@ button{
 }
 
 button:hover{
-  background-color: var(--verdeEscuro);
-  color: var(--begeClaro);
+  background-color: var(--bege);
+  color: var(--verdeEscuro);
   cursor: pointer;
 }
 
@@ -264,4 +316,318 @@ button:hover{
   gap: 30px;
   padding-top: 25px;
   height: 175px;
+}
+
+
+@media (max-width:1631px) {
+  .inputs_logo{
+    width: 75%;
+  }
+}
+@media (max-width:1629px) {
+  .rua{
+    width: 70%;
+  }
+  .numero{
+    width: 27%;
+  }
+}
+@media (max-width:1588px) {
+  .logo_link{
+    width: 110px;
+  }
+}
+@media (max-width:1527px) {
+  .picture {
+    width: 190px;
+    height: 190px;
+  }
+  .picture__img {
+    width: 150px;
+  }
+}
+@media (max-width:1440px) {
+  main {
+    max-width: 65%;
+  }
+}
+@media (max-width:1391px) {
+  label{
+    font-size: 18px;
+  }
+  form {
+    gap: 22px;
+  }
+}
+@media (max-width:1290px) {
+  .picture {
+    width: 185px;
+    height: 185px;
+  }
+  .picture__img {
+    width: 140px;
+  }
+  main {
+    max-width: 70%;
+  }
+}
+@media (max-width:1200px) {
+  input, select, textarea{
+    font-size: 14px;
+    width: 100%;
+  }
+  .logo_link{
+    width: 105px;
+  }
+  h1 {
+    font-size: 33px
+  }
+  button{
+    font-size: 15px;
+    width: 100%;
+  }
+  .buttonSubmit{
+    width: 20%;
+    height: 165px;
+  }
+  a{
+    font-size: 15px;
+  }
+  main{
+    max-width: 72%;
+  }
+}
+@media (max-width:1150px) {
+  .inputs_logo{
+    width: 72%;
+  }
+  .picture {
+    height: 195px;
+  }
+}
+@media (max-width:1080px) {
+  main{
+    max-width: 78%;
+  }
+}
+@media (max-width:990px) {
+  h1 {
+    font-size: 30px;
+    margin-top: 50px;
+  }
+   .inputs_logo{
+    width: 68%;
+    gap: 0;
+  }
+  .picture__img {
+    width: 130px;
+  }
+  .picture {
+    width: 165px;
+    height: 185px;
+  }
+  main{
+    max-width: 70%;
+    max-height: 75vh;
+    padding: 30px 30px;
+  }
+  section{
+    display: block;
+    max-height: none;
+    padding: 0;
+    margin-top: -5px;
+  }
+  section div{
+    margin: 10px 0;
+  }
+  form {
+    gap: 0px;
+  }
+  .email{
+    width: 100%;
+  }
+  .cadastroOng{
+    margin: 0;
+  }
+  .cadastroOng input{
+    margin: 0;
+  }
+  .cadastroOng .inputs_logo{
+    height: 100%;
+    gap: 15px;
+  }
+  .buttonSubmit{
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+  }
+  .buttonSubmit button{
+    width: 30%;
+  }
+  .password{
+    width: 100%;
+  }
+  .causa{
+    width: 100%;
+  }
+  .data{
+    width: 100%;
+  }
+  .cep{
+    width: 100%;
+  }
+  .CPF_CNPJ{
+    width: 100%;
+  }
+  .estado{
+    width: 100%;
+  }
+  .bairro{
+    width: 100%;
+  }
+  .cidade{
+    width: 100%;
+  }
+  .rua{
+    width: 100%;
+  }
+  .numero{
+    width: 100%;
+  }
+  .telefone{
+    width: 100%;
+  }
+  .metaFinanceira{
+    width: 100%;
+  }
+  .necessidade{
+    width: 100%;
+  }
+  .descricao {
+    width: 100%; 
+    margin-top: 15px;
+  }
+}
+@media (max-width:845px) {
+  .picture__img {
+    width: 110px;
+  }
+  .picture {
+    width: 145px;
+    height: 155px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  .logo_link{
+    width: 100px;
+  }
+  .cadastroOng .inputs_logo{
+    gap: 5px;
+  }
+}
+@media (max-width:750px) {
+  .inputs_logo{
+    width: 65%;
+  }
+  main{
+    max-width: 75%;
+  }
+}
+@media (max-width:646px) {
+  .inputs_logo{
+    width: 60%;
+  }
+  .logo_link{
+    width:80px;
+  }
+}
+@media (max-width:577px) {
+  main{
+    max-width: 85%;
+  }
+}
+@media (max-width:510px) {
+  .picture__img {
+    width: 150px;
+  }
+  .picture {
+    width: 235px;
+  }
+  .inputs_logo{
+    width: 100%;
+    margin: 0;
+  }
+  .cadastroOng{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .upload-container img {
+    position: relative;
+  }
+}
+@media (max-width:455px) {
+  .picture__img {
+    width: 120px;
+  }
+  .picture {
+    width: 210px;
+    height: 135px;
+  }
+  h1 {
+    font-size: 21px;
+    margin-top: 30px;
+  }
+  .logo_link{
+    top: 8px;
+    left: 8px;
+  }
+}
+@media (max-width:395px) {
+  .logo_link{
+    width: 70px;
+  }
+  .picture {
+    width: 200px;
+    height: 125px;
+  }
+  .picture__img {
+    width: 110px;
+  }
+  label{
+    font-size: 16px;
+  }
+  input, select, textarea{
+    font-size: 12px;
+  }
+  button{
+    font-size: 13px;
+  }
+  a{
+    font-size: 13px;
+  }
+  .buttonSubmit{
+    height: 50px;
+  }
+}
+@media (max-width:350px) {
+  h1{
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .picture {
+    width: 190px;
+    height: 115px;
+  }
+  .picture__img {
+    width: 100px;
+  }
+}
+@media (max-width:320px) {
+  main{
+    max-width: 90%;
+  }
 }

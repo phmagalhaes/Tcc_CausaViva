@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'Montserrat-Light';
-  src: url('./assets/font/Montserrat-ExtraLight.ttf');
+  src: url('./assets/font/Montserrat-Light.ttf');
 }
 @font-face {
   font-family: 'MoonDance';
@@ -31,4 +31,8 @@
     --offWhite: #F1EAE0;
     --begeClaro: #F9F6F1;
     --amarelo: #F0F8A3;
+}
+
+.errorMsg{
+  color: rgb(158, 0, 0);
 }

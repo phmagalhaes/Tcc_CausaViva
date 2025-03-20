@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('telefone');
             $table->longText('descricao');
             $table->string('necessidades');
+            $table->string('mercado_pago_user_id')->nullable();
+            $table->string('access_token')->nullable();
             $table->decimal('meta_financeira', total: 8, places: 2);
             $table->timestamps();
         });

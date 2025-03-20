@@ -1,0 +1,927 @@
+main {
+  width: 100%;
+  background-color: var(--offWhite);
+}
+.banner {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: background-image 1s linear;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+}
+@keyframes index {
+  0% {
+    background-image: url("../images/index/1.jpg");
+  }
+  15% {
+    background-image: url("../images/index/2.jpg");
+  }
+  30% {
+    background-image: url("../images/index/3.jpg");
+  }
+  45% {
+    background-image: url("../images/index/4.jpg");
+  }
+  60% {
+    background-image: url("../images/index/5.jpg");
+  }
+  78% {
+    background-image: url("../images/index/6.jpg");
+  }
+  100% {
+    background-image: url("../images/index/7.jpg");
+  }
+}
+.banner .text{
+    position: absolute;
+    width: 70%;
+    height: 150%;
+    border-radius: 50%;
+    background-color: #5d8975d8;
+    left: -33%;
+
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+    text-align: start;
+    gap: 50px;
+    padding: 0 60px;
+    
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.658);
+}
+.banner .text .title{
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--bege);
+    width: 50%;
+}
+.banner .text .subtitle{
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--amarelo);
+    width: 50%;
+}
+.banner .text .content{
+    font-size: 30px;
+    color: var(--begeClaro);
+    width: 50%;
+    font-family: "Montserrat-Light";
+}
+.banner .text a{
+    font-size: 20px;
+    color: var(--begeClaro);
+    background-color: var(--verde);
+    padding: 10px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 400ms ease;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.247);
+}
+.banner .text a:hover{
+    transform: scale3d(1.1, 1.1, 1.1);
+}
+.banner .text .links2{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 30px;
+    /* margin-top: 40px; */
+}
+.banner .logo{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.banner .links{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--verde);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 100px;
+}
+.banner .links a{
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--azulEscuro);
+}
+.banner .links div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.color{
+  width: 100%;
+  height: 40px;
+  background-color: var(--begeClaro);
+}
+
+.doar{
+  width: 90%;
+  margin: 0 auto;
+  padding: 60px 0;
+  color: var(--azulEscuro);
+}
+.doar .title{
+  font-size: 28px;
+  font-weight: 600;
+}
+.doar .content{
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.doar .content p{
+  font-size: 24px;
+  width: 50%;
+}
+.text2_p{
+  display: none;
+}
+.doar .content p span{
+  font-weight: 600;
+}
+.doar .content img{
+  width: 40%;
+  border-radius: 3px;
+}
+.causas {
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--begeClaro);
+  padding: 30px 0 60px 0;
+}
+
+.causas .title {
+  width: 90%;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 20px auto;
+  color: var(--azulEscuro);
+}
+
+.causas_cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  gap: 15px;
+  margin: 0 auto;
+}
+
+.causa_card {
+  width: 18%;
+  height: 300px;
+  position: relative;
+  perspective: 1000px;
+  min-width: 150px;
+}
+
+.card_inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.causa_card:hover .card_inner {
+  transform: rotateY(180deg);
+}
+
+.face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.face.front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.face.back {
+  background-color: var(--verdeEscuro);
+  color: var(--bege);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  border-radius: 10px;
+  transform: rotateY(180deg);
+}
+
+.descricao {
+  font-size: 16px;
+  font-weight: 500;
+  cursor: default;
+}
+
+.descricao2{
+  display: none;
+}
+
+.causa_card .causa {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: var(--bege);
+  font-weight: 600;
+  background-color: var(--verdeEscuro);
+  padding: 15px;
+  border-radius: 10px;
+  width: max-content;
+  text-align: center;
+}
+
+main .ongs{
+  width: 90%;
+  margin: 0 auto;
+  padding: 80px 0;
+}
+main .ongs .title{
+  color: var(--azulEscuro);
+  font-size: 28px;
+  font-weight: 700;
+}
+main .ongs .cards {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 100%;
+  margin-top: 20px;
+}
+main .cards .card {
+  width: 28%;
+  min-width: 340px;
+  max-width: 450px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: var(--begeClaro);
+  position: relative;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--azulEscuro);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+
+  transition: all 400ms ease;
+}
+.card:hover {
+  transform: scale3d(1.05, 1.05, 1.05);
+  cursor: pointer;
+}
+.card > * {
+  cursor: pointer;
+}
+.card .img {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+.card .img img {
+  width: 100%;
+}
+.card .ong {
+  position: absolute;
+  background-color: var(--amarelo);
+  color: var(--azulEscuro);
+  font-weight: 600;
+  padding: 5px 30px;
+  font-size: 18px;
+  top: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 10px 10px;
+}
+.card .description {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 25px;
+}
+.card .meta {
+  width: 100%;
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.meta .grafico {
+  width: 100%;
+  height: 15px;
+  border-radius: 20px;
+  border: 1px solid var(--verde);
+}
+.meta .grafico .total {
+  height: 100%;
+  background-color: var(--verdeNeon);
+  border-radius: 20px;
+}
+.noventa {
+  width: 90%;
+}
+.oitenta {
+  width: 80%;
+}
+.meta .legenda {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.legenda p {
+  max-width: 35%;
+}
+.card .bottom {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+
+  height: 45px;
+  background: var(--bege);
+  border-radius: 0 0 10px 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  padding: 20px;
+  font-size: 12px;
+  color: var(--azulEscuro);
+}
+.bottom div {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--verde);
+
+  padding: 20px;
+}
+footer .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid var(--offWhite);
+  width: 80%;
+  padding-top: 40px;
+  margin-top: 40px;
+  gap: 10px;
+}
+footer .logo p {
+  color: var(--offWhite);
+  font-family: "MoonDance";
+  font-size: 50px;
+}
+footer .links{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+.link_title{
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--offWhite);
+}
+footer .links div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 15px;
+  width: 20%;
+}
+footer .links div a{
+  font-size: 24px;
+  font-family: 'Montserrat-Light';
+  text-decoration: none;
+  color: var(--offWhite);
+}
+
+@media (max-width:1440px) {
+  .banner .text a{
+    font-size: 16px;
+  }
+  .causas_cards{
+    padding: 20px 0;
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width:1390px) {
+  .banner .text a{
+    font-size: 15px;
+  }
+  .links2{
+    width: 30%;
+  }
+  .banner .text .title{
+    font-size: 35px;
+  }
+  .banner .text .subtitle{
+    font-size: 23px;
+  }
+  .banner .text .content{
+    font-size: 29px;
+  }
+  .banner .logo{
+    top: 19px;
+    right: 19px;
+    width: 120px;
+  }
+  .descricao {
+    font-size: 14px;
+  }
+  .doar .content img{
+    width: 45%;
+  }
+  .link_title{
+    font-size: 26px;
+  }
+  footer .links div a{
+    font-size: 23px;
+  }
+}
+
+@media (max-width:1339px) {
+  .banner .text .title{
+    font-size: 34px;
+  }
+  .banner .text .subtitle{
+    font-size: 22px;
+  }
+  .banner .text .content{
+    font-size: 28px;
+  }
+  .banner .logo{
+    width: 110px;
+  }
+  .banner .text a{
+    font-size: 14px;
+  }
+  .doar .content img{
+    width: 48%;
+  } 
+  .link_title{
+    font-size: 25px;
+  }
+  footer .links div a{
+    font-size: 22px;
+  }
+}
+
+@media (max-width:1290px) {
+  .banner .text .title{
+    font-size: 33px;
+  }
+  .banner .text .subtitle{
+    font-size: 21px;
+  }
+  .banner .text .content{
+    font-size: 27px;
+  }
+  .banner .text a{
+    font-size: 13.8px;
+  }
+  .link_title{
+    font-size: 24px;
+  }
+}
+
+@media (max-width:1280px) {
+  .banner .text a{
+    font-size: 13.5px;
+  }
+  .banner .logo{
+    width: 100px;
+  }
+  footer .links div a{
+    font-size: 21px;
+  }
+}
+
+@media (max-width:1265px) {
+  .banner .text a{
+    font-size: 13.2px;
+  }
+  .banner .text .title{
+    font-size: 32px;
+  }
+  .banner .text .subtitle{
+    font-size: 20px;
+  }
+  .banner .text .content{
+    font-size: 26px;
+  }
+  main .cards .card {
+    min-width: 330px;
+    height: 460px;
+  }
+}
+
+@media (max-width:1251px) {
+  .links2{
+    flex-direction: column;
+    width: 100%;
+  }
+  .links2 a{
+    width: 60%;
+    text-align: center;
+  }
+  .banner .text a{
+    font-size: 16px;
+  }
+  .banner .logo{
+    width: 95px;
+  }
+  .causa_card .causa {
+    bottom: -10px;
+    font-size: 15px;
+  }
+  .descricao {
+    font-size: 13px;
+  }
+  main .cards .card {
+    min-width: 320px;
+    height: 450px;
+  }
+  .text1_p{
+    display: none;
+  }
+  .text2_p{
+    display: block;
+  }
+}
+
+@media (max-width:1161px) {
+  .descricao {
+    font-size: 13px;
+  }
+  .causas .title {
+    font-size: 27px;
+  }
+  .doar .title{
+    font-size: 27px;
+  }
+  .banner .text a{
+    font-size: 15px;
+  }
+  .banner .text .title{
+    font-size: 31px;
+  }
+  .banner .text .subtitle{
+    font-size: 19px;
+  }
+  .banner .text .content{
+    font-size: 25px;
+  }
+  .doar .content p{
+    font-size: 23px;
+  }
+  main .ongs .title{
+    font-size: 27px;
+  }
+  .link_title{
+    font-size: 22px;
+  }
+  footer .links div a{
+    font-size: 19px;
+  }
+  footer .logo p {
+    font-size: 45px;
+  }
+  footer .logo img{
+    width: 130px;
+  }
+}
+
+@media (max-width:1117px) {
+  .banner .text a{
+    font-size: 16px;
+  }
+  .banner .text .title{
+    font-size: 30px;
+  }
+  .banner .text .subtitle{
+    font-size: 18px;
+  }
+  .banner .text .content{
+    font-size: 24px;
+  }
+  .links2 a{
+    width: 70%;
+  }
+  .causa_card .causa {
+    bottom: -20px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .descricao{
+    font-size: 12px;
+    font-weight: 400
+  }
+  .face.back {
+    padding: 20px;
+  }
+  .doar .title{
+    font-size: 26px;
+  }
+  .doar .content p{
+    font-size: 21px;
+  }
+  .causas .title {
+    font-size: 26px;
+  }
+  main .ongs .title{
+    font-size: 26px;
+  }
+  .causa_card {
+    height: 220px;
+  }
+  main .cards .card {
+    min-width: 300px;
+    height: 450px;
+  }
+  footer .logo p {
+    font-size: 40px;
+  }
+  footer .logo img{
+    width: 120px;
+  }
+  .link_title{
+    font-size: 20px;
+  }
+}
+
+@media (max-width:1088px) {
+  main .cards .card {
+    min-width: 290px;
+  }
+  footer .links div a{
+    font-size: 19px;
+    font-weight: 100;
+  }
+  .descricao {
+    font-size: 12px;
+  }
+}
+
+@media (max-width:1055px) {
+  main .cards .card {
+    min-width: 280px;
+  }
+  .descricao{
+    font-size: 11px;
+  }
+}
+
+@media (max-width:1022px) {
+  main .cards .card {
+    min-width: 270px;
+  }
+  footer .links div{
+    width: 25%;
+  }
+  .links2 a{
+    width: 72%;
+  }
+}
+
+@media (max-width:996px) {
+  .banner .text a{
+    font-size: 15px;
+  }
+  .links2 a{
+    width: 74%;
+  }
+  .doar .title{
+    font-size: 25px;
+  }
+  .doar .content p{
+    font-size: 20px;
+  }
+  .causas .title {
+    font-size: 25px;
+  }
+  main .ongs .title{
+    font-size: 25px;
+  }
+  main .cards .card {
+    min-width: 260px;
+  }
+  .card .bottom {
+    font-size: 11px;
+  }
+}
+
+@media (max-width:955px) {
+  .banner .text .title{
+    font-size: 28px;
+  }
+  .banner .text .subtitle{
+    font-size: 17px;
+  }
+  .banner .text .content{
+    font-size: 22px;
+  }
+  main .cards .card {
+    min-width: 250px;
+  }
+}
+
+@media (max-width:938px) {
+  .banner .text .title{
+    font-size: 26px;
+  }
+  .banner .text a{
+    font-size: 14px;
+  }
+  .descricao{
+    display: none;
+  }
+  .descricao2{
+    display: inline;
+    font-size: 11px;
+  }
+  .doar .title{
+    font-size: 24px;
+  }
+  .doar .content p{
+    font-size: 19px;
+  }
+  .causas .title {
+    font-size: 24px;
+  }
+  main .ongs .title{
+    font-size: 24px;
+  }
+}
+@media (max-width:930px) {
+  .doar .title{
+    font-size: 22px;
+  }
+  .doar .content p{
+    font-size: 18px;
+  }
+  .causas .title {
+    font-size: 22px;
+  }
+  main .ongs .title{
+    font-size: 22px;
+  }
+  main .cards .card {
+    min-width: 20px;
+  }
+  .card .bottom {
+    font-size: 10px;
+  }
+  .card .description {
+    font-size: 11px;
+  }
+  .card .ong {
+    font-size: 15px;
+  }
+  .meta .legenda {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 10px;
+    margin-top: 5px;
+  }
+  main .cards .card {
+    min-width: 240px;
+    height: 410px;
+  }
+  footer .logo p {
+    font-size: 38px;
+  }
+  footer .logo img{
+    width: 110px;
+  }
+}
+@media (max-width:902px) {
+  .links2 a{
+    width: 77%;
+  }
+}
+@media (max-width:888px) {
+  main .cards .card {
+    min-width: 240px;
+    height: 400px;
+  } 
+  main .ongs .cards {
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+  }
+}
+@media (max-width:874px) {
+  .links2 a{
+    width: 85%;
+  }
+  .banner .logo{
+    width: 85px;
+  }
+  .banner .text .title{
+    font-size: 24px;
+  }
+  .banner .text .subtitle{
+    font-size: 15px;
+  }
+  .banner .text .content{
+    font-size: 20px;
+  }
+  .doar .title{
+    font-size: 20px;
+  }
+  .doar .content p{
+    font-size: 16px;
+  }
+  .causas .title {
+    font-size: 20px;
+  }
+  .causa_card .causa {
+    bottom: -10px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .face.front img {
+    width: 100%;
+    height: 90%;
+  }
+  .face.back {
+    width: 100%;
+    height: 90%;
+  }
+  .link_title{
+    font-size: 18px;
+  }
+  footer .links div{
+    width: 30%;
+  }
+  footer .links div a{
+    font-size: 17px;
+  }
+  footer .logo p {
+    font-size: 36px;
+  }
+  footer .logo img{
+    width: 100px;
+  }
+}
+@media (max-width:808px) {
+  .banner .text a{
+    font-size: 12px;
+  }
+}

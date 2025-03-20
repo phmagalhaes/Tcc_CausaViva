@@ -7,52 +7,60 @@
     <title>Causa Viva - Cadastro da ONG</title>
     <link rel="stylesheet" href="{{ asset('/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/cadastroONG.css') }}" />
-    <script src="{{ asset('/assets/js/cadastro.js') }}" defer></script>
+    <script src="{{ asset('/assets/js/cadastroONG.js') }}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 
 <body>
+    @if (session('errorMsg'))
+        <div class="errorMsg_modal">
+            <p>{{ session('errorMsg') }}</p>
+        </div>
+    @endif
+
     <!-- form do cadastro da ONG -->
-    <a href="../index.html">
-        <img src="../assets/images/logoAuth.png" alt="logoAuth" />
+    <a href="{{ route('index') }}">
+        <img src="../assets/images/logoAuth.png" alt="logoAuth" class="logo_link" />
     </a>
     <h1>Faça o cadastro da sua ONG!</h1>
     <main>
-        <form action="">
+        <form action="{{ route('ong.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
             <section class="cadastroOng">
                 <div class="upload-container">
                     <label class="picture" for="picture__input" tabIndex="0">
                         <span class="picture__image"></span>
                     </label>
-                    <input type="file" name="picture__input" id="picture__input">
+                    <input type="file" name="logo" id="picture__input" style="display: none;" accept="image/png, image/jpeg, image/jpg">                    
                 </div>
                 <div class="inputs_logo">
                     <div class="nome">
                         <label for="ONG">Nome da ONG</label>
-                        <input type="text" name="ONG" placeholder="Digite o nome da ong" />
+                        <input required type="text" name="nome" placeholder="Digite o nome da ong" />
                     </div>
 
                     <div class="dono">
                         <label for="dono">Nome do(s) dono(s)</label>
-                        <input type="text" name="dono" placeholder="Digite o seu nome" />
+                        <input required type="text" name="donos" placeholder="Digite o seu nome" />
                     </div>
                 </div>
             </section>
 
-            <section>
+            <section class="section1">
                 <div class="email">
                     <label for="email">Email</label>
-                    <input type="email" name="email" placeholder="Digite o seu email" />
+                    <input required type="email" name="email" placeholder="Digite o seu email" />
                 </div>
 
                 <div class="password">
                     <label for="password">Senha</label>
-                    <input type="password" name="password" placeholder="Digite a sua senha" />
+                    <input required type="password" name="password" placeholder="Digite a sua senha" />
                 </div>
 
                 <div class="password">
                     <label for="password">Confirme Senha</label>
-                    <input type="password" name="password" placeholder="Confirme a sua senha" />
+                    <input required type="password" name="password_confirmation" placeholder="Confirme a sua senha" />
                 </div>
             </section>
 
@@ -72,63 +80,67 @@
 
                 <div class="data">
                     <label for="data">Quando foi criada</label>
-                    <input type="date" name="data" id="" />
+                    <input required type="date" name="data_criacao" id="" />
                 </div>
-                <div class="fotoVideo">
-                    <label for="fotoVideo">Foto e vídeo </label>
-                    <input type="file" name="fotoVideo" placeholder="Adicione fotos e vídeos..." />
+                <div class="CPF_CNPJ">
+                    <label for="CPF_CNPJ">CPF ou CNPJ </label>
+                    <input required type="text" name="documento" placeholder="Digite o seu CPF ou CNPJ" />
                 </div>
             </section>
 
             <section>
                 <div class="cep">
                     <label for="cep">Cep</label>
-                    <input type="text" name="cep" placeholder="Digite o cep da ong" />
+                    <input required name="cep" type="text" id="cep" value="" size="10"
+                        maxlength="9" onblur="pesquisacep(this.value);" placeholder="Digite o cep da ong" />
                 </div>
 
                 <div class="bairro">
                     <label for="bairro">Bairro</label>
-                    <input type="text" name="bairro" placeholder="Digite o bairro da ong" />
+                    <input required type="text" id="bairro" name="bairro" placeholder="Digite o bairro da ong" />
                 </div>
 
                 <div class="cidade">
                     <label for="cidade">Cidade</label>
-                    <input type="text" name="cidade" placeholder="Digite a cidade da ong" />
+                    <input required type="text" id="cidade" name="cidade" placeholder="Digite a cidade da ong" />
                 </div>
 
                 <div class="estado">
                     <label for="estado">Estado</label>
-                    <input type="text" name="estado" />
+                    <input required type="text" id="uf" name="estado"
+                        placeholder="Digite o estado da ong" />
                 </div>
             </section>
 
             <section>
                 <div class="rua">
                     <label for="rua">Rua</label>
-                    <input type="text" name="rua" placeholder="Digite a rua da ong" />
+                    <input required type="text" id="rua" name="rua"
+                        placeholder="Digite a rua da ong" />
                 </div>
 
                 <div class="numero">
                     <label for="numero">Número</label>
-                    <input type="text" name="numero" placeholder="Digite o número da ong" />
+                    <input required type="text" name="numero" placeholder="Digite o número da ong" />
                 </div>
             </section>
 
             <section>
                 <div class="telefone">
                     <label for="telefone">Telefone</label>
-                    <input type="text" name="telefone" placeholder="Digite o telefone  da ong" />
+                    <input required type="text" name="telefone" placeholder="Digite o telefone  da ong" />
                 </div>
 
                 <div class="metaFinanceira">
                     <label for="metaFinanceira">Meta Financeira</label>
-                    <input type="text" name="metaFinanceira" placeholder="Digite a meta financeira da ong" />
+                    <input required type="text" name="meta_financeira"
+                        placeholder="Digite a meta financeira da ong" />
                 </div>
             </section>
 
             <div class="necessidade">
                 <label for="necessidade">Necessidades</label>
-                <input type="text" name="necessidade" placeholder="Digite as necessidades da ong" />
+                <input required type="text" name="necessidades" placeholder="Digite as necessidades da ong" />
             </div>
 
             <section>

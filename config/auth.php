@@ -38,7 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'doadores',
+        ],
+
+        'ong' => [
+            'driver' => 'session',
+            'provider' => 'ongs',
         ],
     ],
 
@@ -60,15 +65,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'doadores' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\Doador::class, // Modelo do doador
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'ongs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Ong::class, // Modelo da ONG
+        ],
     ],
 
     /*
