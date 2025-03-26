@@ -4,21 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../assets/css/causas.css">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     <title>Causa Viva - Nossas ONG´s</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
     <header>
         <div class="main">
-            <a href="../index.html">
+            <a href="{{ route('index') }}">
                 <img src="../assets/images/Logo Header.png" alt="logo" />
             </a>
             <nav>
-                <a href="#">Buscar Eventos</a>
-                <a class="linkPerfil" href="./perfilDOADOR.html">Olá <b>Andressa</b></a>
-                <img class="foto" src="../assets/images/fotoPerfil.png">
+                @php
+                    $nome = explode(' ', Auth()->user()->nome);
+                    $nome = $nome[0];
+                @endphp
+                <p class="linkPerfil">Olá <strong>{{ $nome }}</strong></p>
             </nav>
         </div>
         <div class="slogan">
@@ -27,7 +30,6 @@
     <div class="pesquisa">
         <h1 class="titulo">Confira nossas ONGs</h1>
         <form>
-            <label for="#"></label>
             <input class="input-pesquisa" type="search" id="#" name="#"
                 placeholder="Pesquise por uma ong">
             <select class="select-pesquisa" id="categoria" name="categoria">
@@ -43,108 +45,64 @@
         </form>
     </div>
     <main>
-        <div class="ongs">
-            <h1 class="titulo2">Proteção Animal</h1>
-            <div class="cards">
-                <div class="card">
-                    <div class="img">
-                        <img src="./assets/images/card1.png" alt="" />
-                        <p class="ong">Pata amiga</p>
-                    </div>
-                    <p class="description">
-                        Somos uma ONG que resgata, cuida e promove a adoção de cachorros
-                        abandonados, oferecendo também serviços de castração e vacinação.
-                        Junte-se a nós para mudar vidas!
-                    </p>
-                    <div class="meta">
-                        <div class="grafico">
-                            <div class="total"></div>
-                        </div>
-                        <div class="legenda">
-                            <p>112%</p>
-                            <p>R$14.000 Arrecadados</p>
-                            <p>10 dias restantes</p>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="cidade">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p>São Paulo, SP</p>
-                        </div>
-                        <div class="causa">
-                            <i class="fa-solid fa-tag"></i>
+        @foreach ($causas as $causa)
+            <div class="ongs">
+                <h1 class="titulo2">{{ $causa }}</h1>
+                <div class="cards">
+                    @php
+                        $ongs = App\Models\Ong::where('causa', $causa)->get();
+                    @endphp
+                    @if ($ongs->isEmpty())
+                        <p>Parece que ainda não existem ONGs cadastradas para essa causa :(</p>
+                    @endif
+                    @foreach ($ongs as $ong)
+                        @php
+                            $doacoes = App\Models\Doacao::where('id_ong', $ong->id)->get();
+                            if ($doacoes->isEmpty()) {
+                                $valor = 0;
+                            } else {
+                                $valor = 0;
+                                foreach ($doacoes as $doacao) {
+                                    $valor = $valor + $doacao->valor;
+                                }
+                                $valor = round($valor / 10) * 10;
+                            }
+                        @endphp
+                        <div class="card">
+                            <div class="img">
+                                <img src="{{ asset('logos/' . $ong->logo) }}" alt="" />
 
-                            <p>Proteção Animal</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="img">
-                        <img src="./assets/images/card2.png" alt="" />
-                        <p class="ong">WWF Brasil</p>
-                    </div>
-                    <p class="description">
-                        Somos uma ONG dedicada ao reflorestamento, restaurando
-                        ecossistemas e combatendo o desmatamento. Plantamos árvores
-                        nativas e promovemos a conscientização ambiental. Junte-se a nós
-                        para preservar o futuro do planeta!
-                    </p>
-                    <div class="meta">
-                        <div class="grafico">
-                            <div class="total noventa"></div>
-                        </div>
-                        <div class="legenda">
-                            <p>90%</p>
-                            <p>R$8.500 Arrecadados</p>
-                            <p>30 dias restantes</p>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="cidade">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p>São Paulo, SP</p>
-                        </div>
-                        <div class="causa">
-                            <i class="fa-solid fa-tag"></i>
+                                <p class="ong">{{ $ong->nome }}</p>
+                            </div>
+                            <p class="description">
+                                {{ $ong->descricao }}
+                            </p>
+                            <div class="meta">
+                                <div class="grafico">
+                                    <div class="total"></div>
+                                </div>
+                                <div class="legenda">
+                                    <p>112%</p>
+                                    <p>R$14.000 Arrecadados</p>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="cidade">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <p>{{ $ong->cidade }}, {{ $ong->estado }}</p>
+                                </div>
+                                <div class="causa">
+                                    <i class="fa-solid fa-tag"></i>
 
-                            <p>Meio Ambiente</p>
+                                    <p>{{ $ong->causa }}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="img">
-                        <img src="./assets/images/card3.png" alt="" />
-                        <p class="ong">Pão e esperança</p>
-                    </div>
-                    <p class="description">
-                        Somos uma ONG que luta para erradicar a fome nas ruas,
-                        distribuindo alimentos e oferecendo suporte a pessoas em situação
-                        de vulnerabilidade. Junte-se a nós para transformar vidas!
-                    </p>
-                    <div class="meta">
-                        <div class="grafico">
-                            <div class="total oitenta"></div>
-                        </div>
-                        <div class="legenda">
-                            <p>80%</p>
-                            <p>R$12.500 Arrecadados</p>
-                            <p>30 dias restantes</p>
-                        </div>
-                    </div>
-                    <div class="bottom">
-                        <div class="cidade">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p>São Paulo, SP</p>
-                        </div>
-                        <div class="causa">
-                            <i class="fa-solid fa-tag"></i>
+                    @endforeach
 
-                            <p>Direitos Humanos e Sociais</p>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </main>
 
     <footer>

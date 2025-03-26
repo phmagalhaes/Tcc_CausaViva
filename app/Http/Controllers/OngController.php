@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class OngController extends Controller
 {
-    public function index() {}
-
     public function show()
     {
         return view('ong.perfil');
@@ -22,10 +20,12 @@ class OngController extends Controller
             'password' => 'confirmed',
             'email' => 'unique:doadores,email|unique:ongs,email',
             'logo' => 'required',
+            'documento' => 'unique:ongs,documento',
         ], [
             'password.confirmed' => 'Senhas não conferem',
             'email.unique' => 'Email já cadastrado',
             'logo.required' => 'Insira a logo da ong',
+            'documento.unique' => 'Documento já cadastrado',
         ]);
 
         if ($validator->fails()) {
@@ -73,6 +73,25 @@ class OngController extends Controller
     }
 
     public function home()
+    {
+        $causas = [
+            'Direitos Humanos e Sociais',
+            'Meio Ambiente',
+            'Saúde e Bem-Estar',
+            'Educação e Cultura',
+            'Proteção Animal'
+        ];
+
+        $direitos = Ong::where('causa', 'Direitos Humanos e Sociais')->get();
+        $ambientes = Ong::where('causa', 'Meio Ambiente')->get();
+        $saudes = Ong::where('causa', 'Saúde e Bem-Estar')->get();
+        $culturas = Ong::where('causa', 'Educação e Cultura')->get();
+        $animais = Ong::where('causa', 'Proteção Animal')->get();
+
+        return view('ong.home', ["Direitos Humanos e Sociais" => $direitos, "Meio Ambiente" => $ambientes, "Saúde e Bem-Estar" => $saudes, "Educação e Cultura" => $culturas, "Proteção Animal" => $animais, "causas" => $causas]);
+    }
+
+    public function index()
     {
         return view('index');
     }

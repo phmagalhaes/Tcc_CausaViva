@@ -25,7 +25,7 @@ header nav {
     justify-content: flex-end;
     gap: 50px;
 }
-header nav a {
+header nav p {
     color: var(--offWhite);
     font-size: 20px;
     font-weight: 500;
@@ -71,7 +71,7 @@ header .slogan {
 }
 
 .input-pesquisa {
-    background-image: url("../assetstr/icons/Search_alt.png"); /* Caminho para a imagem do ícone */
+    background-image: url("../icons/Search_alt.png"); /* Caminho para a imagem do ícone */
     background-position: 8px center; /* Posiciona o ícone à esquerda */
     background-repeat: no-repeat;
 }
@@ -120,7 +120,9 @@ main{
     font-size: 30px;
     color: var(--azulEscuro);
 }
-
+main .ongs{
+    margin: 40px 0;
+}
 main .ongs .cards {
     display: flex;
     align-items: center;
@@ -128,7 +130,7 @@ main .ongs .cards {
     gap: 40px;
     width: 100%;
     padding: 20px;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 main .cards .card {
     width: 28%;
@@ -164,9 +166,10 @@ main .cards .card {
     justify-content: center;
     position: relative;
     cursor: pointer;
+    max-height: 280px;
 }
 .card .img img {
-    width: 100%;
+    height: 100%;
 }
 .card .ong {
     position: absolute;

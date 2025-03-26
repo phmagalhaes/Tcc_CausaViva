@@ -5,15 +5,13 @@ use App\Http\Controllers\DoadorController;
 use App\Http\Controllers\OngController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [OngController::class, 'home'])->name('index');
+Route::get('/', [OngController::class, 'index'])->name('index');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/home', function(){
-    return view('ong.home');
-})->middleware('auth')->name('home');
+Route::get('/home', [OngController::class, 'home'])->middleware('auth')->name('home');
 
 Route::prefix('doador')->group(function () {
     Route::get('/cadastro', [DoadorController::class, 'create'])->name('doador.create');
