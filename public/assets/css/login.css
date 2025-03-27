@@ -146,11 +146,51 @@ input{
   width: 80%;
   font-size: 18px;
   margin: 15px;
+  outline: none;
+  border: 2px solid var(--verde);
 }
 
 input::placeholder{
   color: var(--verdeClaro);
   font-size: 18px;
+}
+input:focus{
+  border: 2px solid var(--verdeEscuro);
+}
+.senha_input{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto;
+
+}
+.senha_input input{
+  margin: 15px 0;
+  width: 90%;
+  border-radius: 4px 0 0 4px;
+  border-right: transparent;
+}
+
+.senha_input .olho{
+  background-color: var(--verde);
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  padding: 2% 0;
+  border-radius: 0 4px 4px 0;
+  border: 2px solid var(--verde);
+  border-left: transparent;
+  color: var(--verdeClaro);
+  cursor: pointer;
+}
+.senha_input input:focus + .olho{
+  border: 2px solid var(--verdeEscuro);
+  border-left: transparent;
 }
 
 button{
@@ -175,15 +215,15 @@ input[type="email"] {
   background-repeat: no-repeat;
   background-position: 5px center;
   background-size: 25px;
-  padding-left: 35px; /* Espaço para o ícone */
+  padding-left: 40px; /* Espaço para o ícone */
 }
 
-input[type="password"] {
+.senha_input input {
   background-image: url("../images/password_login.png"); /* URL do ícone */
   background-repeat: no-repeat;
   background-position: 5px center;
   background-size: 25px;
-  padding-left: 35px; /* Espaço para o ícone */
+  padding-left: 40px; /* Espaço para o ícone */
 }
 
 
@@ -237,7 +277,7 @@ input[type="password"] {
     padding-left: 30px; 
   }
   
-  input[type="password"] {
+  .senha_input input {
     background-size: 20px;
     padding-left: 30px; 
   }
@@ -286,8 +326,11 @@ input[type="password"] {
   input[type="email"] {
     background-size: 19px;
   }
-  input[type="password"] {
+  .senha_input input {
     background-size: 19px;
+  }
+  .senha_input .olho{
+    font-size: 19px;
   }
 }
 
@@ -321,8 +364,11 @@ input[type="password"] {
   input[type="email"] {
     background-size: 17px;
   }
-  input[type="password"] {
+  .senha_input input {
     background-size: 17px;
+  }
+  .senha_input .olho{
+    font-size: 17px;
   }
 }
 
@@ -346,9 +392,12 @@ input[type="password"] {
     background-size: 17px;
     padding-left: 25px; 
   }
-  input[type="password"] {
+  .senha_input input {
     background-size: 17px;
     padding-left: 25px; 
+  }
+  .senha_input .olho{
+    font-size: 16px;
   }
 }
 
@@ -403,7 +452,7 @@ input[type="password"] {
   input[type="email"] {
     background-size: 15px;
   }
-  input[type="password"] {
+  .senha_input input {
     background-size: 15px;
   }
   input{
@@ -411,6 +460,9 @@ input[type="password"] {
   }
   input::placeholder{
     font-size: 12px;
+  }
+  .senha_input .olho{
+    font-size: 15px;
   }
 }
 
@@ -458,7 +510,7 @@ input[type="password"] {
     padding-left: 28px; 
 
   }
-  input[type="password"] {
+  .senha_input input {
     background-size: 19px;
     padding-left: 28px; 
   }
@@ -467,6 +519,9 @@ input[type="password"] {
   }
   input::placeholder{
     font-size: 15px;
+  }
+  .senha_input .olho{
+    font-size: 19px;
   }
 }
 
@@ -493,7 +548,7 @@ input[type="password"] {
   input[type="email"] {
     background-size: 17px;
   }
-  input[type="password"] {
+  .senha_input input {
     background-size: 17px;
   }
   input{
@@ -501,6 +556,9 @@ input[type="password"] {
   }
   input::placeholder{
     font-size: 14px;
+  }
+  .senha_input .olho{
+    font-size: 18px;
   }
 }
 
@@ -535,7 +593,10 @@ input[type="password"] {
   input[type="email"] {
     background-size: 16px;
   }
-  input[type="password"] {
+  .senha_input input {
     background-size: 16px;
+  }
+  .senha_input .olho{
+    font-size: 15px;
   }
 }

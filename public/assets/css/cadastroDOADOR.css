@@ -99,7 +99,7 @@ label{
 input, select{
     background-color: var(--verde);
     border: none;
-    color: var(--verdeEscuro);
+    color: var(--begeClaro);
     padding: 10px;
     font-size: 15px;
     border-radius: 4px;

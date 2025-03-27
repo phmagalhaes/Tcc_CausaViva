@@ -7,6 +7,8 @@
     <title>Causa Viva - Login</title>
     <link rel="stylesheet" href="{{ asset('/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="{{ asset('assets/js/login.js') }}" defer></script>
 </head>
 
 <body>
@@ -46,7 +48,12 @@
                 @method('POST')
                 <input type="email" name="email" placeholder="Email" required>
 
-                <input type="password" name="senha" placeholder="Senha" required>
+                <div class="senha_input">
+                    <input id="input" type="password" name="senha" placeholder="Senha" required>
+                    <div id="olho" class="olho">
+                        <i id="olhinho" class="fa fa-eye" id="toggleSenha"></i>
+                    </div>
+                </div>
 
                 <button type="submit">Logar</button>
                 @if (session('errorMsg'))
