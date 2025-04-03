@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class OngController extends Controller
 {
-    public function show()
+    public function show($id)
     {
-        return view('ong.perfil');
+        $ong = Ong::find($id);
+        return view('ong.show', ["ong" => $ong]); 
     }
 
     public function store(Request $request)
@@ -93,6 +94,7 @@ class OngController extends Controller
 
     public function index()
     {
-        return view('index');
+        $ongs = Ong::latest()->take(3)->get();
+        return view('index', ["ongs" => $ongs]);
     }
 }

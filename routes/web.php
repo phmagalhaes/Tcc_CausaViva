@@ -12,6 +12,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [OngController::class, 'home'])->middleware('auth')->name('home');
+Route::get('/ong/{id}', [OngController::class, 'show'])->name('ong.show');
 
 Route::prefix('doador')->group(function () {
     Route::get('/cadastro', [DoadorController::class, 'create'])->name('doador.create');

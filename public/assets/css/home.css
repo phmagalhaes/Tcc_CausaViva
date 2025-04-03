@@ -206,12 +206,40 @@ main .cards .card {
     background-color: var(--verdeNeon);
     border-radius: 20px;
 }
-.noventa {
-    width: 90%;
+.total0{
+    width: 0%;
 }
-.oitenta {
+.total10{
+    width: 10%;
+}
+.total20{
+    width: 20%;
+}
+.total30{
+    width: 30%;
+}
+.total40{
+    width: 40%;
+}
+.total50{
+    width: 50%;
+}
+.total60{
+    width: 60%;
+}
+.total70{
+    width: 70%;
+}
+.total80{
     width: 80%;
 }
+.total90{
+    width: 90%;
+}
+.total100{
+    width: 100%;
+}
+
 .meta .legenda {
     display: flex;
     align-items: center;

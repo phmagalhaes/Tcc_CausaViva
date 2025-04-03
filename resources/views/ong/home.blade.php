@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     <title>Causa Viva - Nossas ONG´s</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="{{ asset('assets/js/redirect.js') }}" defer></script>
 </head>
 
 <body>
@@ -60,15 +62,18 @@
                             $doacoes = App\Models\Doacao::where('id_ong', $ong->id)->get();
                             if ($doacoes->isEmpty()) {
                                 $valor = 0;
+                                $total = 0;
                             } else {
                                 $valor = 0;
                                 foreach ($doacoes as $doacao) {
-                                    $valor = $valor + $doacao->valor;
+                                    $valor += +$doacao->valor;
                                 }
-                                $valor = round($valor / 10) * 10;
+                                $total = 100 * $valor;
+                                $total /= $ong->meta_financeira;
+                                $total = round($total / 10) * 10;
                             }
                         @endphp
-                        <div class="card">
+                        <div class="card" id="{{ $ong->id }}">
                             <div class="img">
                                 <img src="{{ asset('logos/' . $ong->logo) }}" alt="" />
 
@@ -79,11 +84,11 @@
                             </p>
                             <div class="meta">
                                 <div class="grafico">
-                                    <div class="total"></div>
+                                    <div class="total{{ $total }}"></div>
                                 </div>
                                 <div class="legenda">
-                                    <p>112%</p>
-                                    <p>R$14.000 Arrecadados</p>
+                                    <p>{{ $total }}%</p>
+                                    <p>R${{ $valor }} Arrecadados</p>
                                 </div>
                             </div>
                             <div class="bottom">

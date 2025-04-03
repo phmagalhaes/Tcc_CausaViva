@@ -276,12 +276,11 @@ main .ongs .title{
 main .ongs .cards {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 40px;
   width: 100%;
-  margin-top: 20px;
+  padding: 20px;
+  overflow-x: auto;
 }
 main .cards .card {
   width: 28%;
@@ -317,9 +316,10 @@ main .cards .card {
   justify-content: center;
   position: relative;
   cursor: pointer;
+  max-height: 280px;
 }
 .card .img img {
-  width: 100%;
+  height: 100%;
 }
 .card .ong {
   position: absolute;
