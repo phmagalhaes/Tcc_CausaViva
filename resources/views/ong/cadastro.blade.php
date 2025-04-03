@@ -32,7 +32,8 @@
                     <label class="picture" for="picture__input" tabIndex="0">
                         <span class="picture__image"></span>
                     </label>
-                    <input type="file" name="logo" id="picture__input" style="display: none;" accept="image/png, image/jpeg, image/jpg">                    
+                    <input type="file" name="logo" id="picture__input" style="display: none;"
+                        accept="image/png, image/jpeg, image/jpg">
                 </div>
                 <div class="inputs_logo">
                     <div class="nome">
@@ -55,12 +56,22 @@
 
                 <div class="password">
                     <label for="password">Senha</label>
-                    <input required type="password" name="password" placeholder="Digite a sua senha" />
+                    <div class="senha_input">
+                        <input id="input" type="password" name="password" placeholder="Digite sua senha" required>
+                        <div id="olho" class="olho">
+                            <i id="olhinho" class="fa fa-eye" id="toggleSenha"></i>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="password">
                     <label for="password">Confirme Senha</label>
-                    <input required type="password" name="password_confirmation" placeholder="Confirme a sua senha" />
+                    <div class="senha_input">
+                        <input id="input2" type="password" name="password_corfirmation" placeholder="Confirme sua senha" required>
+                        <div id="olho2" class="olho">
+                            <i id="olhinho2" class="fa fa-eye" id="toggleSenha"></i>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -102,7 +113,8 @@
 
                 <div class="cidade">
                     <label for="cidade">Cidade</label>
-                    <input required type="text" id="cidade" name="cidade" placeholder="Digite a cidade da ong" />
+                    <input required type="text" id="cidade" name="cidade"
+                        placeholder="Digite a cidade da ong" />
                 </div>
 
                 <div class="estado">
@@ -150,7 +162,7 @@
                 </div>
                 <div class="buttonSubmit">
                     <button type="submit">Enviar</button>
-                    <a href="./login.html">Voltar para o login</a>
+                    <a href="{{ route('login' )}}">Voltar para o login</a>
                 </div>
             </section>
         </form>

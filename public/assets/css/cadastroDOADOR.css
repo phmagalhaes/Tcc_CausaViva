@@ -4,54 +4,53 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-clip: initial;
-  
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
-  
+
     min-height: 100vh;
-  
 }
 
 h1 {
     color: var(--begeClaro);
     text-shadow: 8px 6px 7px rgba(0, 0, 0, 0.5);
 }
-img{
+img {
     width: 120px;
     position: absolute;
     top: 20px;
     left: 20px;
-    transition: transform 0.3s ease
+    transition: transform 0.3s ease;
 }
 
 img:hover {
     transform: scale(1.2); /* Aumenta a imagem em 20% */
 }
 
-.nome{
+.nome {
     width: 100%;
 }
 
-.email{
+.email {
     width: 55%;
 }
 
-.password{
+.password {
     width: 40%;
 }
 
-.confirmePassword{
+.confirmePassword {
     width: 40%;
 }
 
-.causa{
+.causa {
     width: 55%;
 }
 
-.telefone{
+.telefone {
     width: 60%;
 }
 
@@ -62,7 +61,7 @@ main {
     max-width: 45%;
     max-height: 70vh;
 }
-  
+
 form {
     display: flex;
     align-items: center;
@@ -71,50 +70,91 @@ form {
     gap: 20px;
 }
 
-section{
+section {
     width: 100%;
     display: flex;
     align-items: start;
     justify-content: space-between;
 }
 
-form div{
+form div {
     display: flex;
     align-items: start;
     justify-content: center;
     flex-direction: column;
-  }
+}
 
-a{
+a {
     text-decoration: underline;
     color: var(--begeClaro);
     text-align: start;
 }
 
-label{
+label {
     color: var(--begeClaro);
     font-size: 20px;
 }
 
-input, select{
+input,
+select {
     background-color: var(--verde);
     border: none;
     color: var(--begeClaro);
     padding: 10px;
-    font-size: 15px;
+    font-size: 18px;
     border-radius: 4px;
     width: 100%;
+    border: 2px solid var(--verde);
+    outline: none;
 }
-
-input::placeholder{
+input:focus,
+select:focus {
+    border: 2px solid var(--verdeEscuro);
+}
+input::placeholder {
     color: var(--verdeEscuro);
 }
 
-.buttonsMedia{
+.senha_input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0;
+    margin: 0 auto;
+}
+.senha_input input {
+    width: 90%;
+    border-radius: 4px 0 0 4px;
+    border-right: transparent;
+}
+
+.senha_input .olho {
+    background-color: var(--verde);
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    padding: 10px 0;
+    border-radius: 0 4px 4px 0;
+    border: 2px solid var(--verde);
+    border-left: transparent;
+    color: var(--verdeClaro);
+    cursor: pointer;
+}
+.senha_input input:focus + .olho {
+    border: 2px solid var(--verdeEscuro);
+    border-left: transparent;
+}
+
+.buttonsMedia {
     display: none;
 }
 
-button{
+button {
     border: none;
     background-color: var(--verdeEscuro);
     color: var(--begeClaro);
@@ -125,13 +165,13 @@ button{
     transition: all 400ms ease;
 }
 
-button:hover{
+button:hover {
     background-color: var(--bege);
     color: var(--verdeEscuro);
     cursor: pointer;
 }
 
-.buttonSubmit{
+.buttonSubmit {
     width: 23%;
     display: flex;
     align-items: center;
@@ -141,143 +181,151 @@ button:hover{
     padding-top: 25px;
 }
 
-@media (max-width:1041px) {
+@media (max-width: 1041px) {
     h1 {
         font-size: 35px;
     }
-    img{
+    img {
         width: 100px;
     }
-    label{
+    label {
         font-size: 18px;
     }
-    input, select{
+    input,
+    select {
         font-size: 14px;
     }
     main {
         max-width: 55%;
     }
-    button{
+    button {
         font-size: 16px;
-    }    
+    }
+    .senha_input .olho {
+        font-size: 18px;
+    }
 }
 
-@media (max-width:895px) {
+@media (max-width: 895px) {
     main {
         max-width: 60%;
     }
 }
 
-@media (max-width:823px) {
+@media (max-width: 823px) {
     main {
         max-width: 65%;
     }
 }
 
-@media (max-width:753px) {
+@media (max-width: 753px) {
     main {
         max-width: 65%;
     }
     h1 {
         font-size: 33px;
     }
-    input, select{
+    input,
+    select {
         font-size: 13px;
     }
-    label{
+    label {
         font-size: 17px;
     }
-    button{
+    button {
         font-size: 15px;
-    }  
-    .buttonSubmit{
+    }
+    .buttonSubmit {
         width: 25%;
         padding-top: 20px;
     }
-}
-
-@media (max-width:712px) {
-    h1 {
-        font-size: 32px;
-    }
-    button{
-        font-size: 15px;
-    }  
-    .buttonSubmit{
-        width: 25%;
-        padding-top: 20px;
-    }
-    .confirmePassword{
-        width: 45%;
-    }
-    .causa{
-        width: 49%;
-    }
-}
-
-@media (max-width:642px) {
-    h1 {
-        font-size: 29px;
-    }
-    img{
-        width: 95px;
-    }
-    button{
-        font-size: 14px;
-    }  
-    .confirmePassword{
-        width: 47%;
-    }
-    .causa{
-        width: 48%;
-    }
-    a{
+    .senha_input .olho {
         font-size: 16px;
     }
 }
 
-@media (max-width:629px) {
-    img{
+@media (max-width: 712px) {
+    h1 {
+        font-size: 32px;
+    }
+    button {
+        font-size: 15px;
+    }
+    .buttonSubmit {
+        width: 25%;
+        padding-top: 20px;
+    }
+    .confirmePassword {
+        width: 45%;
+    }
+    .causa {
+        width: 49%;
+    }
+}
+
+@media (max-width: 642px) {
+    h1 {
+        font-size: 29px;
+    }
+    img {
+        width: 95px;
+    }
+    button {
+        font-size: 14px;
+    }
+    .confirmePassword {
+        width: 47%;
+    }
+    .causa {
+        width: 48%;
+    }
+    a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 629px) {
+    img {
         width: 93px;
     }
-    section{
+    section {
         flex-direction: column;
         gap: 15px;
     }
-    .email{
+    .email {
         width: 100%;
     }
-    .password{
+    .password {
         width: 100%;
     }
-    .confirmePassword{
+    .confirmePassword {
         width: 100%;
     }
-    .causa{
+    .causa {
         width: 100%;
     }
-    .telefone{
+    .telefone {
         width: 100%;
     }
-    button{
+    button {
         font-size: 14px;
         padding: 8px;
-    } 
-    .buttonSubmit{
+    }
+    .buttonSubmit {
         width: 35%;
         padding-top: 15px;
         margin: 0 auto;
     }
-    a{
+    a {
         margin: 0 auto;
     }
-    .submitMedia{
+    .submitMedia {
         display: none;
     }
-    .aMedia{
+    .aMedia {
         display: none;
     }
-    .buttonsMedia{
+    .buttonsMedia {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -286,72 +334,72 @@ button:hover{
         flex-direction: row;
         padding-top: 10px;
     }
-    .buttonsMedia button{
+    .buttonsMedia button {
         width: 35%;
     }
-    .buttonsMedia a{
+    .buttonsMedia a {
         margin: 0;
         padding: 0;
     }
 }
 
-@media (max-width:559px) {
+@media (max-width: 559px) {
     h1 {
         font-size: 27px;
     }
-    img{
+    img {
         width: 80px;
         top: 5px;
         left: 5px;
     }
 }
 
-@media (max-width:505px) {
+@media (max-width: 505px) {
     h1 {
         font-size: 24px;
     }
-    label{
+    label {
         font-size: 16px;
     }
-    button{
+    button {
         font-size: 13px;
-    } 
-    a{
+    }
+    a {
         font-size: 15px;
     }
 }
 
-@media (max-width:461px) {
+@media (max-width: 461px) {
     main {
         max-width: 75%;
     }
     h1 {
         font-size: 23px;
     }
-    label{
+    label {
         font-size: 15px;
     }
-    a{
+    a {
         font-size: 14px;
     }
 }
 
-@media (max-width:383px) {
+@media (max-width: 383px) {
     main {
         max-width: 80%;
     }
 }
 
-@media (max-width:349px) {
+@media (max-width: 349px) {
     h1 {
         font-size: 22px;
     }
-    a{
+    a {
         font-size: 13px;
     }
 }
 
-@media (max-width:321px) {
+@media (max-width: 321px) {
     main {
         max-width: 83%;
         height: 555px;
@@ -359,7 +407,7 @@ button:hover{
     h1 {
         font-size: 21px;
     }
-    img{
+    img {
         width: 75px;
         top: 5px;
         left: 5px;
