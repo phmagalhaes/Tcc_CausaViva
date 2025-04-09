@@ -6,28 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/menu.css') }}">
     <title>Causa Viva - Nossas ONG´s</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script src="{{ asset('assets/js/redirect.js') }}" defer></script>
+    <script src="{{ asset('assets/js/menu.js') }}" defer></script>
 </head>
 
 <body>
+    <div class="menu_bar" id="menu_bar">
+        <a href="">Confira todas as Ongs</a>
+        <a href="">Confira todos os Eventos</a>
+        <a href="">Perfil</a>
+    </div>
     <header>
         <div class="main">
             <a href="{{ route('index') }}">
                 <img src="../assets/images/Logo Header.png" alt="logo" />
             </a>
-            <nav>
-                @php
-                    $nome = explode(' ', Auth()->user()->nome);
-                    $nome = $nome[0];
-                @endphp
-                <p class="linkPerfil">Olá <strong>{{ $nome }}</strong></p>
-            </nav>
+            <div class="text">
+                <nav>
+                    @php
+                        $nome = explode(' ', Auth()->user()->nome);
+                        $nome = $nome[0];
+                    @endphp
+                    <p class="linkPerfil">Olá <strong>{{ $nome }}</strong></p>
+                </nav>
+                <div class="menu">
+                    <div class="menu_icon open" id="menu_icon">
+                        <div class="barra" id="barra1"></div>
+                        <div class="barra" id="barra2"></div>
+                        <div class="barra" id="barra3"></div>
+                    </div>
+
+                </div>
+            </div>
         </div>
         <div class="slogan">
         </div>
+
     </header>
     <div class="pesquisa">
         <h1 class="titulo">Confira nossas ONGs</h1>

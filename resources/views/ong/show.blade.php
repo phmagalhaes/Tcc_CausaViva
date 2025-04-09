@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{ $ong->nome }}</h1>
+    {{-- <h1>{{ $ong->nome }}</h1> --}}
 </body>
 </html>
