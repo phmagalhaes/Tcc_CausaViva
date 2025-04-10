@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Doador extends Authenticatable
+class Doador extends Model
 {
     protected $fillable = [
         'nome',

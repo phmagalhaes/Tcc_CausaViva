@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doador;
 use App\Models\Ong;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -18,32 +19,25 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $doador = Doador::where('email', $request->email)->first();
-        $ong = Ong::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
-        if(!$doador && !$ong){
+        if (!$user || !Hash::check($request->senha, $user->senha)) {
             return redirect('/login')->with('errorMsg', 'Email ou senha incorretos');
-        } else if($doador && !$ong){
-            if(Hash::check($request->senha, $doador->senha)){
-                Auth::login($doador);
-                return redirect('/home');
-            } else{
-                return redirect('/login')->with('errorMsg', 'Email ou senha incorretos');
-            }
-        } else{
-            if(Hash::check($request->senha, $ong->senha)){
-                Auth::login($ong);
-                return redirect('/home');
-            } else{
-                return redirect('/login')->with('errorMsg', 'Email ou senha incorretos');
-            }
         }
-        
+
+        Auth::login($user);
+        return redirect('/home');
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        Auth::logout($request->user());
+        Auth::logout();
         return redirect('/login');
     }
+
+    // public function perfil()
+    // {
+    //     $user = Doador::where('email', auth()->user()->email)->first();
+    //     return $user;
+    // }
 }

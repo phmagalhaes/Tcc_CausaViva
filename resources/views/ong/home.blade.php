@@ -15,10 +15,46 @@
 </head>
 
 <body>
+    @php
+        $nome = explode(' ', Auth()->user()->nome);
+        $nome = $nome[0];
+    @endphp
     <div class="menu_bar" id="menu_bar">
-        <a href="">Confira todas as Ongs</a>
-        <a href="">Confira todos os Eventos</a>
-        <a href="">Perfil</a>
+        <div class="above">
+            <a href="" class="icon">
+                @if (auth()->user()->foto)
+                    <img src="{{ asset('perfil/' . auth()->user()->foto) }}" alt="">
+                @elseif (auth()->user()->logo)
+                    <img src="{{ asset('logos/' . auth()->user()->logo) }}" alt="">
+                @else
+                    <img src="{{ asset('assets/images/menu/account.png') }}" alt="">
+                @endif
+            </a>
+            <div class="menu_bar_info">
+                <h2>{{ $nome }}</h2>
+                <h4>Clique no ícone para acessar o perfil</h4>
+            </div>
+        </div>
+        <a href="">
+            <div class="menu_bar_planet">
+                <img src="{{ asset('assets/images/menu/planet.png') }}" class="menu_bar_icon">
+                <p>Confira todas as Ongs</p>
+            </div>
+        </a>
+        <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
+        <a href="">
+            <div class="menu_bar_flag">
+                <img src="{{ asset('assets/images/menu/flag.png') }}" alt="">
+                <p>Confira todos os Eventos</p>
+            </div>
+        </a>
+        <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
+        <a href="{{ route('logout') }}">
+            <div class="menu_bar_desconect">
+                <img src="{{ asset('assets/images/menu/cloud.png') }}" alt="">
+                <p>Desconectar-se</p>
+            </div>
+        </a>
     </div>
     <header>
         <div class="main">
@@ -27,10 +63,6 @@
             </a>
             <div class="text">
                 <nav>
-                    @php
-                        $nome = explode(' ', Auth()->user()->nome);
-                        $nome = $nome[0];
-                    @endphp
                     <p class="linkPerfil">Olá <strong>{{ $nome }}</strong></p>
                 </nav>
                 <div class="menu">

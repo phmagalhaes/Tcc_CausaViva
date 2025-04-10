@@ -4,10 +4,12 @@
     width: 500px;
     background-color: var(--begeClaro);
     z-index: 100;
-    right: -30%;
+    right: -40%;
     transition: all .5s ease;
 }
-
+.menu_bar a{
+    text-decoration: none;
+}
 .menu_icon {
     display: flex;
     align-items: center;
@@ -17,7 +19,6 @@
     height: 30px;
     cursor: pointer;
     position: relative;
-    margin: 50px;
     z-index: 100;
 }
 .barra {
@@ -56,4 +57,90 @@
 }
 .close .barra:nth-child(3) {
     display: none;
+}
+
+.menu_bar{ /* Div primária */
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+
+    & .above{ /* Parte de cima (verde) */
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 137px;
+        gap: 20px;
+        padding: 0 20px;
+        background-color: var(--verdeEscuro)
+    }
+
+    & .above .icon{ /* Foto do usuário */
+        width: 55px;
+        height: 55px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all ease .3s;
+    }
+
+    & .above .icon img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    & .above .icon:hover{
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+}
+
+.menu_bar_info{ /* Texto da parte de cima (verde) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h2{
+        color: var(--bege);
+    }
+    & h4{
+        color: var(--verde);
+    }
+
+}
+
+.menu_bar_flag, .menu_bar_planet, .menu_bar_desconect{ /* Div dos botões */
+    color: var(--verde);
+    font-size: 1vw;
+    font-weight: bold;
+    margin: 2vh;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+    & img{
+        width: 4vw;
+        color: var(--verdeEscuro);
+        transition: all 0.4s;
+    }
+
+    & p{
+        margin: 0px 0px 0px 1vw;
+        color: inherit;
+    }
+
+}
+
+.menu_bar_flag:hover, .menu_bar_planet:hover, .menu_bar_desconect:hover{
+    transform: translate(0, -1vh);
+    box-shadow: 6px 6px 4px #dbdbdb;
+    & img{
+        transform: rotate(-12deg);
+    }
 }

@@ -23,3 +23,5 @@ Route::prefix('ong')->group(function () {
     Route::post('/cadastro', [OngController::class, 'store'])->name('ong.store');
     Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
 });
+
+Route::get('/perfil', [AuthController::class,'perfil'])->name('perfil')->middleware('auth');

@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => env('AUTH_GUARD', 'web'),
-        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+        'guard' => 'web',
+        'passwords' => 'users',
     ],
 
     /*
@@ -38,14 +38,10 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'doadores',
-        ],
-
-        'ong' => [
-            'driver' => 'session',
-            'provider' => 'ongs',
+            'provider' => 'users',
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -65,14 +61,9 @@ return [
     */
 
     'providers' => [
-        'doadores' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Doador::class, // Modelo do doador
-        ],
-
-        'ongs' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Ong::class, // Modelo da ONG
+            'model' => App\Models\User::class,
         ],
     ],
 

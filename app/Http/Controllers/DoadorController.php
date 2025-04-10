@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doador;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,10 +25,10 @@ class DoadorController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'password' => 'confirmed',
-            'email' => 'unique:doadores,email|unique:ongs,email',
+            'email' => 'required|email|unique:users,email',
         ], [
             'password.confirmed' => 'Senhas não conferem',
-            'email.unique' => 'Email já cadastrado'
+            'email.unique' => 'Email já cadastrado',
         ]);
  
         if ($validator->fails()) {
@@ -40,6 +42,13 @@ class DoadorController extends Controller
         $doador->telefone = $request->telefone;
         $doador->causa = $request->causa;
         $doador->save();
+
+        $user = new User();
+        $user->nome = $request->nome;
+        $user->email = $request->email;
+        $user->senha = Hash::make($request->password);
+        $user->tipo = "doador";
+        $user->save();
 
         return redirect('/login')->with('sucMsg', "Cadastro realizado com sucesso");
     }

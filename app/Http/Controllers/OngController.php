@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ong;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,27 +14,31 @@ class OngController extends Controller
     public function show($id)
     {
         $ong = Ong::find($id);
-        return view('ong.show', ["ong" => $ong]); 
+        return view('ong.show', ["ong" => $ong]);
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'password' => 'confirmed',
-            'email' => 'unique:doadores,email|unique:ongs,email',
+            'email' => 'required|email|unique:users,email',
             'logo' => 'required',
             'documento' => 'unique:ongs,documento',
         ], [
             'password.confirmed' => 'Senhas não conferem',
-            'email.unique' => 'Email já cadastrado',
             'logo.required' => 'Insira a logo da ong',
             'documento.unique' => 'Documento já cadastrado',
+            'email.unique' => 'Email já cadastrado'
         ]);
 
         if ($validator->fails()) {
             return redirect('/ong/cadastro')->with('errorMsg', $validator->errors()->first());
         }
 
+        $valorBruto = $request->input('meta_financeira');
+        $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valorBruto);
+        $valorDecimal = number_format((float)$valorLimpo, 2, '.', '');
+    
         $ong = new Ong();
         $ong->nome = $request->nome;
         $ong->donos = $request->donos;
@@ -55,7 +61,7 @@ class OngController extends Controller
         $ong->telefone = $request->telefone;
         $ong->descricao = $request->descricao;
         $ong->necessidades = $request->necessidades;
-        $ong->meta_financeira = $request->meta_financeira;
+        $ong->meta_financeira = $valorDecimal;
 
         $image = $request->logo;
         $extension = $image->extension();
@@ -64,6 +70,13 @@ class OngController extends Controller
         $ong->logo = $hash;
 
         $ong->save();
+
+        $user = new User();
+        $user->nome = $request->nome;
+        $user->email = $request->email;
+        $user->senha = Hash::make($request->password);
+        $user->tipo = "ong";
+        $user->save();
 
         return redirect('/login')->with('sucMsg', "Cadastro realizado com sucesso");
     }

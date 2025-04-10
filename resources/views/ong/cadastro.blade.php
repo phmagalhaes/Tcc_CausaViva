@@ -67,7 +67,7 @@
                 <div class="password">
                     <label for="password">Confirme Senha</label>
                     <div class="senha_input">
-                        <input id="input2" type="password" name="password_corfirmation" placeholder="Confirme sua senha" required>
+                        <input id="input2" type="password" name="password_confirmation" placeholder="Confirme sua senha" required>
                         <div id="olho2" class="olho">
                             <i id="olhinho2" class="fa fa-eye" id="toggleSenha"></i>
                         </div>
@@ -145,8 +145,8 @@
 
                 <div class="metaFinanceira">
                     <label for="metaFinanceira">Meta Financeira</label>
-                    <input required type="text" name="meta_financeira"
-                        placeholder="Digite a meta financeira da ong" />
+                    <input required type="text" name="meta_financeira" id="metaFinanceira"
+                        placeholder="Digite a meta financeira da ong em reais" />
                 </div>
             </section>
 

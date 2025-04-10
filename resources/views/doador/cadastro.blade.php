@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="causa">
-                    <label for="causa">Causa</label>
+                    <label for="causa">Causa Preferida</label>
                     <select name="causa" id="">
                         <option value="Proteção Animal">Proteção Animal</option>
                         <option value="Direitos Humanos e Sociais">

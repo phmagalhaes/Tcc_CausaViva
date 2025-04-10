@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Ong extends Authenticatable
+class Ong extends Model
 {
     protected $fillable = [
         'name', 
