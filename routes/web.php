@@ -16,11 +16,13 @@ Route::get('/home', [OngController::class, 'home'])->middleware('auth')->name('h
 Route::prefix('doador')->group(function () {
     Route::get('/cadastro', [DoadorController::class, 'create'])->name('doador.create');
     Route::post('/cadastro', [DoadorController::class, 'store'])->name('doador.store');
+    Route::get('/perfil', [DoadorController::class, 'perfil'])->name('doador.perfil')->middleware('auth');
 });
 
 Route::prefix('ong')->group(function () {
     Route::get('/cadastro', [OngController::class, 'create'])->name('ong.create');
     Route::post('/cadastro', [OngController::class, 'store'])->name('ong.store');
+    Route::get('/perfil', [OngController::class, 'perfil'])->name('ong.perfil')->middleware('auth');
     Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
 });
 

@@ -57,4 +57,9 @@ class DoadorController extends Controller
     {
         return view('doador.cadastro');
     }
+
+    public function perfil()
+    {
+        return "oi";
+    }
 }

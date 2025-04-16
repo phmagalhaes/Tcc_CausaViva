@@ -16,18 +16,32 @@
 
 <body>
     @php
-        $nome = explode(' ', Auth()->user()->nome);
-        $nome = $nome[0];
+        if (Auth()->user()->tipo == 'doador') {
+            $nome = explode(' ', Auth()->user()->nome);
+            $nome = $nome[0];
+        } else {
+            $nome = Auth()->user()->nome;
+        }
     @endphp
     <div class="menu_bar" id="menu_bar">
         <div class="above">
-            <a href="" class="icon">
-                @if (auth()->user()->foto)
-                    <img src="{{ asset('perfil/' . auth()->user()->foto) }}" alt="">
-                @elseif (auth()->user()->logo)
-                    <img src="{{ asset('logos/' . auth()->user()->logo) }}" alt="">
+            <a href="{{ route(Auth()->user()->tipo . ".perfil")}}" class="icon">
+                @php
+                    $user = Auth()->user();
+                    $doador = App\Models\Doador::where('email', $user->email)->first();
+                    $ongUser = App\Models\Ong::where('email', $user->email)->first();
+                    if (isset($doador) && $doador->foto != null) {
+                        $foto = $doador->foto;
+                    } elseif (isset($doador) && $doador->foto == null) {
+                        $foto = 'assets/images/menu/account.png';
+                    } elseif (isset($ongUser)) {
+                        $foto = $ongUser->logo;
+                    }
+                @endphp
+                @if ($foto == 'assets/images/menu/account.png')
+                    <img src="{{ asset($foto) }}" alt="">
                 @else
-                    <img src="{{ asset('assets/images/menu/account.png') }}" alt="">
+                    <img src="{{ asset("logos/$foto") }}" alt="">
                 @endif
             </a>
             <div class="menu_bar_info">
@@ -81,57 +95,44 @@
     </header>
     <div class="pesquisa">
         <h1 class="titulo">Confira nossas ONGs</h1>
-        <form>
-            <input class="input-pesquisa" type="search" id="#" name="#"
+        <form id="searchForm" method="get" action="{{ route('home') }}">
+            <input value="{{ $busca }}" name="ong" class="input-pesquisa" type="search" id="searchInput"
                 placeholder="Pesquise por uma ong">
-            <select class="select-pesquisa" id="categoria" name="categoria">
-                <form action="">
-                    <option value="" disabled selected>Selecione uma causa</option>
-                    <option value="direitos">Direitos Humanos e Sociais</option>
-                    <option value="ambiente">Meio Ambiente</option>
-                    <option value="saude">Saúde e Bem-Estar</option>
-                    <option value="educacao">Educação e Cultura</option>
-                    <option value="cultura">Proteção Animal</option>
-                </form>
+            <select name="causa" class="select-pesquisa" id="categoriaSelect">
+                <option value="">Selecione uma causa</option>
+                @foreach ($causas as $causa)
+                    <option value="{{ $causa }}" {{ $searchCausa == $causa ? 'selected' : '' }}>
+                        {{ $causa }}
+                    </option>
+                @endforeach
             </select>
         </form>
+
     </div>
     <main>
-        @foreach ($causas as $causa)
+        @foreach ($ongsPorCausa as $causa => $ongs)
             <div class="ongs">
                 <h1 class="titulo2">{{ $causa }}</h1>
                 <div class="cards">
-                    @php
-                        $ongs = App\Models\Ong::where('causa', $causa)->get();
-                    @endphp
                     @if ($ongs->isEmpty())
                         <p>Parece que ainda não existem ONGs cadastradas para essa causa :(</p>
                     @endif
+
                     @foreach ($ongs as $ong)
                         @php
                             $doacoes = App\Models\Doacao::where('id_ong', $ong->id)->get();
-                            if ($doacoes->isEmpty()) {
-                                $valor = 0;
-                                $total = 0;
-                            } else {
-                                $valor = 0;
-                                foreach ($doacoes as $doacao) {
-                                    $valor += +$doacao->valor;
-                                }
-                                $total = 100 * $valor;
-                                $total /= $ong->meta_financeira;
-                                $total = round($total / 10) * 10;
-                            }
+                            $valor = $doacoes->sum('valor');
+                            $total = $ong->meta_financeira
+                                ? round((100 * $valor) / $ong->meta_financeira / 10) * 10
+                                : 0;
                         @endphp
+
                         <div class="card" id="{{ $ong->id }}">
                             <div class="img">
                                 <img src="{{ asset('logos/' . $ong->logo) }}" alt="" />
-
                                 <p class="ong">{{ $ong->nome }}</p>
                             </div>
-                            <p class="description">
-                                {{ $ong->descricao }}
-                            </p>
+                            <p class="description">{{ $ong->descricao }}</p>
                             <div class="meta">
                                 <div class="grafico">
                                     <div class="total{{ $total }}"></div>
@@ -148,16 +149,15 @@
                                 </div>
                                 <div class="causa">
                                     <i class="fa-solid fa-tag"></i>
-
                                     <p>{{ $ong->causa }}</p>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         @endforeach
+
     </main>
 
     <footer>

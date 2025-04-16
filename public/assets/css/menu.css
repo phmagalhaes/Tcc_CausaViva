@@ -1,13 +1,15 @@
-.menu_bar{
+.menu_bar {
     position: absolute;
     height: 100vh;
     width: 500px;
     background-color: var(--begeClaro);
     z-index: 100;
     right: -40%;
-    transition: all .5s ease;
+    transition: all 0.3s ease;
+    opacity: 0;
+    display: none;
 }
-.menu_bar a{
+.menu_bar a {
     text-decoration: none;
 }
 .menu_icon {
@@ -42,7 +44,7 @@
     top: 100%;
 }
 
-.close .barra{
+.close .barra {
     background-color: var(--verde);
 }
 .close .barra:nth-child(1) {
@@ -59,61 +61,63 @@
     display: none;
 }
 
-.menu_bar{ /* Div primária */
+.menu_bar {
+    /* Div primária */
     user-select: none;
     display: flex;
     flex-direction: column;
 
-    & .above{ /* Parte de cima (verde) */
+    & .above {
+        /* Parte de cima (verde) */
         display: flex;
         justify-content: flex-start;
         align-items: center;
         height: 137px;
         gap: 20px;
         padding: 0 20px;
-        background-color: var(--verdeEscuro)
+        background-color: var(--verdeEscuro);
     }
 
-    & .above .icon{ /* Foto do usuário */
-        width: 55px;
-        height: 55px;
-        position: relative;
+    & .above .icon {
+        /* Foto do usuário */
+        width: 65px;
+        height: 65px;
         overflow: hidden;
         border-radius: 50%;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all ease .3s;
+        display: inline-block;
+        transition: all 300ms ease;
+        box-shadow: 0px 0px 10px var(--verde);
     }
 
-    & .above .icon img{
-        position: absolute;
+    & .above .icon img {
         width: 100%;
         height: 100%;
+        object-fit: cover;
     }
 
-    & .above .icon:hover{
+    & .above .icon:hover {
         transform: scale3d(1.1, 1.1, 1.1);
     }
-
 }
 
-.menu_bar_info{ /* Texto da parte de cima (verde) */
+.menu_bar_info {
+    /* Texto da parte de cima (verde) */
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    & h2{
+    & h2 {
         color: var(--bege);
     }
-    & h4{
+    & h4 {
         color: var(--verde);
     }
-
 }
 
-.menu_bar_flag, .menu_bar_planet, .menu_bar_desconect{ /* Div dos botões */
+.menu_bar_flag,
+.menu_bar_planet,
+.menu_bar_desconect {
+    /* Div dos botões */
     color: var(--verde);
     font-size: 1vw;
     font-weight: bold;
@@ -124,23 +128,24 @@
     justify-content: start;
     align-items: center;
 
-    & img{
+    & img {
         width: 4vw;
         color: var(--verdeEscuro);
         transition: all 0.4s;
     }
 
-    & p{
+    & p {
         margin: 0px 0px 0px 1vw;
         color: inherit;
     }
-
 }
 
-.menu_bar_flag:hover, .menu_bar_planet:hover, .menu_bar_desconect:hover{
+.menu_bar_flag:hover,
+.menu_bar_planet:hover,
+.menu_bar_desconect:hover {
     transform: translate(0, -1vh);
     box-shadow: 6px 6px 4px #dbdbdb;
-    & img{
+    & img {
         transform: rotate(-12deg);
     }
 }

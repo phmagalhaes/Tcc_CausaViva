@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ong;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -38,7 +39,7 @@ class OngController extends Controller
         $valorBruto = $request->input('meta_financeira');
         $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valorBruto);
         $valorDecimal = number_format((float)$valorLimpo, 2, '.', '');
-    
+
         $ong = new Ong();
         $ong->nome = $request->nome;
         $ong->donos = $request->donos;
@@ -86,7 +87,7 @@ class OngController extends Controller
         return view('ong.cadastro');
     }
 
-    public function home()
+    public function home(Request $request)
     {
         $causas = [
             'Direitos Humanos e Sociais',
@@ -96,18 +97,54 @@ class OngController extends Controller
             'Proteção Animal'
         ];
 
-        $direitos = Ong::where('causa', 'Direitos Humanos e Sociais')->get();
-        $ambientes = Ong::where('causa', 'Meio Ambiente')->get();
-        $saudes = Ong::where('causa', 'Saúde e Bem-Estar')->get();
-        $culturas = Ong::where('causa', 'Educação e Cultura')->get();
-        $animais = Ong::where('causa', 'Proteção Animal')->get();
+        $busca = $request->get('ong');
+        $filtroCausa = $request->get('causa');
 
-        return view('ong.home', ["Direitos Humanos e Sociais" => $direitos, "Meio Ambiente" => $ambientes, "Saúde e Bem-Estar" => $saudes, "Educação e Cultura" => $culturas, "Proteção Animal" => $animais, "causas" => $causas]);
+        $ongsPorCausa = [];
+
+        // Se o usuário filtrou por causa, retornamos só dessa causa
+        if ($filtroCausa) {
+            $query = Ong::query()->where('causa', $filtroCausa);
+
+            if ($busca) {
+                $query->where('nome', 'like', '%' . $busca . '%');
+            }
+
+            $ongs = $query->get();
+            $ongsPorCausa[$filtroCausa] = $ongs;
+        } else {
+            // Senão, busca por nome em todas as causas separadas
+            foreach ($causas as $causa) {
+                $query = Ong::query()->where('causa', $causa);
+
+                if ($busca) {
+                    $query->where('nome', 'like', '%' . $busca . '%');
+                }
+
+                $ongs = $query->get();
+                $ongsPorCausa[$causa] = $ongs;
+            }
+        }
+
+        return view('ong.home', [
+            'causas' => $causas,
+            'ongsPorCausa' => $ongsPorCausa,
+            'busca' => $busca,
+            'searchCausa' => $filtroCausa
+        ]);
+              
     }
 
     public function index()
     {
         $ongs = Ong::latest()->take(3)->get();
         return view('index', ["ongs" => $ongs]);
+    }
+
+    public function perfil()
+    {
+        $user = Ong::where("email", Auth::user()->email)->first();
+
+        return view("ong.perfil", ["user" => $user]);
     }
 }

@@ -3,20 +3,27 @@ body {
   background-color: var(--offWhite);
 }
 
-header {
+hheader {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
 }
-header main {
+header .main {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   background-color: var(--verde);
-  padding: 5px 60px;
+  padding: 5px 20px 5px 60px;
+  height: 127px;
+}
+header .main .text{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
 }
 header nav {
   display: flex;
@@ -24,10 +31,14 @@ header nav {
   justify-content: flex-end;
   gap: 50px;
 }
-header nav a {
+header nav p {
   color: var(--offWhite);
   font-size: 20px;
   font-weight: 500;
+}
+header p {
+  color: var(--verdeClaro);
+  font-size: 20px;
 }
 header .slogan {
   background-color: var(--verdeClaro);
