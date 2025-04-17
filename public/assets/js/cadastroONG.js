@@ -133,3 +133,41 @@ meta.addEventListener("input", function (e) {
 
     e.target.value = "R$ " + value;
 });
+
+function mascaraCpfCnpj(input) {
+    let value = input.value.replace(/\D/g, "");
+
+    if (value.length > 14) value = value.slice(0, 14);
+
+    if (value.length <= 11) {
+        // Formata como CPF: 000.000.000-00
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    } else {
+        // Formata como CNPJ: 00.000.000/0000-00
+        value = value.replace(/^(\d{2})(\d)/, "$1.$2");
+        value = value.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+        value = value.replace(/\.(\d{3})(\d)/, ".$1/$2");
+        value = value.replace(/(\d{4})(\d{1,2})$/, "$1-$2");
+    }
+
+    input.value = value;
+}
+
+function mascaraTelefone(input) {
+    let value = input.value.replace(/\D/g, "");
+
+    // Limita a 11 dígitos (2 DDD + 9 telefone)
+    if (value.length > 11) value = value.slice(0, 11);
+
+    if (value.length <= 10) {
+        // Formato com 8 dígitos no telefone
+        value = value.replace(/^(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+    } else {
+        // Formato com 9 dígitos no telefone (celular)
+        value = value.replace(/^(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    }
+
+    input.value = value;
+}

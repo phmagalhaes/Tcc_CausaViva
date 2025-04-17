@@ -49,7 +49,7 @@
                 <h4>Clique no ícone para acessar o perfil</h4>
             </div>
         </div>
-        <a href="">
+        <a href="{{ route("home") }}">
             <div class="menu_bar_planet">
                 <img src="{{ asset('assets/images/menu/planet.png') }}" class="menu_bar_icon">
                 <p>Confira todas as Ongs</p>

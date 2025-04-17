@@ -20,6 +20,12 @@ class OngController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge([
+            'documento' => preg_replace('/\D/', '', $request->documento),
+            'telefone' => preg_replace('/\D/', '', $request->telefone),
+            'cep' => preg_replace('/\D/', '', $request->cep),
+        ]);
+
         $validator = Validator::make($request->all(), [
             'password' => 'confirmed',
             'email' => 'required|email|unique:users,email',
@@ -132,7 +138,6 @@ class OngController extends Controller
             'busca' => $busca,
             'searchCausa' => $filtroCausa
         ]);
-              
     }
 
     public function index()
@@ -144,7 +149,33 @@ class OngController extends Controller
     public function perfil()
     {
         $user = Ong::where("email", Auth::user()->email)->first();
-
         return view("ong.perfil", ["user" => $user]);
+    }
+
+    public function update(Request $request)
+    {
+        $valorBruto = $request->input('meta_financeira');
+        $valorLimpo = str_replace(['R$', '.', ','], ['', '', '.'], $valorBruto);
+        $valorDecimal = number_format((float)$valorLimpo, 2, '.', '');
+
+        $request->merge([
+            'documento' => preg_replace('/\D/', '', $request->documento),
+            'telefone' => preg_replace('/\D/', '', $request->telefone),
+            'cep' => preg_replace('/\D/', '', $request->cep),
+            'meta_financeira' => $valorDecimal,
+        ]);
+
+        $authUser = Ong::where('email', Auth::user()->email)->first();
+        $ong = Ong::findOrFail($authUser->id);
+
+        $emailAntigo = $ong->email;
+
+        if ($request->filled('password')) {
+            $ong->senha = Hash::make($request->password);
+        }
+
+        $ong->update($request->all());
+
+        return redirect(route('ong.perfil'))->with('sucMsg', 'Dados atualizados com sucesso!');
     }
 }

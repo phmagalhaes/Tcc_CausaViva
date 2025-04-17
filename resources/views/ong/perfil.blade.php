@@ -15,6 +15,16 @@
 </head>
 
 <body>
+    @if (session('errorMsg'))
+        <div class="msg">
+            <p class="errorMsg">{{ session('errorMsg') }}</p>
+        </div>
+    @elseif (session('sucMsg'))
+        <div class="msg">
+            <p class="sucMsg">{{ session('sucMsg') }}</p>
+        </div>
+    @endif
+
     @php
         if (Auth()->user()->tipo == 'doador') {
             $nome = explode(' ', Auth()->user()->nome);
@@ -48,7 +58,7 @@
                 <h4>Clique no ícone para acessar o perfil</h4>
             </div>
         </div>
-        <a href="">
+        <a href="{{ route('home') }}">
             <div class="menu_bar_planet">
                 <img src="{{ asset('assets/images/menu/planet.png') }}" class="menu_bar_icon">
                 <p>Confira todas as Ongs</p>
@@ -96,49 +106,26 @@
     <h1 class="titulo">Seu Projeto</h1>
 
     <main>
-        <form action="">
+        <form action="{{ route('ong.update') }}"  method="POST">
+            @csrf
+            @method('PUT')
             <section>
                 <div class="nomeOng">
                     <label for="nomeOng">Nome</label>
-                    <input class="input" type="text" name="nomeOng" placeholder="Seu Nome"
+                    <input class="input" type="text" name="nome" placeholder="Seu Nome"
                         value="{{ $user->nome }}" disabled />
                 </div>
 
                 <div class="nomeCriadores">
                     <label for="nomeCriadores">Criadores</label>
-                    <input class="input" type="text" name="nomeCriadores" placeholder="Seu Nome"
+                    <input class="input" type="text" name="donos" placeholder="Seu Nome"
                         value="{{ $user->donos }}" disabled />
                 </div>
 
                 <div class="emialOng">
                     <label for="emialOng">Email</label>
-                    <input class="input" type="email" name="emialOng" placeholder="Seu Email"
+                    <input class="input" type="email" name="email" placeholder="Seu Email"
                         value="{{ $user->email }}" disabled />
-                </div>
-
-                <div class="senhaOng">
-                    <label for="senhaOng">Senha</label>
-                    <input class="input" type="password" name="senhaOng" placeholder="Sua Senha"
-                        value="{{ $user->password }}" disabled />
-                </div>
-
-                <div class="confirmeSenhaOng" id="confirmeSenha">
-                    <label for="confirmeSenhaOng">Confirme sua Senha</label>
-                    <input class="input" type="password" name="confirmeSenhaOng" placeholder="Confirme sua Senha"
-                        value="{{ $user->password }}" disabled />
-                </div>
-
-                <div class="descricaoOng">
-                    <label for="descricaoOng">Descrição</label>
-                    <textarea class="input" name="descricaoOng" id="" disabled>{{ $user->descricao }}</textarea>
-                </div>
-            </section>
-
-            <section class="necessidadesOng">
-                <div class="dataCriacao">
-                    <label for="dataCriacao">Data de criação</label>
-                    <input class="input" type="date" name="dataCriacao" placeholder="Data de criação da ONG"
-                        value="{{ $user->data_criacao }}" disabled />
                 </div>
 
                 <div class="metaFinanceira">
@@ -151,17 +138,73 @@
                         }
                     @endphp
 
-                    <input class="input" type="text" name="metaFinanceira" placeholder="Sua meta financeira"
+                    <input class="input" type="text" name="meta_financeira" placeholder="Sua meta financeira"
                         value="{{ formatarMeta($user->meta_financeira) }}" id="metaFinanceira" disabled />
+                </div>
+
+                @if ($user->tipo_documento == 'CPF')
+                    <div class="cpfOng">
+                        <label for="cpfOng">CPF</label>
+                        <input class="input" type="text" name="documento" placeholder="CPF do Proprietário"
+                            value="{{ $user->documento }}" disabled />
+                    </div>
+                @else
+                    <div class="cnpjOng">
+                        <label for="cnpjOng">CNPJ</label>
+                        <input class="input" type="text" name="documento" placeholder="CNPJ da ONG"
+                            value="{{ $user->documento }}" disabled />
+                    </div>
+                @endif
+
+                <div class="descricaoOng">
+                    <label for="descricaoOng">Descrição</label>
+                    <textarea class="input" name="descricao" id="" disabled>{{ $user->descricao }}</textarea>
+                </div>
+            </section>
+
+            <section>
+                <div class="dataCriacao">
+                    <label for="dataCriacao">Data de criação</label>
+                    <input class="input" type="date" name="data_criacao" placeholder="Data de criação da ONG"
+                        value="{{ $user->data_criacao }}" disabled />
                 </div>
                 <div class="cepOng">
                     <label for="cepOng">CEP</label>
-                    <input class="input" type="text" name="cepOng" placeholder="Seu Cep"
-                        value="{{ $user->cep }}" disabled />
+                    <input onblur="pesquisacep(this.value);" id="cep" class="input" type="text"
+                        name="cep" placeholder="Seu Cep" value="{{ $user->cep }}" disabled />
+                </div>
+
+
+                <div class="cidadeOng">
+                    <label for="cidadeOng">Cidade</label>
+                    <input id="cidade" class="input" type="text" name="cidade" placeholder="Seu Cidade"
+                        value="{{ $user->cidade }}" disabled />
+                </div>
+                <div class="bairroOng">
+                    <label for="bairroOng">Bairro</label>
+                    <input id="bairro" class="input" type="text" name="bairro" placeholder="Seu Bairro"
+                        value="{{ $user->bairro }}" disabled />
+                </div>
+                <div class="ruaOng">
+                    <label for="ruaOng">Rua</label>
+                    <input id="rua" class="input" type="text" name="rua" placeholder="Seu Rua"
+                        value="{{ $user->rua }}" disabled />
+                </div>
+                <div class="num_estOng">
+                    <div>
+                        <label for="estadoOng">Estado</label>
+                        <input id="uf" class="input" type="text" name="estado" placeholder="Seu Estado"
+                            value="{{ $user->estado }}" disabled />
+                    </div>
+                    <div>
+                        <label for="numOng">Número</label>
+                        <input class="input" type="text" name="numero" placeholder="Seu Número"
+                            value="{{ $user->numero }}" disabled />
+                    </div>
                 </div>
                 <div class="telefoneOng">
                     <label for="telefoneOng">Telefone</label>
-                    <input class="input" type="text" name="telefoneOng" placeholder="Seu Telefone"
+                    <input class="input" type="text" name="telefone" placeholder="Seu Telefone"
                         value="{{ $user->telefone }}" disabled />
                 </div>
                 <div>
@@ -178,7 +221,6 @@
 
                     <a href="./criarEvento.html" class="addEventos">Adicione Eventos</a>
                 </div>
-
 
             </section>
 

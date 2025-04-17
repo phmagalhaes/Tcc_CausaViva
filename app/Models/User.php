@@ -11,8 +11,6 @@ class User extends Authenticatable
 {
     protected $fillable = ['nome', 'email', 'senha', 'tipo', 'logo'];
 
-    protected $hidden = ['senha'];
-
     public function getAuthPassword()
     {
         return $this->senha; // se o campo do banco for `senha` e não `password`

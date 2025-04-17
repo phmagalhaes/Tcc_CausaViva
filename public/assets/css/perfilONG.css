@@ -1,51 +1,46 @@
 body {
   min-height: 100vh;
   background-color: var(--offWhite);
+  overflow-x: hidden;
 }
 
-hheader {
+.msg{
+  position: absolute;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  width: 100%;
 }
-header .main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background-color: var(--verde);
-  padding: 5px 20px 5px 60px;
-  height: 127px;
-}
-header .main .text{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 40px;
-}
-header nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 50px;
-}
-header nav p {
-  color: var(--offWhite);
-  font-size: 20px;
-  font-weight: 500;
-}
-header p {
-  color: var(--verdeClaro);
-  font-size: 20px;
-}
-header .slogan {
-  background-color: var(--verdeClaro);
-  width: 100%;
-  padding: 5px;
+.msg p{
+  width: 50%;
+  border-radius: 0px 0px 10px 10px;
+  border-top: none;
   text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  animation: msg 3s linear both;
+  box-shadow: 0px 5px 20px 2px var(--verdeEscuro);
+}
+.sucMsg{
+  background-color: var(--verdeClaro);
+  border: 2px solid var(--verde);
   color: var(--verdeEscuro);
+}
+.errorMsg {
+  background-color: rgb(255, 148, 148);
+  border: 2px solid rgb(170, 0, 0);
+  color: rgb(170, 0, 0);
+}
+@keyframes msg {
+  0%{
+    opacity: 1;
+  }
+  75%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
 }
 
 .foto {
@@ -56,11 +51,6 @@ header .slogan {
 
 .foto:hover {
   transform: scale(1.2);
-}
-
-.linkPerfil {
-  text-decoration: none;
-  color: var(--verdeClaro);
 }
 
 .titulo {
@@ -219,6 +209,16 @@ button {
   cursor: default;
 }
 
+.num_estOng{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 50px;
+}
+.num_estOng div{
+  margin-top: 0;
+}
 .addEventos{
   background-color: var(--verde);
   width: 50%;

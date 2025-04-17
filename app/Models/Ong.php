@@ -7,8 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 class Ong extends Model
 {
     protected $fillable = [
-        'name', 
-        'email', 
-        'password'
+        'nome',
+        'donos',
+        'email',
+        'documento',
+        'telefone',
+        'cep',
+        'endereco',
+        'cidade',
+        'estado',
+        'bairro',
+        'meta_financeira',
+        'senha',
+        'numero',
+        'causa',
+        'data_criacao',
+        'necessidades',
+        'descricao',
     ];
 }

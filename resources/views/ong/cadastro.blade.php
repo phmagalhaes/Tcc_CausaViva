@@ -95,7 +95,7 @@
                 </div>
                 <div class="CPF_CNPJ">
                     <label for="CPF_CNPJ">CPF ou CNPJ </label>
-                    <input required type="text" name="documento" placeholder="Digite o seu CPF ou CNPJ" />
+                    <input required type="text" name="documento" oninput="mascaraCpfCnpj(this)" placeholder="Digite o seu CPF ou CNPJ" />
                 </div>
             </section>
 
@@ -140,7 +140,7 @@
             <section>
                 <div class="telefone">
                     <label for="telefone">Telefone</label>
-                    <input required type="text" name="telefone" placeholder="Digite o telefone  da ong" />
+                    <input required type="text" name="telefone" oninput="mascaraTelefone(this)" placeholder="Digite o telefone  da ong" />
                 </div>
 
                 <div class="metaFinanceira">
