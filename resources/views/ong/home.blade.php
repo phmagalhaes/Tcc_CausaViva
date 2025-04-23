@@ -25,7 +25,7 @@
     @endphp
     <div class="menu_bar" id="menu_bar">
         <div class="above">
-            <a href="{{ route(Auth()->user()->tipo . ".perfil")}}" class="icon">
+            <a href="{{ route(Auth()->user()->tipo . '.perfil') }}" class="icon">
                 @php
                     $user = Auth()->user();
                     $doador = App\Models\Doador::where('email', $user->email)->first();
@@ -49,7 +49,7 @@
                 <h4>Clique no ícone para acessar o perfil</h4>
             </div>
         </div>
-        <a href="{{ route("home") }}">
+        <a href="{{ route('home') }}">
             <div class="menu_bar_planet">
                 <img src="{{ asset('assets/images/menu/planet.png') }}" class="menu_bar_icon">
                 <p>Confira todas as Ongs</p>
@@ -132,7 +132,11 @@
                                 <img src="{{ asset('logos/' . $ong->logo) }}" alt="" />
                                 <p class="ong">{{ $ong->nome }}</p>
                             </div>
-                            <p class="description">{{ $ong->descricao }}</p>
+                            @if (strlen($ong->descricao) > 150)
+                                <p class="description">{{ substr($ong->descricao, 0, 150) . '...' }}</p>
+                            @else
+                                <p class="description">{{ $ong->descricao }}</p>
+                            @endif
                             <div class="meta">
                                 <div class="grafico">
                                     <div class="total{{ $total }}"></div>

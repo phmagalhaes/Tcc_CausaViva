@@ -1,0 +1,51 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--verde);
+
+    padding: 20px;
+}
+footer .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid var(--offWhite);
+    width: 80%;
+    padding-top: 40px;
+    margin-top: 40px;
+    gap: 10px;
+}
+footer .logo p {
+    color: var(--offWhite);
+    font-family: "MoonDance";
+    font-size: 50px;
+}
+footer .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+.link_title {
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--offWhite);
+}
+footer .links div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    width: 20%;
+}
+footer .links div a {
+    font-size: 24px;
+    font-family: "Montserrat-Light";
+    text-decoration: none;
+    color: var(--offWhite);
+}

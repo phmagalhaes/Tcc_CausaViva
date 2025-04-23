@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoadorController;
+use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\OngController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,7 @@ Route::prefix('ong')->group(function () {
     Route::get('/perfil', [OngController::class, 'perfil'])->name('ong.perfil')->middleware('auth');
     Route::put('/update', [OngController::class, 'update'])->name('ong.update')->middleware('auth');
     Route::put('/update/img', [OngController::class, 'updateimg'])->name('ong.updateimg')->middleware('auth');
+    Route::put('/galeria/add', [GaleriaController::class, 'store'])->name('ong.addimg')->middleware('auth');
     Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
 });
 

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('style.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/perfilONG.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
 
     <script src="{{ asset('/assets/js/perfilONG.js') }}" defer></script>
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>
@@ -246,24 +247,20 @@
         </section>
         <section class="gallery">
             <h2 class="title_gallery">Sua Galeria</h2>
-
-            <div class="photos_gallery">
-
-                <img src="../assets/images/photo1.png" alt="">
-
-                <img src="../assets/images/photo2.png" alt="">
-
-                <img src="../assets/images/photo3.png" alt="">
-
-                <img src="../assets/images/photo4.png" alt="">
-
-                <label class="picture" for="picture__input" tabIndex="0">
-                    <span class="picture__image"></span>
-                </label>
-                <input type="file" name="picture__input" id="picture__input">
+            <div class="slider">
+                <img src="{{ asset("assets/images/icons/seta.svg") }}" alt="" class="voltar">
+                <div class="images"></div>
+                <img src="{{ asset("assets/images/icons/seta.svg") }}" alt="" class="proxima">
             </div>
-        </section>
+            <form action="{{ route('ong.addimg') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
 
+                <label for="add" class="add-label">Adicionar fotos</label>
+                <input type="file" id="add" name="image" accept="image/png, image/jpeg, image/jpg" hidden
+                    onchange="this.form.submit()" />
+            </form>
+        </section>
     </main>
 
     <footer>
