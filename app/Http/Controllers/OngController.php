@@ -169,13 +169,51 @@ class OngController extends Controller
         $ong = Ong::findOrFail($authUser->id);
 
         $emailAntigo = $ong->email;
+        $nomeAntigo = $ong->nome;
+        $user = User::where('email', $emailAntigo)->first();
 
-        if ($request->filled('password')) {
-            $ong->senha = Hash::make($request->password);
+        if ($user) {
+            $precisaAtualizar = false;
+
+            if ($request->email != $emailAntigo) {
+                $user->email = $request->email;
+                $precisaAtualizar = true;
+            }
+
+            if ($request->nome != $nomeAntigo) {
+                $user->nome = $request->nome;
+                $precisaAtualizar = true;
+            }
+
+            if ($precisaAtualizar) {
+                $user->update();
+            }
         }
 
         $ong->update($request->all());
 
         return redirect(route('ong.perfil'))->with('sucMsg', 'Dados atualizados com sucesso!');
+    }
+
+    public function updateimg(Request $request)
+    {
+        $authUser = Ong::where('email', Auth::user()->email)->first();
+        $ong = Ong::findOrFail($authUser->id);
+
+        $imgAntiga = $ong->logo;
+        $path = public_path('logos/' . $imgAntiga);
+        if (file_exists($path)) {
+            unlink($path);
+        }
+
+        $image = $request->logo;
+        $extension = $image->extension();
+        $hash = md5($image->getClientOriginalName() . strtotime('now')) . "." . $extension;
+        $image->move(public_path('logos'), $hash);
+        $ong->logo = $hash;
+
+        $ong->update();
+
+        return redirect(route('ong.perfil'))->with('sucMsg', 'Logo alterada com sucesso!');
     }
 }

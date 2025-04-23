@@ -24,6 +24,7 @@ Route::prefix('ong')->group(function () {
     Route::post('/cadastro', [OngController::class, 'store'])->name('ong.store');
     Route::get('/perfil', [OngController::class, 'perfil'])->name('ong.perfil')->middleware('auth');
     Route::put('/update', [OngController::class, 'update'])->name('ong.update')->middleware('auth');
+    Route::put('/update/img', [OngController::class, 'updateimg'])->name('ong.updateimg')->middleware('auth');
     Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
 });
 
