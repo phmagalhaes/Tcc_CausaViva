@@ -27,4 +27,18 @@ class GaleriaController extends Controller
 
         return redirect(route('ong.perfil'))->with('sucMsg', 'Foto adicionada com sucesso');
     }
+
+    public function delete($id)
+    {
+        $foto = Galeria::where('id', $id)->first();
+        
+        $imgAntiga = $foto->caminho;
+        $path = public_path('galeria/' . $imgAntiga);
+        if (file_exists($path)) {
+            unlink($path);
+        }
+        $foto->delete();
+
+        return redirect(route('ong.perfil'))->with('sucMsg', 'Foto removida com sucesso');
+    }
 }

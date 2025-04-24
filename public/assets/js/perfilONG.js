@@ -102,3 +102,34 @@ function pesquisacep(valor) {
       limpa_formulário_cep();
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const voltarBtn = document.querySelector('.voltar');
+  const proximaBtn = document.querySelector('.proxima');
+  const images = document.querySelector('.images');
+  const wrapper = document.getElementById("images-wrapper");
+
+  const imgWidth = 400;
+  const gap = 20;
+  const totalImagens = images.children.length;
+  const visibleWidth = wrapper.clientWidth;
+
+  let index = 0;
+
+  voltarBtn.addEventListener('click', () => {
+    if (index > 0) {
+      index--;
+      images.style.transform = `translateX(-${index * (imgWidth + gap)}px)`;
+    }
+  });
+
+  proximaBtn.addEventListener('click', () => {
+    const deslocamentoAtual = (index + 1) * (imgWidth + gap);
+    const totalContentWidth = totalImagens * imgWidth + (totalImagens - 1) * gap;
+
+    if (deslocamentoAtual - 420 <= totalContentWidth - visibleWidth) {
+      index++;
+      images.style.transform = `translateX(-${index * (imgWidth + gap)}px)`;
+    }
+  });
+});

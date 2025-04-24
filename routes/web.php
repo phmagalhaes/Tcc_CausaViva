@@ -27,6 +27,7 @@ Route::prefix('ong')->group(function () {
     Route::put('/update', [OngController::class, 'update'])->name('ong.update')->middleware('auth');
     Route::put('/update/img', [OngController::class, 'updateimg'])->name('ong.updateimg')->middleware('auth');
     Route::put('/galeria/add', [GaleriaController::class, 'store'])->name('ong.addimg')->middleware('auth');
+    Route::delete('/galeria/delete/{id}', [GaleriaController::class, 'delete'])->name('ong.removeimg')->middleware('auth');
     Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
 });
 

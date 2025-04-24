@@ -248,11 +248,32 @@
         <section class="gallery">
             <h2 class="title_gallery">Sua Galeria</h2>
             <div class="slider">
-                <img src="{{ asset("assets/images/icons/seta.svg") }}" alt="" class="voltar">
-                <div class="images"></div>
-                <img src="{{ asset("assets/images/icons/seta.svg") }}" alt="" class="proxima">
+                @if ($fotos->isEmpty())
+                    <p class="message">Parece que você ainda não adicionou fotos na sua galeria :(</p>
+                @else
+                    <p class="voltar seta">&gt;</p>
+                    <div class="images-wrapper" id="images-wrapper">
+                        <div class="images">
+                            @foreach ($fotos as $foto)
+                                <div class="img">
+                                    <form action="{{ route('ong.removeimg', ["id" => $foto->id])}}" class="deleteForm" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">
+                                            <img src="{{ asset('assets/images/icons/delete.svg')}}" alt="delete">
+                                        </button>
+                                    </form>
+                                    <img src="{{ asset('galeria/' . $foto->caminho) }}"
+                                        alt="galeria{{ $foto->id }}">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <p class="proxima seta">&gt;</p>
+
+                @endif
             </div>
-            <form action="{{ route('ong.addimg') }}" method="POST" enctype="multipart/form-data">
+            <form class="addimg" action="{{ route('ong.addimg') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -262,7 +283,6 @@
             </form>
         </section>
     </main>
-
     <footer>
         <div class="links">
             <div>

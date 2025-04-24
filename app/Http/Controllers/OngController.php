@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galeria;
 use App\Models\Ong;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -149,7 +150,8 @@ class OngController extends Controller
     public function perfil()
     {
         $user = Ong::where("email", Auth::user()->email)->first();
-        return view("ong.perfil", ["user" => $user]);
+        $fotos = Galeria::where("id_ong", $user->id)->get();
+        return view("ong.perfil", ["user" => $user, "fotos"=> $fotos]);
     }
 
     public function update(Request $request)
