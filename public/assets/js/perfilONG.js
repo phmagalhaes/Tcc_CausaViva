@@ -133,3 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+const modal = document.getElementById("modal");
+const close = document.getElementById("closeModal");
+
+close.addEventListener("click", function(){
+  modal.style.display = "none";
+})

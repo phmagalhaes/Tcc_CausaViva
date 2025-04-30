@@ -16,6 +16,29 @@
 </head>
 
 <body>
+    @if ($user->mercado_pago_user_id == null)
+        <div class="modal" id="modal">
+            <div class="modal-top">
+                <h2>Cadastre sua conta do mercado pago</h2>
+                <img src="{{ asset('assets/images/icons/close.svg') }}" id="closeModal" class="close">
+            </div>
+            <div class="modal-bottom">
+
+                <h1>Bem vindo ao futuro!</h1>
+                <p>Para facilitar o recebimento de pagamentos e gerenciar suas transações, cadastre sua conta do
+                    MercadoPago
+                    agora. Com isso, você poderá realizar pagamentos de forma mais rápida e segura.
+                    Clique no botão abaixo para inserir seus dados e conectar sua conta.</p>
+
+                <hr>
+                <div class="botao-modal">
+                    <img src="{{ asset('assets/images/icons/mercado-pago.png') }}" class="icone-modal-top">
+                    <button class="botao">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    @endif
+
     @if (session('errorMsg'))
         <div class="msg">
             <p class="errorMsg">{{ session('errorMsg') }}</p>
@@ -256,11 +279,12 @@
                         <div class="images">
                             @foreach ($fotos as $foto)
                                 <div class="img">
-                                    <form action="{{ route('ong.removeimg', ["id" => $foto->id])}}" class="deleteForm" method="POST">
+                                    <form action="{{ route('ong.removeimg', ['id' => $foto->id]) }}"
+                                        class="deleteForm" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit">
-                                            <img src="{{ asset('assets/images/icons/delete.svg')}}" alt="delete">
+                                            <img src="{{ asset('assets/images/icons/delete.svg') }}" alt="delete">
                                         </button>
                                     </form>
                                     <img src="{{ asset('galeria/' . $foto->caminho) }}"

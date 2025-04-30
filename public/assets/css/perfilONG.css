@@ -430,3 +430,90 @@ section div {
 .proxima {
   right: 10px;
 }
+
+.modal {
+  /* user-select: none; */
+  position: fixed;
+  top: 30%;
+  width: 1000px;
+  height: auto;
+  left: 25%;
+  box-shadow: -12px 12px 20px 1200px rgba(0, 0, 0, 0.527);
+  transition: opacity 0.2s ease-out;
+  z-index: 10000;
+  /* A transição da opacidade */
+}
+
+.modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.modal-top {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--verde);
+  color: var(--offWhite);
+  font-size: 20px;
+  padding: 20px;
+
+  & .close {
+    width: 40px;
+    cursor: pointer;
+    transition: all 250ms ease;
+  }
+  & .close:hover{
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+}
+
+.modal-bottom {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  padding: 20px;
+  background-color: var(--offWhite);
+  font-size: 20px;
+
+  & h1{
+    color: var(--azulEscuro);
+  }
+
+  & p {
+    margin: 20px 0px
+  }
+
+  & hr {
+    opacity: 30%
+  }
+}
+
+.botao-modal {
+  margin: 40px 10px 20px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  & .icone-modal-top {
+    width: 150px;
+  }
+
+  & button {
+    font-size: 20px;
+    width: 180px;
+    height: 35px;
+    cursor: pointer;
+    background-color: var(--azulEscuro);
+    color: var(--offWhite);
+    transition: all 0.4s;
+  }
+
+  & button:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+}
