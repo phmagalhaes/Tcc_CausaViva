@@ -5,11 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Causa Viva</title>
-    <link rel="stylesheet" href="{{ asset('style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('./style.css') }}" />
     <link rel="stylesheet" href="{{ asset('./assets/css/index.css') }}" />
-    <script src="./assets/js/index.js" defer></script>
+    <script src="{{ asset('assets/js/index.js') }}" defer></script>
+    <script src="{{ asset('assets/js/redirect.js') }}" defer></script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <script src="./assets/js/redirect.js" defer></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
                     @endauth
                 </div>
             </div>
-            <img src="./assets/images/index/logo verde.png" alt="logo" class="logo" />
+            <img src="{{ asset('/assets/images/index/logo verde.png') }}" alt="logo" class="logo" />
         </section>
         <section class="color"></section>
         <section class="doar">
@@ -66,7 +67,7 @@
                     <span>impacto real</span>. Participe dessa <span>rede de solidariedade</span> e
                     <span>faça a diferença!
                 </p>
-                <img src="./assets/images/index/doar.webp" alt="" />
+                <img src="{{ asset('/assets/images/index/doar.webp') }}" alt="" />
             </div>
         </section>
 
@@ -198,7 +199,7 @@
                                 <p>{{ $total }}%</p>
                                 <p>R${{ $valor }} Arrecadados</p>
                             </div>
-                        </div>
+                        </div>+
                         <div class="bottom">
                             <div class="cidade">
                                 <i class="fa-solid fa-location-dot"></i>

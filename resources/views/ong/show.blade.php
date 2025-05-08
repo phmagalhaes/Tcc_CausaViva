@@ -12,16 +12,19 @@
 
 <body>
     <header>
-        <main> 
+        <main>
             <a href="{{ route('home') }}">
                 <img src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
             </a>
             <nav>
-                @php
-                    $nome = explode(' ', Auth()->user()->nome);
-                    $nome = $nome[0];
-                @endphp
-                <p class="linkPerfil">Olá <strong>{{ $nome }}</strong></p>
+                @auth
+                    @php
+                        $nome = explode(' ', Auth()->user()->nome);
+                        $nome = $nome[0];
+                    @endphp
+                    <p class="linkPerfil">Olá <strong>{{ $nome }}</strong></p>
+                @endauth
+
             </nav>
         </main>
         <div class="slogan">
@@ -37,28 +40,49 @@
         <h1 class="titulo">{{ $ong->nome }}</h1>
         <p>Criado por {{ $ong->donos }}</p>
         <div class="meta-img">
-            <img src="{{ asset('logos/' . $ong->logo)}}" class="imgprincipal">
+            <img src="{{ asset('logos/' . $ong->logo) }}" class="imgprincipal">
             <div class="buttoneinfo">
                 <div class="infometa">
-                    <h1>R$ 14.000</h1>
-                    <p>Apoiado por mais de <b>8.000</b> pessoas</p>
+                    @php
+                        $doacoes = App\Models\Doacao::where('id_ong', $ong->id)->get();
+                        $total = 0;
+                        $pessoas = 0;
+                        foreach($doacoes as $doacao){
+                            $total += $doacao->valor;
+                            $pessoas += 1;
+                        }
+                        $porcentagem = 100 * $total;
+                        $porcentagem /= $ong->meta_financeira;
+                        $porcentagem = ceil($porcentagem);
+                    @endphp
+                    <h1>R$ {{ number_format($total, 2, ",", ".") }} <span style="font-size: 20px">arrecadados</span></h1>
+                    @if ($pessoas > 1000)
+                        <p>Apoiado por mais de <b>{{ $pessoas }}</b> pessoas</p>
+                    @elseif ($pessoas == 1)
+                        <p>Apoiado por <b>{{ $pessoas }}</b> pessoa</p>
+                    @else
+                        <p>Apoiado por mais <b>{{ $pessoas }}</b> pessoas</p>
+                    @endif
                     <div class="metas">
-                        <div class="grafico">
-                            <div class="total"></div>
+                        <div class="grafico" style="border: 1px solid var(--verde)">
+                            @if ($porcentagem <= 100)
+                                <div class="total" style="width: {{$porcentagem}}%;"></div>
+                            @else
+                                <div class="total" style="width: 100%;"></div>
+                            @endif
                         </div>
                         <div class="legenda">
-                            <p><b>112%</b> da meta alcançada</p>
-                            <p><b>10</b> dias restantes</p>
+                            <p><b>{{ $porcentagem }}%</b> da meta alcançada</p>
                         </div>
                         <div class="textometa">
                             <h2>Meta inicial de</h2>
-                            <h1 class="metainicial">R$ 12.500</h1>
+                            <h1 class="metainicial">R$ {{ number_format($ong->meta_financeira, 2, ",", ".")  }}</h1>
                         </div>
                     </div>
                 </div>
                 <form>
                     <button>
-                        <a href="selecaoPagamento.html">Apoiar ONG</a>
+                        <a href="{{ route('ong.pagamento', ["id" => $ong->id])}}">Apoiar ONG</a>
                     </button>
                 </form>
             </div>

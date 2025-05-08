@@ -8,44 +8,6 @@ main{
   background-color: var(--bege);
   padding: 30px 60px;
 }
-.msg{
-  position: absolute;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.msg p{
-  width: 50%;
-  border-radius: 0px 0px 10px 10px;
-  border-top: none;
-  text-align: center;
-  padding: 10px;
-  font-size: 20px;
-  animation: msg 3s linear both;
-  box-shadow: 0px 5px 20px 2px var(--verdeEscuro);
-}
-.sucMsg{
-  background-color: var(--verdeClaro);
-  border: 2px solid var(--verde);
-  color: var(--verdeEscuro);
-}
-.errorMsg {
-  background-color: rgb(255, 148, 148);
-  border: 2px solid rgb(170, 0, 0);
-  color: rgb(170, 0, 0);
-}
-@keyframes msg {
-  0%{
-    opacity: 1;
-  }
-  75%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
-}
 
 .foto {
   width: 80px;
@@ -503,7 +465,7 @@ section div {
     width: 150px;
   }
 
-  & button {
+  & a {
     font-size: 20px;
     width: 180px;
     height: 35px;
@@ -511,9 +473,13 @@ section div {
     background-color: var(--azulEscuro);
     color: var(--offWhite);
     transition: all 0.4s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  & button:hover {
+  & a:hover {
     transform: scale3d(1.1, 1.1, 1.1);
   }
 }

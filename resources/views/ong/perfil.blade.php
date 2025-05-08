@@ -33,7 +33,13 @@
                 <hr>
                 <div class="botao-modal">
                     <img src="{{ asset('assets/images/icons/mercado-pago.png') }}" class="icone-modal-top">
-                    <button class="botao">Cadastrar</button>
+                    @php
+                        $clientId = env('MP_CLIENT_ID');
+                        $redirectUri = env('MP_REDIRECT_URI');
+                        $ongId = $user->id; 
+                        $url = "https://auth.mercadopago.com.br/authorization?response_type=code&client_id={$clientId}&redirect_uri={$redirectUri}&state={$ongId}";
+                    @endphp
+                    <a href="{{ $url }}" class="botao">Cadastrar</a>
                 </div>
             </div>
         </div>

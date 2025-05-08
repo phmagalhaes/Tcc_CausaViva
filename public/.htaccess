@@ -22,4 +22,8 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # Serve arquivos estáticos diretamente (CSS, JS, Imagens)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^.*$ - [L]
 </IfModule>

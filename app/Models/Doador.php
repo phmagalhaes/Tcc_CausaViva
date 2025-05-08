@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doador extends Model
 {
+    protected $table = 'doadores';
+
     protected $fillable = [
         'nome',
         'email',
@@ -14,6 +16,4 @@ class Doador extends Model
         'causa', 
         'foto'
     ];
-
-    public $table = 'doadores';
 }

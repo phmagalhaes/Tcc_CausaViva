@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DoacaoController;
 use App\Http\Controllers\DoadorController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\OngController;
@@ -28,7 +29,10 @@ Route::prefix('ong')->group(function () {
     Route::put('/update/img', [OngController::class, 'updateimg'])->name('ong.updateimg')->middleware('auth');
     Route::put('/galeria/add', [GaleriaController::class, 'store'])->name('ong.addimg')->middleware('auth');
     Route::delete('/galeria/delete/{id}', [GaleriaController::class, 'delete'])->name('ong.removeimg')->middleware('auth');
+    Route::get('/oauth/callback', [OngController::class, 'callback']);
+    Route::get('/pagamento/{id?}', [DoacaoController::class, 'pagamento'])->name('ong.pagamento')->middleware('auth');
+    Route::post('/doacao', [DoacaoController::class, 'doacao'])->name('ong.doacao')->middleware('auth');
     Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
 });
 
-Route::get('/perfil', [AuthController::class,'perfil'])->name('perfil')->middleware('auth');
+Route::get('/perfil', [AuthController::class, 'perfil'])->name('perfil')->middleware('auth');

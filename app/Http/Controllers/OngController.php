@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class OngController extends Controller
@@ -217,5 +218,33 @@ class OngController extends Controller
         $ong->update();
 
         return redirect(route('ong.perfil'))->with('sucMsg', 'Logo alterada com sucesso!');
+    }
+
+    public function callback(Request $request)
+    {
+        $code = $request->query('code');
+        $ongId = $request->query('state'); // Pega o ID da ONG
+
+        $response = Http::post('https://api.mercadopago.com/oauth/token', [
+            'client_id' => env('MP_CLIENT_ID'),
+            'client_secret' => env('MP_CLIENT_SECRET'),
+            'grant_type' => 'authorization_code',
+            'code' => $code,
+            'redirect_uri' => env('MP_REDIRECT_URI'),
+        ]);
+
+        $data = $response->json();
+
+        $ong = Ong::find($ongId); // Busca a ONG correta
+
+        if (!$ong) {
+            return redirect(route('ong.perfil'))->with('errorMsg', 'Erro ao conectar');
+        }
+
+        $ong->mercado_pago_user_id = $data['user_id'];
+        $ong->access_token = $data['access_token'];
+        $ong->save();
+
+        return redirect(route('ong.perfil'))->with('sucMsg', 'Conectado com sucesso!');
     }
 }
