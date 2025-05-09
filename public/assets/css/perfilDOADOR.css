@@ -3,56 +3,61 @@ body {
   background-color: var(--offWhite);
 }
 
-header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-}
-header main{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background-color: var(--verde);
-    padding: 5px 60px;
-}
-header nav{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 50px;
-}
-header nav a{
-    color: var(--offWhite);
-    font-size: 20px;
-    font-weight: 500;
-}
-header .slogan{
-    background-color: var(--verdeClaro);
-    width: 100%;
-    padding: 5px;
-    text-align: center;
-    color: var(--verdeEscuro);
+/* /- - - - - - - - - - navbar - - - - - - - - - -/ */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
 
-.foto{
-    width: 80px;
-    transition: transform 0.4s ease-in-out;
-    cursor: pointer;
+header main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--verde);
+  padding: 5px 60px;
 }
 
-.foto:hover{
-    transform:scale(1.2);
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 50px;
 }
 
-.linkPerfil{
-    text-decoration: none;
-    color: var(--verdeClaro);
+header nav a {
+  color: var(--offWhite);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+header .slogan {
+  background-color: var(--verdeClaro);
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  color: var(--verdeEscuro);
+}
+
+/* /- - - - - - - - - - conteúdo - - - - - - - - - -/ */
+
+.linkPerfil {
+  text-decoration: none;
+  color: var(--verdeClaro);
 }
 
 .titulo {
+  margin-top: 30px;
+  font-size: 50px;
+  color: var(--azulEscuro);
+  text-align: center;
+  padding-bottom: 25px;
+}
+.tituloContribuicao {
   margin-top: 30px;
   font-size: 50px;
   color: var(--azulEscuro);
@@ -94,9 +99,9 @@ button {
   margin-top: 55px;
 }
 
-.editarPerfil button{
-    width: 23%;
-    transition: all 400ms ease;
+.editarPerfil button {
+  width: 23%;
+  transition: all 400ms ease;
 }
 
 #editar {
@@ -105,9 +110,9 @@ button {
   height: 40px;
 }
 
-#editar:hover{
-    background-color: #ffee8f;
-    cursor: pointer;
+#editar:hover {
+  background-color: #ffee8f;
+  cursor: pointer;
 }
 
 #salvar {
@@ -116,9 +121,9 @@ button {
   height: 40px;
 }
 
-#salvar:hover{
-    background-color:   #8EE48E;
-    cursor: pointer;
+#salvar:hover {
+  background-color: #8EE48E;
+  cursor: pointer;
 }
 
 #cancelar {
@@ -127,16 +132,20 @@ button {
   height: 40px;
 }
 
-#cancelar:hover{
-    background-color: #E55959;
-    cursor: pointer;
+#cancelar:hover {
+  background-color: #E55959;
+  cursor: pointer;
 }
 
-#salvar:disabled, #cancelar:disabled, #editar:disabled{
+#salvar:disabled,
+#cancelar:disabled,
+#editar:disabled {
   background-color: lightgray;
 }
 
-#salvar:disabled:hover, #cancelar:disabled:hover, #editar:disabled:hover{
+#salvar:disabled:hover,
+#cancelar:disabled:hover,
+#editar:disabled:hover {
   background-color: lightgray;
   cursor: default;
 }
@@ -153,9 +162,9 @@ button {
   border-radius: 3px;
 }
 
-.buttons button:hover{
-    background-color: #ffee8f;
-    cursor: pointer;
+.buttons button:hover {
+  background-color: #ffee8f;
+  cursor: pointer;
 }
 
 label {
@@ -183,10 +192,10 @@ section {
   width: 35%;
   margin-top: -20px;
 }
+
 section div {
   margin-top: 20px;
 }
-
 
 .fotoPerfil {
   display: flex;
@@ -194,17 +203,174 @@ section div {
   justify-content: center;
   flex-direction: column;
   gap: 10px;
-  width: 20%; 
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.fotoPerfil img {
-  width: 70%;
+.fotoPerfil .img {
+   width: 200px;
+   height: 200px;
+   border-radius: 50%;
+   overflow: hidden;
 }
-.fotoPerfil button {
+.fotoPerfil .img img{
+  height: 100%;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+.buttons input {
+  background-color: var(--verdeClaro);
+  color: var(--offWhite);
+  font-weight: 600;
+  border-radius: 3px;
   padding: 10px;
+  transition: all 300ms ease;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
 }
+.buttons input:hover {
+  background-color: var(--verde);
+  cursor: pointer;
+}
+.upload-label, .add-label {
+  background-color: var(--verde);
+  color: var(--offWhite);
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.upload-label:hover, .add-label:hover {
+  background-color: var(--verdeEscuro);
+}
+
 .confirmeSenhaPerfil {
   display: none;
 }
+
+.titulo2{
+  font-size: 30px;
+}
+
+.estatisticas {
+  margin: 40px 0 80px 0;
+  background-color: var(--begeClaro);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .titulo {
+      margin-top: 50px;
+  }
+}
+
+.divisoria {
+  user-select: none;
+  margin: 50px;
+  border-radius: 3px;
+  width: 88%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  color: var(--begeClaro);
+}
+
+.doacoes {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  color: var(--azulEscuro);
+
+  b {
+      color: var(--verdeNeon);
+  }
+
+  h1 {
+      font-size: 27px;
+  }
+}
+
+table {
+  color: var(--azulEscuro);
+  opacity: 60%;
+  width: 85%;
+  border-collapse: collapse;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+}
+
+th,
+td {
+  text-align: justify;
+  border-bottom: 1px solid rgb(160 160 160);
+  padding: 20px;
+}
+
+.first {
+  width: 500px
+}
+
+th:first-of-type,
+td:first-of-type {
+  text-align: left;
+}
+
+th:last-of-type,
+td:last-of-type {
+  text-align: right;
+}
+
+tbody>tr:nth-of-type(even) {
+  background-color: rgb(237 238 242);
+}
+
+.button-event {
+  /* background-color: #E55959; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 30px;
+  width: 85%;
+  margin: 50px 0 50px 50px;
+
+  a {
+      border: 0px;
+      border-radius: 4px;
+      font-size: 20px;
+      color: var(--begeClaro);
+      background-color: var(--azul);
+      padding: 9px;
+      width: 200px;
+      height: auto;
+      transition: all 0.4s;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+  }
+
+  a:hover {
+      background-color: var(--verdeNeon);
+  }
+}
+
+
+/* /- - - - - - - - - - rodapé - - - - - - - - - -/ */
+
 footer {
   display: flex;
   align-items: center;
@@ -215,6 +381,7 @@ footer {
   margin-top: 150px;
   padding: 20px;
 }
+
 footer .logo {
   display: flex;
   align-items: center;
@@ -225,11 +392,13 @@ footer .logo {
   margin-top: 40px;
   gap: 10px;
 }
+
 footer .logo p {
   color: var(--offWhite);
   font-family: "MoonDance";
   font-size: 50px;
 }
+
 footer .links {
   display: flex;
   align-items: center;
@@ -237,11 +406,13 @@ footer .links {
   width: 80%;
   margin: 0 auto;
 }
+
 .link_title {
   font-weight: 600;
   font-size: 28px;
   color: var(--offWhite);
 }
+
 footer .links div {
   display: flex;
   align-items: center;
@@ -251,6 +422,7 @@ footer .links div {
   gap: 15px;
   width: 20%;
 }
+
 footer .links div a {
   font-size: 24px;
   font-family: "Montserrat-Light";
@@ -258,35 +430,499 @@ footer .links div a {
   color: var(--offWhite);
 }
 
-@media (max-width:1024px) {
-  form {
-    padding: 50px 30px;
+/* /- - - - - - - - - - responsividade - - - - - - - - - -/ */
+
+@media (max-width:1440px) {
+  .first {
+    width: 350px
   }
-label {
-  color: var(--azul);
-  font-size: 22px;
 }
-.titulo {
-  font-size: 45px;
+@media (max-width:1200px) {
+  .first {
+    width: 300px
+  }
 }
-.fotoPerfil {
-  width: 25%; 
+@media (max-width:1100px) {
+  .first {
+    width: 250px
+  }
 }
-.editarPerfil button{
-  font-size: 17px;
-  width: 25%;
-}
-input,select {
-  font-size: 22px;
+@media (max-width:1024px) {
+  header main {
+      padding: 5px 50px;
+  }
+
+  header nav {
+      gap: 40px;
+  }
+
+  .logoHeader {
+      width: 100px;
+  }
+
+  header nav a {
+      font-size: 18px;
+  }
+
+  section {
+      width: 32%;
+  }
+
+  label {
+      font-size: 20px;
+  }
+
+  input,
+  select {
+      font-size: 19px;
+  }
+
+  .titulo {
+      font-size: 42px;
+  }
+  .tituloContribuicao{
+    font-size: 42px;
+  }
+
+  .editarPerfil {
+      gap: 20px;
+  }
+
+  .editarPerfil button {
+      width: 40%;
+  }
+
+  .fotoPerfil {
+      gap: 10px;
+      width: 25%;
+  }
+
+  .fotoPerfil img {
+      width: 75%;
+  }
+
+  .link_title {
+      font-size: 24px;
+  }
+
+  footer .links div a {
+      font-size: 20px;
+  }
+
+  footer .links div {
+      width: 30%;
+  }
+
+  footer .logo p {
+      font-size: 40px;
+  }
+
+  .logoFooter {
+      width: 120px;
+  }
+  table {
+    font-size: 20px;
+  }
+  .doacoes h1{
+    font-size: 23px;
+  }
+  .titulo3{
+    font-size: 23px;
+  }
+  .button-event {
+    gap: 20px;
+    width: 85%;
+    margin: 50px 0 50px 50px;
+  
+    a {
+        font-size: 17px;
+        width: 170px;
+    }
+  }
+  .first {
+    width: 200px
+  }
+  .divisoria{
+    font-size: 14px;
+  }
+  .titulo2{
+    font-size: 25px;
+  }
 }
 
-input::placeholder {
-  font-size: 22px;
+@media (max-width:890px) {
+  form {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  section {
+      width: 70%;
+  }
+
+  .editarPerfil {
+      order: 1;
+  }
+
+  .editarPerfil {
+      gap: 30px;
+  }
+
+  .section1 {
+      margin-top: 20px;
+      order: 2;
+  }
+
+  .section2 {
+      margin-top: 5px;
+      order: 3;
+  }
+
+  .fotoPerfil {
+      gap: 20px;
+      width: 35%;
+      margin: 0;
+  }
+
+  .fotoPerfil img {
+      width: 68%;
+  }
+  table {
+    font-size: 18px;
+  }
+  .first {
+    width: 150px
+  }
 }
-header nav a{
-  font-size: 18px;
+
+@media (max-width:817px) {
+  .link_title {
+      font-size: 20px;
+  }
+
+  footer .links div a {
+      font-size: 18px;
+  }
+
+  footer .logo p {
+      font-size: 34px;
+  }
+
+  .logoFooter {
+      width: 100px;
+  }
 }
-.logoInicio img{
-  width: 100px;
+
+@media (max-width:700px) {
+  header main {
+      padding: 5px 30px;
+  }
+
+  header nav {
+      gap: 30px;
+  }
+
+  .logoHeader {
+      width: 90px;
+  }
+
+  header nav a {
+      font-size: 16px;
+  }
+
+  .titulo {
+      font-size: 35px;
+  }
+  .tituloContribuicao{
+    font-size: 35px;
+  }
+
+  .fotoPerfil img {
+      width: 85%;
+  }
+
+  .logoFooter {
+      width: 90px;
+  }
+
+  footer .logo {
+      width: 90%;
+  }
+  .titulo2{
+    font-size: 20px;
+    width: 450px;
+    text-align: center;
+  }
+  td{
+    width: 400px;
+  }
+  .td2{
+    width: 200px;
+  }
 }
+
+@media (max-width:617px) {
+  .fotoPerfil {
+      gap: 20px;
+      width: 40%;
+      margin: 0;
+  }
+
+  .logoFooter {
+      width: 80px;
+  }
+
+  footer .logo p {
+      font-size: 30px;
+  }
+  .myDoacao{
+    font-size: 25px;
+  }
+  .button-event {
+    gap: 20px;
+    width: 85%;
+    margin: 50px 0 50px 0px;
+    align-items: center;
+    justify-content: center;
+  
+    a {
+        font-size: 17px;
+        width: 170px;
+    }
+  }
+}
+
+@media (max-width:550px) {
+  .logoHeader {
+      width: 80px;
+  }
+
+  header nav a {
+      font-size: 15px;
+  }
+
+  header nav {
+      gap: 20px;
+  }
+
+  .fotoPerfil img {
+      width: 95%;
+  }
+
+  section .buttons {
+      margin-top: 8px;
+  }
+
+  section div {
+      margin-top: 15px;
+  }
+
+  .editarPerfil {
+      margin-top: 40px;
+  }
+
+  .link_title {
+      font-size: 17px;
+  }
+
+  footer .links div a {
+      font-size: 15px;
+  }
+
+  .logoFooter {
+      width: 70px;
+  }
+
+  footer .logo p {
+      font-size: 25px;
+  }
+}
+
+@media (max-width:450px) {
+  header main {
+      padding: 5px 20px;
+  }
+
+  .buttons button {
+      font-size: 15px;
+      width: 120px;
+  }
+
+  .fotoPerfil {
+      width: 55%;
+  }
+
+  section {
+      width: 80%;
+  }
+
+  label {
+      font-size: 17px;
+  }
+
+  input {
+      font-size: 16px;
+  }
+
+  .editarPerfil button {
+      font-size: 17px;
+  }
+
+  .editarPerfil {
+      flex-wrap: wrap;
+  }
+
+  #editar {
+      width: 100%;
+  }
+
+  .logoFooter {
+      width: 60px;
+  }
+
+  footer .logo p {
+      font-size: 20px;
+  }
+  .titulo2{
+    width: 350px;
+  }
+  .doacoes h1{
+    font-size: 18px;
+  }
+  table {
+    font-size: 15px;
+  }
+  .myDoacao{
+    font-size: 20px;
+  }
+  .button-event {
+    gap: 20px;
+    width: 85%;
+    margin: 50px 0 50px 0px;
+  
+    a {
+        font-size: 14px;
+        width: 140px;
+    }
+  }
+}
+
+@media (max-width:400px) {
+  .logoHeader {
+      width: 70px;
+  }
+
+  header nav a {
+      font-size: 13px;
+  }
+
+  form {
+      padding: 40px 40px;
+  }
+
+  .titulo {
+      font-size: 30px;
+  }
+  .tituloContribuicao{
+    font-size: 30px;
+  }
+
+  .logoFooter {
+      width: 50px;
+  }
+  .first{
+    width: 60px;
+  }
+  td{
+    padding: 13px;
+  }
+}
+
+@media (max-width:385px) {
+  .link_title {
+      font-size: 15px;
+  }
+
+  footer .links div a {
+      font-size: 13px;
+  }
+
+  footer .links {
+      width: 90%;
+  }
+
+  footer .logo {
+      width: 100%;
+  }
+
+  .logoFooter {
+      width: 50px;
+  }
+  .button-event {
+    gap: 20px;
+    width: 85%;
+    margin: 50px 0 50px 0px;
+    flex-direction: column;
+  
+    a {
+        font-size: 14px;
+        width: 170px;
+    }
+  }
+}
+
+@media (max-width:350px) {
+  header main {
+      padding: 5px 15px;
+  }
+
+  .link_title {
+      font-size: 14px;
+  }
+
+  footer .links div a {
+      font-size: 12px;
+  }
+
+  .logoFooter {
+      width: 40px;
+  }
+
+  footer .logo p {
+      font-size: 16px;
+  }
+  .titulo2{
+    font-size: 17px;
+  }
+}
+
+@media (max-width:325px) {
+  .titulo {
+      font-size: 25px;
+  }
+  .tituloContribuicao{
+    font-size: 24px;
+  }
+
+  section {
+      width: 95%;
+  }
+
+  label {
+      font-size: 15px;
+  }
+
+  input,
+  select {
+      font-size: 16px;
+      height: 45px;
+  }
+
+  .editarPerfil button {
+      font-size: 15px;
+  }
+
+  .editarPerfil {
+      margin-top: 30px;
+  }
 }

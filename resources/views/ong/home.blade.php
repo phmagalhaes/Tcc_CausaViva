@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
     <title>Causa Viva - Nossas ONG´s</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -27,9 +28,8 @@
         <div class="above">
             <a href="{{ route(Auth()->user()->tipo . '.perfil') }}" class="icon">
                 @php
-                    $user = Auth()->user();
-                    $doador = App\Models\Doador::where('email', $user->email)->first();
-                    $ongUser = App\Models\Ong::where('email', $user->email)->first();
+                    $doador = App\Models\Doador::where('email', Auth()->user()->email)->first();
+                    $ongUser = App\Models\Ong::where('email', Auth()->user()->email)->first();
                     if (isset($doador) && $doador->foto != null) {
                         $foto = $doador->foto;
                     } elseif (isset($doador) && $doador->foto == null) {
@@ -70,6 +70,8 @@
             </div>
         </a>
     </div>
+
+    <div class="overlay" id="overlay"></div>
     <header>
         <div class="main">
             <a href="{{ route('index') }}">
@@ -91,8 +93,8 @@
         </div>
         <div class="slogan">
         </div>
-
     </header>
+    
     <div class="pesquisa">
         <h1 class="titulo">Confira nossas ONGs</h1>
         <form id="searchForm" method="get" action="{{ route('home') }}">

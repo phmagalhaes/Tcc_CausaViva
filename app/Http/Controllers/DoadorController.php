@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doador;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -60,6 +61,7 @@ class DoadorController extends Controller
 
     public function perfil()
     {
-        return "oi";
+        $user = Doador::where("email", Auth::user()->email)->first();
+        return view("doador.perfil", ["user" => $user]);
     }
 }

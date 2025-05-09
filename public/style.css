@@ -33,51 +33,6 @@
     --amarelo: #F0F8A3;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-}
-header .main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background-color: var(--verde);
-  padding: 5px 20px 5px 60px;
-  height: 127px;
-}
-header .main .text{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 40px;
-}
-header nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 50px;
-}
-header nav p {
-  color: var(--offWhite);
-  font-size: 20px;
-  font-weight: 500;
-}
-header p {
-  color: var(--verdeClaro);
-  font-size: 20px;
-}
-header .slogan {
-  background-color: var(--verdeClaro);
-  width: 100%;
-  padding: 5px;
-  text-align: center;
-  color: var(--verdeEscuro);
-}
-
 .msg{
   position: absolute;
   width: 100%;

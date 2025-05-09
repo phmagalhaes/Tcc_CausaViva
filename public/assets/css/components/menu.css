@@ -164,5 +164,6 @@
     position: fixed;
     z-index: 998;
     pointer-events: none;
+    user-select: none;
     display: none;
 }

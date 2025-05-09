@@ -8,8 +8,10 @@
 
     <link rel="stylesheet" href="{{ asset('style.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/perfilONG.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/header.css')}}">
+
 
     <script src="{{ asset('/assets/js/perfilONG.js') }}" defer></script>
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>
