@@ -266,7 +266,10 @@ table {
     font-size: 25px;
     letter-spacing: 0.5px;
 }
-
+.estatisticas p{
+    font-size: 18px;
+    color: var(--azulEscuro);
+}
 th,
 td {
     text-align: justify;

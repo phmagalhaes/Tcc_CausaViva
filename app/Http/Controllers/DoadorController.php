@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doacao;
 use App\Models\Doador;
+use App\Models\PresencaEvento;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,10 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class DoadorController extends Controller
 {
-    public function index()
-    {
-
-    }
+    public function index() {}
 
     public function show()
     {
@@ -31,7 +30,7 @@ class DoadorController extends Controller
             'password.confirmed' => 'Senhas não conferem',
             'email.unique' => 'Email já cadastrado',
         ]);
- 
+
         if ($validator->fails()) {
             return redirect('/doador/cadastro')->with('errorMsg', $validator->errors()->first());
         }
@@ -63,7 +62,15 @@ class DoadorController extends Controller
     {
         $user = Doador::where("email", Auth::user()->email)->first();
         $causas = ["Direitos Humanos e Sociais", "Meio Ambiente", "Proteção Animal", "Saúde e Bem-Estar", "Educação e Cultura"];
-        return view("doador.perfil", ["user" => $user, "causas" => $causas]);
+        $doacoes = Doacao::where('id_doador', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->limit(3)
+            ->get();
+        $eventos = PresencaEvento::where('id_doador', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->limit(3)
+            ->get();
+        return view("doador.perfil", ["user" => $user, "causas" => $causas, "doacoes" => $doacoes, "eventos" => $eventos]);
     }
 
     public function update(Request $request)
@@ -103,14 +110,14 @@ class DoadorController extends Controller
         $authUser = Doador::where('email', Auth::user()->email)->first();
         $doador = Doador::findOrFail($authUser->id);
 
-        if($doador->foto != null){
+        if ($doador->foto != null) {
             $imgAntiga = $doador->foto;
             $path = public_path('fotos/' . $imgAntiga);
             if (file_exists($path)) {
                 unlink($path);
             }
         }
-        
+
         $image = $request->foto;
         $extension = $image->extension();
         $hash = md5($image->getClientOriginalName() . strtotime('now')) . "." . $extension;
@@ -127,7 +134,7 @@ class DoadorController extends Controller
         $authUser = Doador::where('email', Auth::user()->email)->first();
         $doador = Doador::findOrFail($authUser->id);
 
-        if($doador->foto != null){
+        if ($doador->foto != null) {
             $imgAntiga = $doador->foto;
             $path = public_path('fotos/' . $imgAntiga);
             if (file_exists($path)) {
@@ -139,6 +146,5 @@ class DoadorController extends Controller
         $doador->update();
 
         return redirect(route('doador.perfil'))->with('sucMsg', 'Foto removida com sucesso!');
-
     }
 }

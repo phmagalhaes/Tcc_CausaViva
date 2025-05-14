@@ -201,74 +201,81 @@
             </div>
             <div style="border-top: 1px solid #ccc; width: 85%; margin: 4vh 0 4vh 0;"></div>
 
-            <div class="titulo2" style="color: var(--azul);">Parabéns! você alcançou mais de <b>R$1.000
-                    <!--BANCO DE DADOS--> </b> em doações</div>
+            {{-- <div class="titulo2" style="color: var(--azul);">Parabéns! você alcançou mais de <b>R$1.000
+                    <!--BANCO DE DADOS--> </b> em doações</div> --}}
+
             <div class="divisoria" style="background-color: var(--azul);">
                 <h1 class="myDoacao">Minhas doações</h1>
             </div>
-            <div class="doacoes">
-                <h1>Total doado:</h1>
-                <h1><b>R$ 1.300.00</b></h1> <!--BANCO DE DADOS-->
-            </div>
-            <div class="doacoes">
-                <h1 class="titulo3">Últimas doações:</h1>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="first" scope="col">Data</th>
-                        <th scope="col">ONG</th>
-                        <th scope="col">Valor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="first">13/05/2025</td> <!--BANCO DE DADOS-->
-                        <td>Vozes Invisíveis - Direitos Humanos</td> <!--BANCO DE DADOS-->
-                        <td class="td2">R$120</td> <!--BANCO DE DADOS-->
-                    </tr>
-                    <tr>
-                        <td class="first">12/05/2025</td> <!--BANCO DE DADOS-->
-                        <td>Patas do Amanhã - Proteção animal</td> <!--BANCO DE DADOS-->
-                        <td class="td2">R$150</td> <!--BANCO DE DADOS-->
-                    </tr>
-                    <tr>
-                        <td class="first">12/05/2025</td> <!--BANCO DE DADOS-->
-                        <td>Eco Comunidade - Meio Ambiente</td> <!--BANCO DE DADOS-->
-                        <td class="td2">R$100</td> <!--BANCO DE DADOS-->
-                    </tr>
-                </tbody>
-            </table>
+            @if ($doacoes->isEmpty())
+                <p>Infelizmente você ainda não realizou nenhuma doação :(</p>
+            @else
+                @php
+                    $total = 0;
+                    foreach ($doacoes as $doacao) {
+                        $total += $doacao->valor;
+                    }
+                @endphp
+                <div class="doacoes">
+                    <h1>Total doado:</h1>
+                    <h1><b>R$ {{ number_format($total, 2, ',', '.') }}</b></h1> <!--BANCO DE DADOS-->
+                </div>
+                <div class="doacoes">
+                    <h1 class="titulo3">Últimas doações:</h1>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="first" scope="col">Data</th>
+                            <th scope="col">ONG</th>
+                            <th scope="col">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($doacoes as $doacao)
+                            <tr>
+                                <td class="first">{{ date_format($doacao->created_at, 'd/m/Y') }}</td>
+                                @php
+                                    $ong = App\Models\Ong::where('id', $doacao->id_ong)->first();
+                                @endphp
+                                <td>{{ $ong->nome }} - {{ $ong->causa }}</td>
+                                <td class="td2">R${{ number_format($doacao->valor, 2, ',', '.') }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
+
             <div class="divisoria" style="background-color: var(--verdeNeon );">
                 <h1 class="titulo2">Eventos</h1>
             </div>
+            @if ($eventos->isEmpty())
+                <p>Você ainda não participou de nenhum evento :(</p>
+            @else
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="first" scope="col">Data</th>
+                            <th scope="col">ONG</th>
+                            <th scope="col">Local</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($eventos as $evento)
+                            <tr>
+                                <td class="first">{{ date_format($evento->created_at, 'd/m/Y') }}</td>
+                                @php
+                                    $evento = App\Models\Evento::where('id', $evento->id_evento)->first();
+                                    $ong = App\Models\Ong::where('id', $evento->id_ong)->first();
+                                @endphp
+                                <td>{{ $ong->nome }} - {{ $ong->causa }}</td>
+                                <td class="td2">{{ $evento->cidade }} - {{ $evento->estado }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
 
-            <table>
-                <thead>
-                    <tr>
-                        <th class="first" scope="col">Data</th>
-                        <th scope="col">ONG</th>
-                        <th scope="col">Local</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="first">20/05/2025</td> <!--BANCO DE DADOS-->
-                        <td>Vozes Invisíveis - Direitos Humanos</td> <!--BANCO DE DADOS-->
-                        <td class="td2">Jundiaí - SP</td> <!--BANCO DE DADOS-->
-                    </tr>
-                    <tr>
-                        <td class="first">24/02/2025</td> <!--BANCO DE DADOS-->
-                        <td>Vozes Invisíveis - Direitos Humanos</td> <!--BANCO DE DADOS-->
-                        <td class="td2">Jundiaí - SP</td> <!--BANCO DE DADOS-->
-                    </tr>
-                    <tr>
-                        <td class="first">18/01/2025</td> <!--BANCO DE DADOS-->
-                        <td>Patas do Amanhã - Proteção animal</td> <!--BANCO DE DADOS-->
-                        <td class="td2">Itupeva - SP</td> <!--BANCO DE DADOS-->
-                    </tr>
-                </tbody>
-            </table>
             <div class="button-event">
                 <a href="./pesquisaEvento.html" id="">Ver mais eventos</a>
                 <!--ROTA PARA A PÁGINA DE EVENTOS-->
