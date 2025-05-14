@@ -53,7 +53,11 @@
                 @if ($foto == 'assets/images/menu/account.png')
                     <img src="{{ asset($foto) }}" alt="">
                 @else
-                    <img src="{{ asset("logos/$foto") }}" alt="">
+                    @if (isset($doador))
+                        <img src="{{ asset("fotos/$foto") }}" alt="">
+                    @else
+                        <img src="{{ asset("logos/$foto") }}" alt="">
+                    @endif
                 @endif
             </a>
             <div class="menu_bar_info">
@@ -113,57 +117,60 @@
     <main>
         <h1 class="titulo">Meu Perfil</h1>
 
-        <form action="{{ route('doador.update')}}" method="POST">
-            @csrf
-            @method('PUT')
-            <section class="section1">
-                <div class="nomePerfl">
-                    <label for="nomePerfl">Nome</label>
-                    <input class="input" type="text" name="nome" placeholder="Seu Nome" value="{{ $user->nome }}"
-                        disabled />
-                </div>
+        <section class="form">
+            <form action="{{ route('doador.update') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <section class="section1">
+                    <div class="nomePerfl">
+                        <label for="nomePerfl">Nome</label>
+                        <input class="input" type="text" name="nome" placeholder="Seu Nome"
+                            value="{{ $user->nome }}" disabled />
+                    </div>
 
-                <div class="emailPerfil">
-                    <label for="emailPerfil">Email</label>
-                    <input class="input" type="email" name="email" placeholder="Seu Email"
-                        value="{{ $user->email }}" disabled />
-                </div>
-            </section>
-            <section class="section2">
-                <div>
-                    <label for="causaPerfil">Causas em preferência</label>
-                    <select class="input" name="causa" id="" disabled>
-                        @php
-                            $chave = array_search($user->causa, $causas);
-                            unset($causas[$chave])
-                        @endphp
-                        <option value="{{ $user->causa }}">
-                            {{ $user->causa }}
-                        </option>
-                        @foreach ($causas as $causa)
-                        <option value="{{ $causa }}">
-                            {{ $causa }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="telefonePerfil">
-                    <label for="telefonePerfil">Telefone</label>
-                    <input class="input" type="text" name="telefone" placeholder="Seu Telefone"
-                        value="{{ $user->telefone }}" disabled />
-                </div>
-                <div class="editarPerfil">
-                    <button id="editar">Editar</button>
-                    <button type="submit" id="salvar" disabled>Salvar</button>
-                    <button type="reset" id="cancelar" disabled>Cancelar</button>
-                </div>
-            </section>
+                    <div class="emailPerfil">
+                        <label for="emailPerfil">Email</label>
+                        <input class="input" type="email" name="email" placeholder="Seu Email"
+                            value="{{ $user->email }}" disabled />
+                    </div>
+                </section>
+                <section class="section2">
+                    <div>
+                        <label for="causaPerfil">Causas em preferência</label>
+                        <select class="input" name="causa" id="" disabled>
+                            @php
+                                $chave = array_search($user->causa, $causas);
+                                unset($causas[$chave]);
+                            @endphp
+                            <option value="{{ $user->causa }}">
+                                {{ $user->causa }}
+                            </option>
+                            @foreach ($causas as $causa)
+                                <option value="{{ $causa }}">
+                                    {{ $causa }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="telefonePerfil">
+                        <label for="telefonePerfil">Telefone</label>
+                        <input class="input" type="text" name="telefone" placeholder="Seu Telefone"
+                            value="{{ $user->telefone }}" disabled />
+                    </div>
+                    <div class="editarPerfil">
+                        <button id="editar">Editar</button>
+                        <button type="submit" id="salvar" disabled>Salvar</button>
+                        <button type="reset" id="cancelar" disabled>Cancelar</button>
+                    </div>
+                </section>
+            </form>
+
             <section class="fotoPerfil">
                 <div class="img">
                     @if ($user->foto == null)
                         <img src="{{ asset('assets/images/perfil/foto_user.svg') }}" alt="Foto de perfil" />
                     @else
-                        <img src="{{ asset('fotosPerfil/' . $user->foto) }}" alt="Foto de perfil" />
+                        <img src="{{ asset('fotos/' . $user->foto) }}" alt="Foto de perfil" />
                     @endif
                 </div>
 
@@ -172,12 +179,22 @@
                     @csrf
                     @method('PUT')
 
-                    <label for="upload" class="upload-label">Clique aqui para adicionar uma foto</label>
-                    <input type="file" id="upload" name="logo" accept="image/png, image/jpeg, image/jpg"
-                        hidden onchange="this.form.submit()" />
+                    @if ($user->foto == null)
+                        <label for="upload" class="upload-label">Clique aqui para adicionar uma foto</label>
+                        <input type="file" id="upload" name="foto"
+                            accept="image/png, image/jpeg, image/jpg" hidden onchange="this.form.submit()" />
+                    @else
+                        <div class="inputfoto">
+                            <label for="upload" class="upload-label">Clique aqui para alterar a foto</label>
+                            <input type="file" id="upload" name="foto"
+                                accept="image/png, image/jpeg, image/jpg" hidden onchange="this.form.submit()" />
+                        </div>
+                        <a href="{{ route('doador.removeimg') }}">Remover Foto</a>
+                    @endif
+
                 </form>
             </section>
-        </form>
+        </section>
         <div class="estatisticas">
             <div class="titulo-div">
                 <h1 class="tituloContribuicao">Minhas contribuições</h1>

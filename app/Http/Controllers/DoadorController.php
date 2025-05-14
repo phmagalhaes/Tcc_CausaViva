@@ -121,4 +121,24 @@ class DoadorController extends Controller
 
         return redirect(route('doador.perfil'))->with('sucMsg', 'Foto alterada com sucesso!');
     }
+
+    public function removeimg()
+    {
+        $authUser = Doador::where('email', Auth::user()->email)->first();
+        $doador = Doador::findOrFail($authUser->id);
+
+        if($doador->foto != null){
+            $imgAntiga = $doador->foto;
+            $path = public_path('fotos/' . $imgAntiga);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
+        $doador->foto = null;
+        $doador->update();
+
+        return redirect(route('doador.perfil'))->with('sucMsg', 'Foto removida com sucesso!');
+
+    }
 }
