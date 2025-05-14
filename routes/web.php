@@ -19,6 +19,8 @@ Route::prefix('doador')->group(function () {
     Route::get('/cadastro', [DoadorController::class, 'create'])->name('doador.create');
     Route::post('/cadastro', [DoadorController::class, 'store'])->name('doador.store');
     Route::get('/perfil', [DoadorController::class, 'perfil'])->name('doador.perfil')->middleware('auth');
+    Route::put('/update', [DoadorController::class, 'update'])->name('doador.update')->middleware('auth');
+    Route::put('/update/img', [DoadorController::class, 'updateimg'])->name('doador.updateimg')->middleware('auth');
 });
 
 Route::prefix('ong')->group(function () {

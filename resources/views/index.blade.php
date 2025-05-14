@@ -188,9 +188,11 @@
 
                             <p class="ong">{{ $ong->nome }}</p>
                         </div>
-                        <p class="description">
-                            {{ $ong->descricao }}
-                        </p>
+                        @if (strlen($ong->descricao) > 150)
+                            <p class="description">{{ substr($ong->descricao, 0, 150) . '...' }}</p>
+                        @else
+                            <p class="description">{{ $ong->descricao }}</p>
+                        @endif
                         <div class="meta">
                             <div class="grafico">
                                 <div class="total{{ $total }}"></div>

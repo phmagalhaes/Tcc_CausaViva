@@ -62,6 +62,63 @@ class DoadorController extends Controller
     public function perfil()
     {
         $user = Doador::where("email", Auth::user()->email)->first();
-        return view("doador.perfil", ["user" => $user]);
+        $causas = ["Direitos Humanos e Sociais", "Meio Ambiente", "Proteção Animal", "Saúde e Bem-Estar", "Educação e Cultura"];
+        return view("doador.perfil", ["user" => $user, "causas" => $causas]);
+    }
+
+    public function update(Request $request)
+    {
+        $authUser = Doador::where('email', Auth::user()->email)->first();
+        $doador = Doador::findOrFail($authUser->id);
+
+        $emailAntigo = $doador->email;
+        $nomeAntigo = $doador->nome;
+        $user = User::where('email', $emailAntigo)->first();
+
+        if ($user) {
+            $precisaAtualizar = false;
+
+            if ($request->email != $emailAntigo) {
+                $user->email = $request->email;
+                $precisaAtualizar = true;
+            }
+
+            if ($request->nome != $nomeAntigo) {
+                $user->nome = $request->nome;
+                $precisaAtualizar = true;
+            }
+
+            if ($precisaAtualizar) {
+                $user->update();
+            }
+        }
+
+        $doador->update($request->all());
+
+        return redirect(route('doador.perfil'))->with('sucMsg', 'Dados atualizados com sucesso!');
+    }
+
+    public function updateimg(Request $request)
+    {
+        $authUser = Doador::where('email', Auth::user()->email)->first();
+        $doador = Doador::findOrFail($authUser->id);
+
+        if($doador->foto != null){
+            $imgAntiga = $doador->foto;
+            $path = public_path('fotos/' . $imgAntiga);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+        
+        $image = $request->foto;
+        $extension = $image->extension();
+        $hash = md5($image->getClientOriginalName() . strtotime('now')) . "." . $extension;
+        $image->move(public_path('fotos'), $hash);
+        $doador->foto = $hash;
+
+        $doador->update();
+
+        return redirect(route('doador.perfil'))->with('sucMsg', 'Foto alterada com sucesso!');
     }
 }

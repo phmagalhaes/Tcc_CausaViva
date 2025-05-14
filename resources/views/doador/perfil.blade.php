@@ -113,36 +113,43 @@
     <main>
         <h1 class="titulo">Meu Perfil</h1>
 
-        <form action="">
+        <form action="{{ route('doador.update')}}" method="POST">
+            @csrf
+            @method('PUT')
             <section class="section1">
                 <div class="nomePerfl">
                     <label for="nomePerfl">Nome</label>
-                    <input class="input" type="text" name="nomePerfl" placeholder="Seu Nome" value="{{ $user->nome }}"
+                    <input class="input" type="text" name="nome" placeholder="Seu Nome" value="{{ $user->nome }}"
                         disabled />
                 </div>
 
                 <div class="emailPerfil">
                     <label for="emailPerfil">Email</label>
-                    <input class="input" type="email" name="emailPerfil" placeholder="Seu Email"
+                    <input class="input" type="email" name="email" placeholder="Seu Email"
                         value="{{ $user->email }}" disabled />
                 </div>
             </section>
             <section class="section2">
                 <div>
                     <label for="causaPerfil">Causas em preferência</label>
-                    <select class="input" name="causaPerfil" id="" disabled>
-                        <option value="Proteção Animal">Proteção Animal</option>
-                        <option value="Direitos Humanos e Sociais">
-                            Direitos Humanos e Sociais
+                    <select class="input" name="causa" id="" disabled>
+                        @php
+                            $chave = array_search($user->causa, $causas);
+                            unset($causas[$chave])
+                        @endphp
+                        <option value="{{ $user->causa }}">
+                            {{ $user->causa }}
                         </option>
-                        <option value="Meio Ambiente">Meio Ambiente</option>
-                        <option value="Saúde e Bem-Estar">Saúde e Bem-Estar</option>
-                        <option value="Educação e Cultura">Educação e Cultura</option>
+                        @foreach ($causas as $causa)
+                        <option value="{{ $causa }}">
+                            {{ $causa }}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="telefonePerfil">
                     <label for="telefonePerfil">Telefone</label>
-                    <input class="input" type="text" name="telefonePerfil" placeholder="Seu Telefone"
+                    <input class="input" type="text" name="telefone" placeholder="Seu Telefone"
                         value="{{ $user->telefone }}" disabled />
                 </div>
                 <div class="editarPerfil">
@@ -160,7 +167,7 @@
                     @endif
                 </div>
 
-                <form action="{{ route('ong.updateimg') }}" class="buttons" method="POST"
+                <form action="{{ route('doador.updateimg') }}" class="buttons" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
