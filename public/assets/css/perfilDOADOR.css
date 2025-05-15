@@ -191,14 +191,18 @@ section div {
     gap: 10px;
     width: 20%;
 }
-.fotoPerfil .img{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.fotoPerfil img {
-    width: 70%;
-}
+.fotoPerfil .img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ .fotoPerfil .img img{
+   height: 100%;
+ }
 
 .fotoPerfil button {
     padding: 10px;

@@ -1,0 +1,434 @@
+body {
+    min-height: 100vh;
+    background-color: var(--offWhite);
+  }
+  
+  /*- - - - - - - - - - conteúdo - - - - - - - - - -*/
+  
+  .linkPerfil {
+    text-decoration: none;
+  }
+  .setaVoltar {
+    width: 50px;
+    left: 50px;
+    top: 30px;
+    position: absolute;
+  }
+  .titulo {
+    margin-top: 30px;
+    font-size: 50px;
+    color: var(--azulEscuro);
+    text-align: center;
+    padding-bottom: 25px;
+  }
+  .title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  main {
+    background-color: var(--bege);
+    padding: 50px 80px;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+  }
+  input,
+  textarea {
+    background-color: var(--verde);
+    border: none;
+    color: var(--bege);
+    font-size: 18px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--bege);
+    font-size: 18px;
+  }
+  section {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: space-between;
+    margin: 16px 0;
+  }
+  label {
+    display: block;
+    color: var(--verdeEscuro);
+    font-size: 24px;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .nomeEvento {
+    width: 100%;
+  }
+  .descricao {
+    width: 80%;
+  }
+  .descricao textarea {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    text-align: start;
+    resize: none;
+  }
+  .cep {
+    width: 25%;
+  }
+  .cidade {
+    width: 35%;
+  }
+  .bairro {
+    width: 30%;
+  }
+  .rua {
+    width: 55%;
+  }
+  .numero {
+    width: 18%;
+  }
+  .estado {
+    width: 18%;
+  }
+  .data {
+    width: 40%;
+  }
+  .horaInicio {
+    width: 25%;
+  }
+  .horaTermino {
+    width: 25%;
+  }
+  .quantidadePessoa {
+    width: 40%;
+  }
+  .valor {
+    width: 55%;
+  }
+  #picture__input {
+    display: none;
+  }
+  .picture {
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 16/9;
+    background: var(--verde);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bege);
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+    padding: 20px;
+    font-size: 18px;
+
+    text-align: center;
+  }
+  .picture:hover {
+    color: var(--begeClaro);
+    background: var(--verdeClaro);
+  }
+  .picture:active {
+    border-color: var(--verdeClaro);
+    color: var(--verdeEscuro);
+    background: #eee;
+  }
+  .picture:focus {
+    color: var(--offWhite);
+    background: var(--verdeEscuro);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  .picture__img {
+    width: 160px;
+  }
+  .file-upload {
+    display: none;
+  }
+  .upload-container {
+    height: 200px;
+    margin-top: 11px;
+  }
+  .upload-container:hover {
+    background-color: var(--begeClaro);
+  }
+  button {
+    color: var(--bege);
+    background-color: var(--verdeEscuro);
+    border: none;
+    font-size: 25px;
+    align-items: center;
+    padding: 10px 120px;
+    border-radius: 5px;
+    margin-top: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .buttonSubmit {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /*- - - - - - - - - - responsividade - - - - - - - - - -*/
+  
+  @media (max-width:1440px) {
+    .picture {
+      width: 190px;
+      height: 190px;
+    }
+    .upload-container {
+      height: 190px;
+    }
+    .descricao {
+      width: 75%;
+    }
+    .descricao textarea {
+      height: 170px;
+    }
+  }
+  @media (max-width:1200px) {
+    main {
+      padding: 40px 60px;
+      width: 85%;
+    }
+    .titulo {
+      font-size: 45px;
+    }
+    label {
+      font-size: 21px;
+    }
+    button {
+      font-size: 22px;
+      padding: 10px 100px;
+    }
+  }
+  @media (max-width:1150px) {
+    .numero {
+      width: 22%;
+    }
+    .estado {
+      width: 13%;
+    }
+  }
+  @media (max-width:1100px) {
+    .linkPerfil {
+      font-size: 18px;
+    }
+    label {
+      font-size: 18px;
+    }
+    input,
+    textarea {
+      font-size: 15px;
+    }
+    input::placeholder,
+    textarea::placeholder {
+      font-size: 15px;
+    }
+    .picture {
+      font-size: 15px;
+    }
+    .descricao {
+      width: 71%;
+    }
+    button {
+      font-size: 19px;
+      padding: 10px 80px;
+    }
+  }
+  @media (max-width:950px) {
+    .setaVoltar {
+      width: 40px;
+      left: 40px;
+    }
+  
+    .linkPerfil {
+      font-size: 17px;
+    }
+    .titulo {
+      font-size: 40px;
+    }
+    .descricao {
+      width: 68%;
+    }
+    .data {
+      width: 33%;
+    }
+    .horaInicio {
+      width: 29%;
+    }
+    .horaTermino {
+      width: 29%;
+    }
+  }
+  @media (max-width:850px) {
+    main {
+      padding: 30px 40px;
+    }
+  }
+  @media (max-width:800px) {
+    .linkPerfil {
+      font-size: 16px;
+    }
+    .titulo {
+      font-size: 35px;
+    }
+    .picture {
+      width: 180px;
+      height: 180px;
+    }
+    .upload-container {
+      height: 180px;
+    }
+    .descricao {
+      width: 65%;
+    }
+    .rua {
+      width: 50%;
+    }
+    .numero {
+      width: 28%;
+    }
+    .estado {
+      width: 13%;
+    }
+    .data {
+      width: 30%;
+    }
+    .horaInicio {
+      width: 30%;
+    }
+    .horaTermino {
+      width: 30%;
+    }
+  }
+  @media (max-width:768px) {
+    label {
+      font-size: 16px;
+    }
+    input,
+    textarea {
+      font-size: 14px;
+    }
+    input::placeholder,
+    textarea::placeholder {
+      font-size: 14px;
+    }
+    .descricao {
+      width: 61%;
+    }
+    button {
+      font-size: 16px;
+      padding: 10px 50px;
+      margin-top: 10px;
+    }
+  }
+  @media (max-width:700px) {
+    .data {
+      width: 28%;
+    }
+    .horaInicio {
+      width: 32%;
+    }
+    .horaTermino {
+      width: 32%;
+    }
+  }
+  @media (max-width:650px) {
+    .setaVoltar {
+      width: 25px;
+      left: 20px;
+    }
+    section {
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+    }
+    section label {
+      margin-top: 12px;
+    }
+    .picture {
+      width: 200px;
+      height: 200px;
+    }
+    .upload-container {
+      height: 200px;
+    }
+    .descricao {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .picture {
+      margin-top: 0;
+    }
+    .cep {
+      width: 100%;
+    }
+    .cidade {
+      width: 100%;
+    }
+    .bairro {
+      width: 100%;
+    }
+    .rua {
+      width: 100%;
+    }
+    .numero {
+      width: 100%;
+    }
+    .estado {
+      width: 100%;
+    }
+    .data {
+      width: 100%;
+    }
+    .horaInicio {
+      width: 100%;
+    }
+    .horaTermino {
+      width: 100%;
+    }
+    .quantidadePessoa {
+      width: 100%;
+    }
+    .valor {
+      width: 100%;
+    }
+    button {
+      padding: 10px 60px;
+      margin-top: 25px;
+    }
+  }
+  @media (max-width:550px) {
+    .linkPerfil {
+      font-size: 14px;
+    }
+    .titulo {
+      font-size: 30px;
+    }
+  }
+  @media (max-width:450px) {
+    main {
+      padding: 30px 20px;
+    }
+  }
+  @media (max-width:423px) {
+    .linkPerfil {
+      font-size: 12px;
+    }
+  }
+  @media (max-width:326px) {
+    .titulo {
+      font-size: 25px;
+    }
+  }

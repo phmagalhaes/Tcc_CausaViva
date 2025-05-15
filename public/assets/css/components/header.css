@@ -12,7 +12,6 @@ header .main {
     width: 100%;
     background-color: var(--verde);
     padding: 5px 20px 5px 60px;
-    height: 127px;
 }
 header .main .text {
     display: flex;
@@ -42,3 +41,80 @@ header .slogan {
     text-align: center;
     color: var(--verdeEscuro);
 }
+
+/* /- - - - - - - - - - responsividade - - - - - - - - - -/ */
+
+@media (max-width:1440px) {
+    header .main {
+        padding: 5px 40px 5px 60px;
+    }
+}
+  @media (max-width:1024px) {
+    header .main {
+        padding: 5px 50px;
+    }
+    header nav {
+        gap: 40px;
+    }
+    .logoHeader {
+        width: 100px;
+    }
+    header nav p {
+        font-size: 18px;
+    }
+  }
+  
+  @media (max-width:700px) {
+    header .main {
+        padding: 5px 30px;
+    }
+    header nav {
+        gap: 30px;
+    }
+    .logoHeader {
+        width: 90px;
+    }
+    header nav a {
+        font-size: 16px;
+    }
+  }
+  @media (max-width:550px) {
+    .logoHeader {
+        width: 80px;
+    }
+    header nav p {
+        font-size: 15px;
+    }
+    header nav {
+        gap: 20px;
+    }
+  }
+  @media (max-width:450px) {
+    header .main {
+        padding: 5px 20px;
+    }
+  }
+  @media (max-width:425px) {
+    header .main .text {
+        gap: 20px;
+    }
+  }
+  @media (max-width:400px) {
+    .logoHeader {
+        width: 70px;
+    }
+    header nav p {
+        font-size: 13px;
+    }
+  }
+
+  @media (max-width:350px) {
+    header .main {
+        padding: 5px 15px;
+    }
+  }
+  @media (max-width:320px) {
+    header .main .text {
+        gap: 10px;
+    }
+  }

@@ -75,7 +75,7 @@ class OngController extends Controller
         $image = $request->logo;
         $extension = $image->extension();
         $hash = md5($image->getClientOriginalName() . strtotime('now')) . "." . $extension;
-        $image->move(public_path('logos'), $hash);
+        $image->move(public_path('uploads/logos'), $hash);
         $ong->logo = $hash;
 
         $ong->save();
@@ -204,7 +204,7 @@ class OngController extends Controller
         $ong = Ong::findOrFail($authUser->id);
 
         $imgAntiga = $ong->logo;
-        $path = public_path('logos/' . $imgAntiga);
+        $path = public_path('uploads/logos/' . $imgAntiga);
         if (file_exists($path)) {
             unlink($path);
         }
@@ -212,7 +212,7 @@ class OngController extends Controller
         $image = $request->logo;
         $extension = $image->extension();
         $hash = md5($image->getClientOriginalName() . strtotime('now')) . "." . $extension;
-        $image->move(public_path('logos'), $hash);
+        $image->move(public_path('uploads/logos'), $hash);
         $ong->logo = $hash;
 
         $ong->update();

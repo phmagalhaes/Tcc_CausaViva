@@ -201,9 +201,6 @@
             </div>
             <div style="border-top: 1px solid #ccc; width: 85%; margin: 4vh 0 4vh 0;"></div>
 
-            {{-- <div class="titulo2" style="color: var(--azul);">Parabéns! você alcançou mais de <b>R$1.000
-                    <!--BANCO DE DADOS--> </b> em doações</div> --}}
-
             <div class="divisoria" style="background-color: var(--azul);">
                 <h1 class="myDoacao">Minhas doações</h1>
             </div>

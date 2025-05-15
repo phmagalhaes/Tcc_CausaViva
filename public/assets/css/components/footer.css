@@ -1,0 +1,185 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--verde);
+  
+    margin-top: 150px;
+    padding: 20px;
+  }
+  
+  footer .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid var(--offWhite);
+    width: 80%;
+    padding-top: 40px;
+    margin-top: 40px;
+    gap: 10px;
+  }
+  
+  footer .logo p {
+    color: var(--offWhite);
+    font-family: "MoonDance";
+    font-size: 50px;
+  }
+  
+  footer .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .link_title {
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--offWhite);
+  }
+  
+  footer .links div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    width: 20%;
+  }
+  
+  footer .links div a {
+    font-size: 24px;
+    font-family: "Montserrat-Light";
+    text-decoration: none;
+    color: var(--offWhite);
+  }
+
+  /* /- - - - - - - - - - responsividade - - - - - - - - - -/ */
+
+  @media (max-width:1024px) {
+    .link_title {
+        font-size: 24px;
+    }
+  
+    footer .links div a {
+        font-size: 20px;
+    }
+  
+    footer .links div {
+        width: 30%;
+    }
+  
+    footer .logo p {
+        font-size: 40px;
+    }
+  
+    .logoFooter {
+        width: 120px;
+    }
+  }
+  
+  @media (max-width:817px) {
+    .link_title {
+        font-size: 20px;
+    }
+  
+    footer .links div a {
+        font-size: 18px;
+    }
+  
+    footer .logo p {
+        font-size: 34px;
+    }
+  
+    .logoFooter {
+        width: 100px;
+    }
+  }
+  
+  @media (max-width:700px) {
+    .logoFooter {
+        width: 90px;
+    }
+  
+    footer .logo {
+        width: 90%;
+    }
+  }
+  
+  @media (max-width:617px) {
+    .logoFooter {
+        width: 80px;
+    }
+  
+    footer .logo p {
+        font-size: 30px;
+    }
+  }
+  
+  @media (max-width:550px) {
+    footer .links div a {
+        font-size: 15px;
+    }
+    .logoFooter {
+        width: 70px;
+    }
+    footer .logo p {
+        font-size: 25px;
+    }
+  }
+  
+  @media (max-width:450px) {
+    .logoFooter {
+        width: 60px;
+    }
+  
+    footer .logo p {
+        font-size: 20px;
+    }
+  }
+  
+  @media (max-width:400px) {
+    .logoFooter {
+        width: 50px;
+    }
+  }
+  
+  @media (max-width:385px) {
+    .link_title {
+        font-size: 15px;
+    }
+  
+    footer .links div a {
+        font-size: 13px;
+    }
+  
+    footer .links {
+        width: 90%;
+    }
+  
+    footer .logo {
+        width: 100%;
+    }
+  
+    .logoFooter {
+        width: 50px;
+    }
+  }
+  
+  @media (max-width:350px) {
+    .link_title {
+        font-size: 14px;
+    }
+    footer .links div a {
+        font-size: 12px;
+    }
+    .logoFooter {
+        width: 40px;
+    }
+    footer .logo p {
+        font-size: 16px;
+    }
+  }

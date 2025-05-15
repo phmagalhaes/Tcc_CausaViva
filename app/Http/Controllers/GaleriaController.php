@@ -16,7 +16,7 @@ class GaleriaController extends Controller
         $image = $request->image;
         $extension = $image->extension();
         $hash = md5($image->getClientOriginalName() . strtotime('now')) . "." . $extension;
-        $image->move(public_path('galeria'), $hash);
+        $image->move(public_path('uploads/galeria'), $hash);
         $galeria->caminho = $hash;
 
         $authUser = Ong::where('email', Auth::user()->email)->first();
@@ -33,7 +33,7 @@ class GaleriaController extends Controller
         $foto = Galeria::where('id', $id)->first();
         
         $imgAntiga = $foto->caminho;
-        $path = public_path('galeria/' . $imgAntiga);
+        $path = public_path('uploads/galeria/' . $imgAntiga);
         if (file_exists($path)) {
             unlink($path);
         }

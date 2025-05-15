@@ -41,7 +41,11 @@
                 @if ($foto == 'assets/images/menu/account.png')
                     <img src="{{ asset($foto) }}" alt="">
                 @else
-                    <img src="{{ asset("logos/$foto") }}" alt="">
+                    @if (isset($doador))
+                        <img src="{{ asset("fotos/$foto") }}" alt="">
+                    @else
+                        <img src="{{ asset("logos/$foto") }}" alt="">
+                    @endif
                 @endif
             </a>
             <div class="menu_bar_info">
@@ -94,7 +98,7 @@
         <div class="slogan">
         </div>
     </header>
-    
+
     <div class="pesquisa">
         <h1 class="titulo">Confira nossas ONGs</h1>
         <form id="searchForm" method="get" action="{{ route('home') }}">

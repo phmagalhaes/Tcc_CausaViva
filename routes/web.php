@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoacaoController;
 use App\Http\Controllers\DoadorController;
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\OngController;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,11 @@ Route::prefix('ong')->group(function () {
     Route::post('/doacao', [DoacaoController::class, 'doacao'])->name('ong.doacao')->middleware('auth');
     Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
 });
+
+Route::get('/eventos', [EventoController::class, 'index'])->name('evento.index')->middleware('auth');
+// Route::prefix('evento')->group(function(){
+//     Route::get('/criar', [EventoController::class, 'create'])->name('evento.create')->middleware('auth');
+//     Route::post('/criar', [EventoController::class, 'store'])->name('evento.store')->middleware('auth');
+// });
 
 Route::get('/perfil', [AuthController::class, 'perfil'])->name('perfil')->middleware('auth');

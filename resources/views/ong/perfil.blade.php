@@ -7,9 +7,9 @@
     <title>Causa Viva - Perfil da ONG</title>
 
     <link rel="stylesheet" href="{{ asset('style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/assets/css/perfilONG.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/perfilONG.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/components/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/header.css')}}">
 
 
@@ -255,7 +255,7 @@
 
                         <button type="reset" id="cancelar" disabled>Cancelar</button>
 
-                        <a href="./criarEvento.html" class="addEventos">Adicione Eventos</a>
+                        <a href="{{ route('evento.create') }}" class="addEventos">Adicione Eventos</a>
                     </div>
 
                 </section>
