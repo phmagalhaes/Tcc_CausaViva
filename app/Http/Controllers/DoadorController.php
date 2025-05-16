@@ -112,7 +112,7 @@ class DoadorController extends Controller
 
         if ($doador->foto != null) {
             $imgAntiga = $doador->foto;
-            $path = public_path('fotos/' . $imgAntiga);
+            $path = public_path('uploads/perfil/' . $imgAntiga);
             if (file_exists($path)) {
                 unlink($path);
             }
@@ -121,7 +121,7 @@ class DoadorController extends Controller
         $image = $request->foto;
         $extension = $image->extension();
         $hash = md5($image->getClientOriginalName() . strtotime('now')) . "." . $extension;
-        $image->move(public_path('fotos'), $hash);
+        $image->move(public_path('uploads/perfil/'), $hash);
         $doador->foto = $hash;
 
         $doador->update();
@@ -136,7 +136,7 @@ class DoadorController extends Controller
 
         if ($doador->foto != null) {
             $imgAntiga = $doador->foto;
-            $path = public_path('fotos/' . $imgAntiga);
+            $path = public_path('uploads/perfil/' . $imgAntiga);
             if (file_exists($path)) {
                 unlink($path);
             }

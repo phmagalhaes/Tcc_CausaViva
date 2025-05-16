@@ -14,6 +14,16 @@
 </head>
 
 <body>
+    @if (session('errorMsg'))
+        <div class="msg">
+            <p class="errorMsg">{{ session('errorMsg') }}</p>
+        </div>
+    @elseif (session('sucMsg'))
+        <div class="msg">
+            <p class="sucMsg">{{ session('sucMsg') }}</p>
+        </div>
+    @endif
+
     @php
         if (Auth()->user()->tipo == 'doador') {
             $nome = explode(' ', Auth()->user()->nome);
@@ -39,7 +49,11 @@
                 @if ($foto == 'assets/images/menu/account.png')
                     <img src="{{ asset($foto) }}" alt="">
                 @else
-                    <img src="{{ asset("logos/$foto") }}" alt="">
+                    @if (isset($doador))
+                        <img src="{{ asset("uploads/perfil/$foto") }}" alt="">
+                    @else
+                        <img src="{{ asset("uploads/logos/$foto") }}" alt="">
+                    @endif
                 @endif
             </a>
             <div class="menu_bar_info">
@@ -54,7 +68,7 @@
             </div>
         </a>
         <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
-        <a href="">
+        <a href="{{ route('evento.index') }}">
             <div class="menu_bar_flag">
                 <img src="{{ asset('assets/images/menu/flag.png') }}" alt="">
                 <p>Confira todos os Eventos</p>
@@ -74,7 +88,7 @@
     <header>
         <div class="main">
             <a href="{{ route('index') }}">
-                <img src="../assets/images/Logo Header.png" alt="logo" />
+                <img src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
             </a>
             <div class="text">
                 <nav>
@@ -92,7 +106,6 @@
         </div>
         <div class="slogan">
         </div>
-
     </header>
 
     <div class="meta">
@@ -102,7 +115,7 @@
         <h1 class="titulo">{{ $ong->nome }}</h1>
         <p>Criado por {{ $ong->donos }}</p>
         <div class="meta-img">
-            <img src="{{ asset('logos/' . $ong->logo) }}" class="imgprincipal">
+            <img src="{{ asset('uploads/logos/' . $ong->logo) }}" class="imgprincipal">
             <div class="buttoneinfo">
                 <div class="infometa">
                     @php

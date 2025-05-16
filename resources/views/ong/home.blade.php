@@ -16,6 +16,16 @@
 </head>
 
 <body>
+    @if (session('errorMsg'))
+        <div class="msg">
+            <p class="errorMsg">{{ session('errorMsg') }}</p>
+        </div>
+    @elseif (session('sucMsg'))
+        <div class="msg">
+            <p class="sucMsg">{{ session('sucMsg') }}</p>
+        </div>
+    @endif
+
     @php
         if (Auth()->user()->tipo == 'doador') {
             $nome = explode(' ', Auth()->user()->nome);
@@ -42,9 +52,9 @@
                     <img src="{{ asset($foto) }}" alt="">
                 @else
                     @if (isset($doador))
-                        <img src="{{ asset("fotos/$foto") }}" alt="">
+                        <img src="{{ asset("uploads/perfil/$foto") }}" alt="">
                     @else
-                        <img src="{{ asset("logos/$foto") }}" alt="">
+                        <img src="{{ asset("uploads/logos/$foto") }}" alt="">
                     @endif
                 @endif
             </a>
@@ -60,7 +70,7 @@
             </div>
         </a>
         <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
-        <a href="">
+        <a href="{{ route('evento.index') }}">
             <div class="menu_bar_flag">
                 <img src="{{ asset('assets/images/menu/flag.png') }}" alt="">
                 <p>Confira todos os Eventos</p>
@@ -76,16 +86,17 @@
     </div>
 
     <div class="overlay" id="overlay"></div>
+
     <header>
         <div class="main">
             <a href="{{ route('index') }}">
-                <img src="../assets/images/Logo Header.png" alt="logo" />
+                <img src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
             </a>
             <div class="text">
                 <nav>
                     <p class="linkPerfil">Olá <strong>{{ $nome }}</strong></p>
                 </nav>
-                <div class="menu">
+                <div class="menu" id="menu">
                     <div class="menu_icon open" id="menu_icon">
                         <div class="barra" id="barra1"></div>
                         <div class="barra" id="barra2"></div>
@@ -135,7 +146,7 @@
 
                         <div class="card" id="{{ $ong->id }}">
                             <div class="img">
-                                <img src="{{ asset('logos/' . $ong->logo) }}" alt="" />
+                                <img src="{{ asset('uploads/logos/' . $ong->logo) }}" alt="" />
                                 <p class="ong">{{ $ong->nome }}</p>
                             </div>
                             @if (strlen($ong->descricao) > 150)

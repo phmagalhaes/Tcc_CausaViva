@@ -50,7 +50,11 @@
                 @if ($foto == 'assets/images/menu/account.png')
                     <img src="{{ asset($foto) }}" alt="">
                 @else
-                    <img src="{{ asset("logos/$foto") }}" alt="">
+                    @if (isset($doador))
+                        <img src="{{ asset("uploads/perfil/$foto") }}" alt="">
+                    @else
+                        <img src="{{ asset("uploads/logos/$foto") }}" alt="">
+                    @endif
                 @endif
             </a>
             <div class="menu_bar_info">
@@ -65,7 +69,7 @@
             </div>
         </a>
         <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
-        <a href="">
+        <a href="{{ route('evento.index') }}">
             <div class="menu_bar_flag">
                 <img src="{{ asset('assets/images/menu/flag.png') }}" alt="">
                 <p>Confira todos os Eventos</p>
@@ -85,7 +89,7 @@
     <header>
         <div class="main">
             <a href="{{ route('index') }}">
-                <img src="../assets/images/Logo Header.png" alt="logo" />
+                <img src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
             </a>
             <div class="text">
                 <nav>

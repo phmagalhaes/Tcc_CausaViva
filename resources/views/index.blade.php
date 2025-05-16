@@ -184,7 +184,7 @@
                     @endphp
                     <div class="card" id="{{ $ong->id }}">
                         <div class="img">
-                            <img src="{{ asset('logos/' . $ong->logo) }}" alt="" />
+                            <img src="{{ asset('uploads/logos/' . $ong->logo) }}" alt="" />
 
                             <p class="ong">{{ $ong->nome }}</p>
                         </div>

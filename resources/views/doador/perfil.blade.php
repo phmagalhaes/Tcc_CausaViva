@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('style.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/perfilDOADOR.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/components/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
 
 
@@ -54,9 +54,9 @@
                     <img src="{{ asset($foto) }}" alt="">
                 @else
                     @if (isset($doador))
-                        <img src="{{ asset("fotos/$foto") }}" alt="">
+                        <img src="{{ asset("uploads/perfil/$foto") }}" alt="">
                     @else
-                        <img src="{{ asset("logos/$foto") }}" alt="">
+                        <img src="{{ asset("uploads/logos/$foto") }}" alt="">
                     @endif
                 @endif
             </a>
@@ -72,7 +72,7 @@
             </div>
         </a>
         <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
-        <a href="">
+        <a href="{{ route('evento.index') }}">
             <div class="menu_bar_flag">
                 <img src="{{ asset('assets/images/menu/flag.png') }}" alt="">
                 <p>Confira todos os Eventos</p>
@@ -92,7 +92,7 @@
     <header>
         <div class="main">
             <a href="{{ route('index') }}">
-                <img src="../assets/images/Logo Header.png" alt="logo" />
+                <img src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
             </a>
             <div class="text">
                 <nav>
@@ -170,7 +170,7 @@
                     @if ($user->foto == null)
                         <img src="{{ asset('assets/images/perfil/foto_user.svg') }}" alt="Foto de perfil" />
                     @else
-                        <img src="{{ asset('fotos/' . $user->foto) }}" alt="Foto de perfil" />
+                        <img src="{{ asset('uploads/perfil/' . $user->foto) }}" alt="Foto de perfil" />
                     @endif
                 </div>
 
@@ -274,9 +274,9 @@
             @endif
 
             <div class="button-event">
-                <a href="./pesquisaEvento.html" id="">Ver mais eventos</a>
+                <a href="{{ route('evento.index') }}" id="">Ver mais eventos</a>
                 <!--ROTA PARA A PÁGINA DE EVENTOS-->
-                <a href="./pesquisaCausa.html" id="">Ver mais ONG´s</a> <!--ROTA PARA A PÁGINA DAS ONGS-->
+                <a href="{{ route('home')}}" id="">Ver mais ONG´s</a> <!--ROTA PARA A PÁGINA DAS ONGS-->
             </div>
     </main>
     <footer>

@@ -14,7 +14,6 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/home', [OngController::class, 'home'])->middleware('auth')->name('home');
 
 Route::prefix('doador')->group(function () {
     Route::get('/cadastro', [DoadorController::class, 'create'])->name('doador.create');
@@ -25,6 +24,7 @@ Route::prefix('doador')->group(function () {
     Route::get('/delete/img', [DoadorController::class, 'removeimg'])->name('doador.removeimg')->middleware('auth');
 });
 
+Route::get('/ongs', [OngController::class, 'home'])->middleware('auth')->name('home');
 Route::prefix('ong')->group(function () {
     Route::get('/cadastro', [OngController::class, 'create'])->name('ong.create');
     Route::post('/cadastro', [OngController::class, 'store'])->name('ong.store');

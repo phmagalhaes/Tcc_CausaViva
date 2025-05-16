@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/perfilONG.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/components/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components/header.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
 
 
     <script src="{{ asset('/assets/js/perfilONG.js') }}" defer></script>
@@ -38,7 +38,7 @@
                     @php
                         $clientId = env('MP_CLIENT_ID');
                         $redirectUri = env('MP_REDIRECT_URI');
-                        $ongId = $user->id; 
+                        $ongId = $user->id;
                         $url = "https://auth.mercadopago.com.br/authorization?response_type=code&client_id={$clientId}&redirect_uri={$redirectUri}&state={$ongId}";
                     @endphp
                     <a href="{{ $url }}" class="botao">Cadastrar</a>
@@ -82,7 +82,11 @@
                 @if ($foto == 'assets/images/menu/account.png')
                     <img src="{{ asset($foto) }}" alt="">
                 @else
-                    <img src="{{ asset("logos/$foto") }}" alt="">
+                    @if (isset($doador))
+                        <img src="{{ asset("uploads/perfil/$foto") }}" alt="">
+                    @else
+                        <img src="{{ asset("uploads/logos/$foto") }}" alt="">
+                    @endif
                 @endif
             </a>
             <div class="menu_bar_info">
@@ -97,7 +101,7 @@
             </div>
         </a>
         <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
-        <a href="">
+        <a href="{{ route('evento.index') }}">
             <div class="menu_bar_flag">
                 <img src="{{ asset('assets/images/menu/flag.png') }}" alt="">
                 <p>Confira todos os Eventos</p>
@@ -117,7 +121,7 @@
     <header>
         <div class="main">
             <a href="{{ route('index') }}">
-                <img src="../assets/images/Logo Header.png" alt="logo" />
+                <img src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
             </a>
             <div class="text">
                 <nav>
@@ -135,7 +139,6 @@
         </div>
         <div class="slogan">
         </div>
-
     </header>
 
 
@@ -174,8 +177,9 @@
                             }
                         @endphp
 
-                        <input class="input" type="text" name="meta_financeira" placeholder="Sua meta financeira"
-                            value="{{ formatarMeta($user->meta_financeira) }}" id="metaFinanceira" disabled />
+                        <input class="input" type="text" name="meta_financeira"
+                            placeholder="Sua meta financeira" value="{{ formatarMeta($user->meta_financeira) }}"
+                            id="metaFinanceira" disabled />
                     </div>
 
                     @if ($user->tipo_documento == 'CPF')
