@@ -24,4 +24,9 @@ class Evento extends Model
         'horario_fim',
         'quantidade_pessoas'
     ];
+
+    public function ong()
+    {
+        return $this->belongsTo(Ong::class, 'id_ong');
+    }
 }

@@ -40,9 +40,10 @@ Route::prefix('ong')->group(function () {
 });
 
 Route::get('/eventos', [EventoController::class, 'index'])->name('evento.index')->middleware('auth');
-// Route::prefix('evento')->group(function(){
-//     Route::get('/criar', [EventoController::class, 'create'])->name('evento.create')->middleware('auth');
-//     Route::post('/criar', [EventoController::class, 'store'])->name('evento.store')->middleware('auth');
-// });
+Route::prefix('evento')->group(function(){
+    Route::get('/criar', [EventoController::class, 'create'])->name('evento.create')->middleware('auth');
+    Route::post('/criar', [EventoController::class, 'store'])->name('evento.store')->middleware('auth');
+    Route::get('/{id}', [EventoController::class, 'show'])->name('evento.show')->middleware('auth');
+});
 
 Route::get('/perfil', [AuthController::class, 'perfil'])->name('perfil')->middleware('auth');

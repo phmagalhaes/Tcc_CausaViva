@@ -25,4 +25,9 @@ class Ong extends Model
         'necessidades',
         'descricao',
     ];
+
+    public function eventos()
+    {
+        return $this->hasMany(Evento::class);
+    }
 }

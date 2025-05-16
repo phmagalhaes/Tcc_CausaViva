@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script src="{{ asset('assets/js/redirect.js') }}" defer></script>
+    <script src="{{ asset('assets/js/search.js') }}" defer></script>
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>
 </head>
 
@@ -138,10 +139,15 @@
                     @foreach ($ongs as $ong)
                         @php
                             $doacoes = App\Models\Doacao::where('id_ong', $ong->id)->get();
-                            $valor = $doacoes->sum('valor');
-                            $total = $ong->meta_financeira
-                                ? round((100 * $valor) / $ong->meta_financeira / 10) * 10
-                                : 0;
+                            $total = 0;
+                            $pessoas = 0;
+                            foreach ($doacoes as $doacao) {
+                                $total += $doacao->valor;
+                                $pessoas += 1;
+                            }
+                            $porcentagem = 100 * $total;
+                            $porcentagem /= $ong->meta_financeira;
+                            $porcentagem = ceil($porcentagem);
                         @endphp
 
                         <div class="card" id="{{ $ong->id }}">
@@ -155,12 +161,16 @@
                                 <p class="description">{{ $ong->descricao }}</p>
                             @endif
                             <div class="meta">
-                                <div class="grafico">
-                                    <div class="total{{ $total }}"></div>
+                                <div class="grafico" style="border: 1px solid var(--verde)">
+                                    @if ($porcentagem <= 100)
+                                        <div class="total" style="width: {{ $porcentagem }}%;"></div>
+                                    @else
+                                        <div class="total" style="width: 100%;"></div>
+                                    @endif
                                 </div>
                                 <div class="legenda">
-                                    <p>{{ $total }}%</p>
-                                    <p>R${{ $valor }} Arrecadados</p>
+                                    <p><strong>{{ $porcentagem }}%</strong> da meta alcançada</p>
+                                    <p><strong>R${{ $total }}</strong> Arrecadados</p>
                                 </div>
                             </div>
                             <div class="bottom">

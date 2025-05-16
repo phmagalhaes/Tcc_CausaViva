@@ -10,9 +10,55 @@ use Illuminate\Support\Facades\Validator;
 
 class EventoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('eventos.index');
+        $causas = [
+            'Direitos Humanos e Sociais',
+            'Meio Ambiente',
+            'Saúde e Bem-Estar',
+            'Educação e Cultura',
+            'Proteção Animal'
+        ];
+
+        $busca = $request->get('evento');
+        $filtroCausa = $request->get('causa');
+
+        $eventosPorCausa = [];
+
+        if ($filtroCausa) {
+            // Filtra eventos onde a ONG tem a causa desejada
+            $query = Evento::whereHas('ong', function ($q) use ($filtroCausa) {
+                $q->where('causa', $filtroCausa);
+            });
+
+            if ($busca) {
+                $query->where('nome', 'like', '%' . $busca . '%');
+            }
+
+            $eventos = $query->with('ong')->get();
+            $eventosPorCausa[$filtroCausa] = $eventos;
+        } else {
+            // Agrupa todos os eventos por causa da ONG
+            foreach ($causas as $causa) {
+                $query = Evento::whereHas('ong', function ($q) use ($causa) {
+                    $q->where('causa', $causa);
+                });
+
+                if ($busca) {
+                    $query->where('nome', 'like', '%' . $busca . '%');
+                }
+
+                $eventos = $query->with('ong')->get();
+                $eventosPorCausa[$causa] = $eventos;
+            }
+        }
+
+        return view('eventos.index', [
+            'causas' => $causas,
+            'eventosPorCausa' => $eventosPorCausa,
+            'busca' => $busca,
+            'searchCausa' => $filtroCausa
+        ]);
     }
 
     public function create()
@@ -31,7 +77,7 @@ class EventoController extends Controller
         if ($validator->fails()) {
             return redirect('/evento/criar')->with('errorMsg', $validator->errors()->first());
         }
-        
+
         $image = $request->foto;
         $extension = $image->extension();
         $hash = md5($image->getClientOriginalName() . strtotime('now')) . "." . $extension;

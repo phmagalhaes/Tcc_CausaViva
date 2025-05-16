@@ -266,7 +266,7 @@
             </form>
             <section class="fotoPerfil">
                 <div class="img">
-                    <img src="{{ asset('logos/' . $user->logo) }}" alt="Foto de perfil" />
+                    <img src="{{ asset('uploads/logos/' . $user->logo) }}" alt="Foto de perfil" />
                 </div>
 
                 <form action="{{ route('ong.updateimg') }}" class="buttons" method="POST"
@@ -299,7 +299,7 @@
                                             <img src="{{ asset('assets/images/icons/delete.svg') }}" alt="delete">
                                         </button>
                                     </form>
-                                    <img src="{{ asset('galeria/' . $foto->caminho) }}"
+                                    <img src="{{ asset('uploads/galeria/' . $foto->caminho) }}"
                                         alt="galeria{{ $foto->id }}">
                                 </div>
                             @endforeach

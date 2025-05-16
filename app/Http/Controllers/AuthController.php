@@ -22,17 +22,17 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->senha, $user->senha)) {
-            return redirect('/login')->with('errorMsg', 'Email ou senha incorretos');
+            return redirect(route('login'))->with('errorMsg', 'Email ou senha incorretos');
         }
 
         Auth::login($user);
-        return redirect('/home');
+        return redirect(route('home'));
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect(route('login'));
     }
 
     // public function perfil()
