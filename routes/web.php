@@ -6,6 +6,7 @@ use App\Http\Controllers\DoadorController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\OngController;
+use App\Http\Controllers\PresencaEventoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [OngController::class, 'index'])->name('index');
@@ -43,6 +44,8 @@ Route::get('/eventos', [EventoController::class, 'index'])->name('evento.index')
 Route::prefix('evento')->group(function(){
     Route::get('/criar', [EventoController::class, 'create'])->name('evento.create')->middleware('auth');
     Route::post('/criar', [EventoController::class, 'store'])->name('evento.store')->middleware('auth');
+    Route::post('/confirmar_presenca/{id}', [PresencaEventoController::class, 'confirmar_presenca'])->name('evento.confirmar_presenca')->middleware('auth');
+    Route::post('/cancelar_presenca/{id}', [PresencaEventoController::class, 'cancelar_presenca'])->name('evento.cancelar_presenca')->middleware('auth');
     Route::get('/{id}', [EventoController::class, 'show'])->name('evento.show')->middleware('auth');
 });
 

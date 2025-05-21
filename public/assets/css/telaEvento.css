@@ -1,0 +1,364 @@
+body {
+    background-color: var(--offWhite);
+}
+
+/*- - - - - - - - - - conteúdo - - - - - - - - - -*/
+
+.pesquisa{
+    padding: 5px 0;
+    position: relative;
+}
+.setaVoltar{
+    width: 50px;
+    left: 50px;
+    top: 30px;
+    position: absolute;
+}
+.pesquisa .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.sub-main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--bege);
+    width: 100%;
+    height: auto;
+    padding: 40px;
+}
+.sub-main .titulo {
+    display: flex;
+    flex-direction: column;
+    font-size: 50px;
+    color: var(--azulEscuro);
+}
+.subtitulo-p {
+    font-size: 20px;
+    color: var(--azulClaro);
+    margin: 10px
+}
+.subtitulo-p .subtitulo-b {
+    font-style: oblique;
+}
+.conteudo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.itens-direita {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.itens-esquerda{
+    padding: 20px 0px 0px 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.descricao {
+    background-color: var(--begeClaro);
+    width: 800px;
+    padding: 30px;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+.informacoes {
+    background-color: var(--begeClaro);
+    width: 800px;
+    height: auto;
+    padding: 30px;
+    font-size: 22px;
+}
+.informacoes .programacao,
+.informacoes .horario {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+}
+.informacoes .local {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    margin: 20px
+}
+.itens-direita .foto-dog {
+    width: 70%
+}
+.botao {
+    font-size: 25px;
+    margin-top: 30px;
+    background-color: var(--verdeNeon);
+    color: var(--offWhite);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 70%;
+    height: 60px;
+    transition: background-color 0.3s ease;
+}
+.botao:hover {
+    background-color: var(--verde);
+}
+
+/*- - - - - - - - - - responsividade - - - - - - - - - -*/
+
+@media (max-width:1565px) {
+    .itens-esquerda{
+        padding: 20px 10px 0px 30px;
+    }
+    .itens-direita .foto-dog {
+        width: 90%
+    }
+    .botao {
+        font-size: 25px;
+        width: 90%;
+        height: 60px;
+    }
+}
+@media (max-width:1500px) {
+    .descricao {
+        width: 700px;
+        padding: 30px;
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    .informacoes {
+        width: 700px;
+        font-size: 20px;
+    }
+}
+@media (max-width:1350px) {
+    .setaVoltar{
+        width: 40px;
+    }
+}
+@media (max-width:1300px) {
+    .itens-direita .foto-dog {
+        width: 95%
+    }
+    .botao {
+        font-size: 25px;
+        width: 95%;
+        height: 60px;
+    }
+    .descricao {
+        width: 600px;
+        padding: 30px;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .informacoes {
+        width: 600px;
+        font-size: 18px;
+    }
+    .informacoes .local {
+        font-size: 22px;
+    }
+}
+@media (max-width:1250px) {
+    .itens-esquerda{
+        padding: 20px 15px 0px 15px;
+    }
+}
+@media (max-width:1150px) {
+    .botao {
+        font-size: 22px;
+    }
+    .descricao {
+        width: 500px;
+        padding: 30px;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    .informacoes {
+        width: 500px;
+        font-size: 16px;
+    }
+    .informacoes .local {
+        font-size: 20px;
+    }
+}
+@media (max-width:1050px) {
+    .informacoes .local {
+        font-size: 18px;
+    }
+    .botao {
+        font-size: 20px;
+        height: 50px;
+    }
+}
+@media (max-width:1000px) {
+    .conteudo {
+        flex-direction: column;
+    }
+    .descricao {
+        width: 700px;
+        padding: 30px;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .informacoes {
+        width: 700px;
+        font-size: 20px;
+    }
+    .itens-direita .foto-dog {
+        width: 76%
+    }
+    .botao {
+        font-size: 25px;
+        width: 76%;
+        height: 60px;
+    }
+}
+@media (max-width:950px) {
+    .setaVoltar{
+        width: 35px;
+    }
+    .sub-main .titulo {
+        font-size: 42px;
+    }
+}
+@media (max-width:800px) {
+    .descricao {
+        width: 600px;
+        padding: 30px;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .informacoes {
+        width: 600px;
+        font-size: 20px;
+    }
+}
+@media (max-width:700px) {
+    .sub-main .titulo {
+        font-size: 35px;
+    }
+    .subtitulo-p {
+        font-size: 18px;
+    }
+    .descricao {
+        width: 550px;
+        font-size: 20px;
+    }
+    .informacoes {
+        width: 550px;
+        font-size: 20px;
+    }
+    .botao {
+        font-size: 23px;
+        width: 76%;
+        height: 50px;
+    }
+}
+@media (max-width:650px) {
+    .setaVoltar{
+        width: 30px;
+        left: 30px;
+    }
+    .descricao {
+        width: 480px;
+        font-size: 18px;
+    }
+    .informacoes {
+        width: 480px;
+        font-size: 18px;
+    }
+}
+@media (max-width:600px) {
+    .descricao {
+        width: 400px;
+        font-size: 16px;
+    }
+    .informacoes {
+        width: 400px;
+        font-size: 16px;
+    }
+    .informacoes .local {
+        font-size: 16px;
+    }
+    .botao {
+        font-size: 20px;
+        height: 50px;
+    }
+}
+@media (max-width:500px) {
+    .setaVoltar{
+        width: 25px;
+        left: 25px;
+    }
+    .descricao {
+        width: 350px;
+        font-size: 16px;
+    }
+    .informacoes {
+        width: 350px;
+        font-size: 16px;
+    }
+    .botao {
+        font-size: 18px;
+        height: 40px;
+    }
+}
+@media (max-width:450px) {
+    .sub-main{
+        padding: 20px 0;
+    }
+    .sub-main .titulo {
+        font-size: 32px;
+    }
+    .subtitulo-p {
+        font-size: 15px;
+    }
+}
+@media (max-width:400px) {
+    .descricao {
+        width: 300px;
+        font-size: 15px;
+    }
+    .informacoes {
+        width: 300px;
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+@media (max-width:350px) {
+    .descricao {
+        width: 250px;
+        font-size: 13px;
+    }
+    .informacoes .local {
+        font-size: 15px;
+    }
+    .informacoes {
+        width: 250px;
+        font-size: 13px;
+        padding: 10px;
+    }
+    .botao {
+        font-size: 17px;
+        height: 35px;
+    }
+    .sub-main .titulo {
+        font-size: 28px;
+    }
+    .subtitulo-p {
+        font-size: 14px;
+    }
+}
+@media (max-width:320px) {
+    .main{
+        margin: 70px 0;
+    }
+    .setaVoltar{
+        width: 25px;
+        left: 20px;
+        top: 22px;
+    }
+}

@@ -253,7 +253,7 @@
                     <thead>
                         <tr>
                             <th class="first" scope="col">Data</th>
-                            <th scope="col">ONG</th>
+                            <th scope="col">Evento</th>
                             <th scope="col">Local</th>
                         </tr>
                     </thead>
@@ -265,7 +265,7 @@
                                     $evento = App\Models\Evento::where('id', $evento->id_evento)->first();
                                     $ong = App\Models\Ong::where('id', $evento->id_ong)->first();
                                 @endphp
-                                <td>{{ $ong->nome }} - {{ $ong->causa }}</td>
+                                <td>{{ $evento->nome }} - {{ $ong->nome }}</td>
                                 <td class="td2">{{ $evento->cidade }} - {{ $evento->estado }}</td>
                             </tr>
                         @endforeach

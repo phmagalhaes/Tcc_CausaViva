@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doador;
 use App\Models\Evento;
 use App\Models\Ong;
 use Illuminate\Http\Request;
@@ -109,5 +110,11 @@ class EventoController extends Controller
         $evento->save();
 
         return redirect(route('ong.perfil'))->with('sucMsg', 'Evento Criado com Sucesso');
+    }
+
+    public function show($id)
+    {
+        $evento = Evento::where('id', $id)->first();
+        return view('eventos.show', ["evento" => $evento]);
     }
 }

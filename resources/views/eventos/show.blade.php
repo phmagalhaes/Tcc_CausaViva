@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="br">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="{{ asset('style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/eventos.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/components/menu.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/telaEvento.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/components/footer.css') }}">
+    <link rel="icon" type="image/png" href="../assetstr/icons/iconsite.png">
     <script src="{{ asset('/assets/js/menu.js') }}" defer></script>
-    <script src="{{ asset('assets/js/search.js') }}" defer></script>
-
-    <title>Causa Viva - Nossos Eventos</title>
+    <title>Causa Viva - Evento</title>
 </head>
 
 <body>
@@ -113,49 +110,73 @@
     </header>
 
     <div class="pesquisa">
-        <h1 class="titulo">Eventos</h1>
-        <form id="searchForm" action="{{ route('evento.index') }}" method="get">
-            <input value="{{ $busca }}" name="evento" class="input-pesquisa" type="search" id="searchInput"
-                placeholder="Pesquise por um evento">
-            <select name="causa" class="select-pesquisa" id="categoriaSelect">
-                <option value="">Selecione uma causa</option>
-                @foreach ($causas as $causa)
-                    <option value="{{ $causa }}" {{ $searchCausa == $causa ? 'selected' : '' }}>
-                        {{ $causa }}
-                    </option>
-                @endforeach
-            </select>
-        </form>
-    </div>
-    @foreach ($eventosPorCausa as $causa => $eventos)
-        <div class="eventos">
-            <h1 class="titulo2">{{ $causa }}</h1>
-            <div class="cards">
-                @if ($eventos->isEmpty())
-                    <p>Parece que ainda não existem eventos cadastrados para essa causa :(</p>
-                @endif
-                @foreach ($eventos as $evento)
-                    <div class="card">
-                        <div class="img">
-                            <img src="{{ asset('/uploads/eventos/' . $evento->foto) }}" alt="" />
+        <a href="{{ route('evento.index') }}">
+            <img class="setaVoltar" src="../assets/images/iconeVoltar.png" alt="">
+        </a>
+        <div class="main">
+
+            <div class="sub-main">
+                <h1 class="titulo">{{ $evento->nome }}</h1>
+                @php
+                    $ong = App\Models\Ong::where('id', $evento->id)->first();
+                @endphp
+                <h2 class="subtitulo-p">Organizado por <b class="subtitulo-b">{{ $ong->nome }}</b></h2>
+                <div class="conteudo">
+                    <div class="itens-esquerda">
+                        <div class="descricao">
+                            <p>
+                                {{ $evento->descricao }}
+                            </p>
                         </div>
-                        <h1 class="titulo-card">{{ $evento->nome }}</h1>
-                        <p>
-                            {{ $evento->descricao }}
-                        </p>
-                        <div class="card_icons">
-                            <p class="local">{{ $evento->cidade }}, {{ $evento->estado }}</p>
-                            <p class="data">Dia {{ \Carbon\Carbon::parse($evento->data)->translatedFormat('d/m') }}</p>
+                        <div class="informacoes">
+                            <b class="local">{{ $evento->rua }}, {{ $evento->numero }} - {{ $evento->bairro }},
+                                {{ $evento->cidade }} - {{ $evento->estado }}</b>
+                            <div class="programacao">
+                                <p>Programado para o dia:</p>
+                                <b>{{ date_format(new DateTime($evento->data), 'd/m') }}</b>
+                            </div>
+                            <div class="horario">
+                                <p>Horário marcado:</p>
+                                <b>{{ date_format(new DateTime($evento->horario_inicio), 'H:i') }} -
+                                    {{ date_format(new DateTime($evento->horario_fim), 'H:i') }}</b>
+                            </div>
                         </div>
-                        <a href="{{ route('evento.show', ["id" => $evento->id]) }}" class="card-bottom">
-                            <h2>Conferir Evento</h2>
-                        </a>
                     </div>
-                @endforeach
+                    @php
+                        use Illuminate\Support\Facades\Auth;
+                        use App\Models\Doador;
+                        use App\Models\PresencaEvento;
+
+                        $doador = Doador::where('email', Auth::user()->email)->first();
+                        $presenca = false;
+
+                        if ($doador) {
+                            $presenca = PresencaEvento::where('id_doador', $doador->id)
+                                ->where('id_evento', $evento->id)
+                                ->exists();
+                        }
+
+                        $rotaPresenca = $presenca
+                            ? route('evento.cancelar_presenca', ['id' => $evento->id])
+                            : route('evento.confirmar_presenca', ['id' => $evento->id]);
+                    @endphp
+
+                    <form class="itens-direita" action="{{ $rotaPresenca }}" method="POST">
+                        @csrf
+                        @method('POST')
+
+                        <img class="foto-dog" src="{{ asset('uploads/eventos/' . $evento->foto) }}">
+
+                        @if ($presenca)
+                            <button type="submit" class="botao">Cancelar Presença</button>
+                        @else
+                            <button type="submit" class="botao">Confirmar Presença</button>
+                        @endif
+                    </form>
+                </div>
             </div>
         </div>
-    @endforeach
-
+    </div>
     <footer>
         <div class="links">
             <div>
@@ -181,14 +202,5 @@
         </div>
     </footer>
 </body>
-
-<script>
-    cards = document.getElementsByClassName('card-bottom');
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].addEventListener('click', function() {
-            window.location.href = 'telaEvento.html';
-        });
-    }
-</script>
 
 </html>
