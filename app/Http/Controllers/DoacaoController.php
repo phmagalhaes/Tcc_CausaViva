@@ -26,7 +26,7 @@ class DoacaoController extends Controller
         $ong = Ong::findOrFail($request->id_ong);
 
         if (!$ong->access_token) {
-            return response()->json(['error' => 'A ONG não está conectada ao Mercado Pago'], 400);
+            return redirect(route('ong.pagamento'))->with('errorMsg', 'Essa ONG não está conectada com o mercado pago :(');
         }
 
         $response = Http::withToken($ong->access_token)
@@ -43,6 +43,9 @@ class DoacaoController extends Controller
         $data = $response->json();
 
         if ($response->successful() && isset($data['status']) && $data['status'] == 'pending') {
+            $ticketUrl = $data['point_of_interaction']['transaction_data']['ticket_url'];
+            return redirect()->away($ticketUrl);
+
             $doacao = Doacao::create([
                 'id_doador' => $request->id_doador,
                 'id_ong' => $request->id_ong,
@@ -58,7 +61,11 @@ class DoacaoController extends Controller
             return Response::make($imagemQrCode, 200, ['Content-Type' => 'image/png']);
         }
 
-        dd($response->json());
-        return response()->json(['error' => 'Falha ao gerar o pagamento'], 500);
+        return redirect(route('ong.pagamento'))->with('errorMsg', 'Falha ao gerar pagamento :(');
+    }
+
+    public function pagamento_finalizado()
+    {
+        
     }
 }

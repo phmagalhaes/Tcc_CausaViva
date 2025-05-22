@@ -36,6 +36,7 @@ Route::prefix('ong')->group(function () {
     Route::delete('/galeria/delete/{id}', [GaleriaController::class, 'delete'])->name('ong.removeimg')->middleware('auth');
     Route::get('/oauth/callback', [OngController::class, 'callback']);
     Route::get('/pagamento/{id?}', [DoacaoController::class, 'pagamento'])->name('ong.pagamento')->middleware('auth');
+    Route::get('/pagamento/finalizado', [DoacaoController::class, 'pagamento_finalizado'])->name('ong.pagamento_finalizado')->middleware('auth');
     Route::post('/doacao', [DoacaoController::class, 'doacao'])->name('ong.doacao')->middleware('auth');
     Route::get('/estatisticas', [OngController::class, 'estatisticas'])->name('ong.estatisticas')->middleware('auth');
     Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
