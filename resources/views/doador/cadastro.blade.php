@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <x-msg />
+
     <!-- form do cadastro da ONG -->
     <a href="{{ route('index') }}">
         <img src="../assets/images/logoAuth.png" alt="logoAuth" />
@@ -85,9 +87,6 @@
             </section>
             <section class="aMedia">
                 <a href="{{ route('login') }}">Voltar para o login</a>
-                @if (session('errorMsg'))
-                    <p class="errorMsg">{{ session('errorMsg') }}</p>
-                @endif
             </section>
         </form>
     </main>

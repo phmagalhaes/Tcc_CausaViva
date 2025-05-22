@@ -14,99 +14,9 @@
 </head>
 
 <body>
-    @if (session('errorMsg'))
-        <div class="msg">
-            <p class="errorMsg">{{ session('errorMsg') }}</p>
-        </div>
-    @elseif (session('sucMsg'))
-        <div class="msg">
-            <p class="sucMsg">{{ session('sucMsg') }}</p>
-        </div>
-    @endif
+    <x-msg />
 
-    @php
-        if (Auth()->user()->tipo == 'doador') {
-            $nome = explode(' ', Auth()->user()->nome);
-            $nome = $nome[0];
-        } else {
-            $nome = Auth()->user()->nome;
-        }
-    @endphp
-    <div class="menu_bar" id="menu_bar">
-        <div class="above">
-            <a href="{{ route(Auth()->user()->tipo . '.perfil') }}" class="icon">
-                @php
-                    $doador = App\Models\Doador::where('email', Auth()->user()->email)->first();
-                    $ongUser = App\Models\Ong::where('email', Auth()->user()->email)->first();
-                    if (isset($doador) && $doador->foto != null) {
-                        $foto = $doador->foto;
-                    } elseif (isset($doador) && $doador->foto == null) {
-                        $foto = 'assets/images/menu/account.png';
-                    } elseif (isset($ongUser)) {
-                        $foto = $ongUser->logo;
-                    }
-                @endphp
-                @if ($foto == 'assets/images/menu/account.png')
-                    <img src="{{ asset($foto) }}" alt="">
-                @else
-                    @if (isset($doador))
-                        <img src="{{ asset("uploads/perfil/$foto") }}" alt="">
-                    @else
-                        <img src="{{ asset("uploads/logos/$foto") }}" alt="">
-                    @endif
-                @endif
-            </a>
-            <div class="menu_bar_info">
-                <h2>{{ $nome }}</h2>
-                <h4>Clique no ícone para acessar o perfil</h4>
-            </div>
-        </div>
-        <a href="{{ route('home') }}">
-            <div class="menu_bar_planet">
-                <img src="{{ asset('assets/images/menu/planet.png') }}" class="menu_bar_icon">
-                <p>Confira todas as Ongs</p>
-            </div>
-        </a>
-        <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
-        <a href="{{ route('evento.index') }}">
-            <div class="menu_bar_flag">
-                <img src="{{ asset('assets/images/menu/flag.png') }}" alt="">
-                <p>Confira todos os Eventos</p>
-            </div>
-        </a>
-        <hr style="margin: 0px 20px 0 20px; filter: opacity(30%);">
-        <a href="{{ route('logout') }}">
-            <div class="menu_bar_desconect">
-                <img src="{{ asset('assets/images/menu/cloud.png') }}" alt="">
-                <p>Desconectar-se</p>
-            </div>
-        </a>
-    </div>
-
-    <div class="overlay" id="overlay"></div>
-
-    <header>
-        <div class="main">
-            <a href="{{ route('index') }}">
-                <img src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
-            </a>
-            <div class="text">
-                <nav>
-                    <p class="linkPerfil">Olá <strong>{{ $nome }}</strong></p>
-                </nav>
-                <div class="menu" id="menu">
-                    <div class="menu_icon open" id="menu_icon">
-                        <div class="barra" id="barra1"></div>
-                        <div class="barra" id="barra2"></div>
-                        <div class="barra" id="barra3"></div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="slogan">
-        </div>
-    </header>
+    <x-header />
 
     <div class="meta">
         <a href="{{ route('home') }}">
@@ -232,30 +142,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="links">
-            <div>
-                <p class="link_title">Seja Bem Vindo</p>
-                <a href="#sobre">Descubra quem somos</a>
-                <a href="#sobre">De uma olhada nas nossas redes sociais :</a>
-            </div>
-            <div>
-                <p class="link_title">Ajuda</p>
-                <a href="#sobre">Fale conosco</a>
-                <a href="#sobre">Central de Suporte</a>
-            </div>
-            <div>
-                <p class="link_title">Contato</p>
-                <a href="#sobre">Instagram</a>
-                <a href="#sobre">Whatsapp</a>
-            </div>
-        </div>
-        <div class="logo">
-            <p>Conectando corações</p>
-            <img src="../assets/images/logo footer.png" alt="logo">
-            <p>transformando vidas</p>
-        </div>
-    </footer>
+    <x-footer />
 </body>
 
 </html>

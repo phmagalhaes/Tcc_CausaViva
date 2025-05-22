@@ -12,11 +12,7 @@
 </head>
 
 <body>
-    @if (session('errorMsg'))
-        <div class="errorMsg_modal">
-            <p>{{ session('errorMsg') }}</p>
-        </div>
-    @endif
+    <x-msg />
 
     <!-- form do cadastro da ONG -->
     <a href="{{ route('index') }}">

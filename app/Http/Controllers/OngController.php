@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doacao;
 use App\Models\Galeria;
 use App\Models\Ong;
 use App\Models\User;
@@ -152,7 +153,7 @@ class OngController extends Controller
     {
         $user = Ong::where("email", Auth::user()->email)->first();
         $fotos = Galeria::where("id_ong", $user->id)->get();
-        return view("ong.perfil", ["user" => $user, "fotos"=> $fotos]);
+        return view("ong.perfil", ["user" => $user, "fotos" => $fotos]);
     }
 
     public function update(Request $request)
@@ -246,5 +247,23 @@ class OngController extends Controller
         $ong->save();
 
         return redirect(route('ong.perfil'))->with('sucMsg', 'Conectado com sucesso!');
+    }
+
+    public function estatisticas(Request $request)
+    {
+        $authUser = Ong::where('email', Auth::user()->email)->first();
+        $ong = Ong::findOrFail($authUser->id);
+
+        $doacoes = Doacao::where('id_ong', $ong->id)->get();
+        $total = 0;
+        foreach ($doacoes as $doacao) {
+            $total += $doacao->valor;
+        }
+
+        $doacoes = Doacao::where('id_ong', $ong->id)
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+
+        return view('ong.estatisticas', ['total' => $total, 'doacoes' => $doacoes]);
     }
 }

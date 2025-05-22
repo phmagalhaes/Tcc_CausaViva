@@ -12,11 +12,7 @@
 </head>
 
 <body>
-    @if (session('sucMsg'))
-        <div class="sucMsg">
-            <p>{{ session('sucMsg') }}</p>
-        </div>
-    @endif
+    <x-msg />
 
     <a href="{{ route('index') }}">
         <img src="../assets/images/logoAuth.png" alt="logoAuth" class="logo">
