@@ -56,6 +56,15 @@
                     <p class="errorMsg">{{ session('errorMsg') }}</p>
                 @endif
             </form>
+
+            <div class="links">
+                <div class="login_link">
+                    <a href="../pages/cadastroDOADOR.html">Faça seu cadastro</a>
+                </div>
+                <div class="login_link">
+                    <a href="../pages/cadastroONG.html">Faça o cadastro da sua ONG</a>
+                </div>
+            </div>
         </div>
     </main>
 </body>
