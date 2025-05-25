@@ -40,6 +40,7 @@
   align-items: center;
   justify-content: center;
   z-index: 100000;
+  top: 0;
 }
 .msg p{
   width: 50%;

@@ -249,6 +249,9 @@ section div {
    height: 200px;
    border-radius: 50%;
    overflow: hidden;
+   display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .fotoPerfil .img img{
   height: 100%;

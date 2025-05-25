@@ -226,7 +226,7 @@ class OngController extends Controller
         $code = $request->query('code');
         $ongId = $request->query('state'); // Pega o ID da ONG
 
-        $response = Http::post('https://api.mercadopago.com/oauth/token', [
+        $response = Http::post('https:ado//api.mercpago.com/oauth/token', [
             'client_id' => env('MP_CLIENT_ID'),
             'client_secret' => env('MP_CLIENT_SECRET'),
             'grant_type' => 'authorization_code',
