@@ -83,7 +83,7 @@
 <header>
     <div class="main">
         <a href="{{ route('index') }}">
-            <img src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
+            <img class="logoHeader" src="{{ asset('assets/images/Logo Header.png') }}" alt="logo" />
         </a>
         <div class="text">
             <nav>

@@ -139,12 +139,24 @@ footer .links div a {
     footer .logo p {
         font-size: 20px;
     }
+    footer .links{
+        flex-direction: column;
+        gap: 20px;
+    }
+    footer .links div{
+        width: 100%;
+        gap: 5px;
+    }
+    footer .links div a{
+        width: 105%;
+    }
 }
 
 @media (max-width: 400px) {
     .logoFooter {
         width: 50px;
     }
+    
 }
 
 @media (max-width: 385px) {
@@ -154,10 +166,6 @@ footer .links div a {
 
     footer .links div a {
         font-size: 13px;
-    }
-
-    footer .links {
-        width: 90%;
     }
 
     footer .logo {

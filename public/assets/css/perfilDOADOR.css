@@ -391,497 +391,392 @@ footer .links div a {
 
 /* /- - - - - - - - - - responsividade - - - - - - - - - -/ */
 
-@media (max-width: 1440px) {
+@media (max-width:1440px) {
     .first {
-        width: 350px;
+      width: 350px
     }
-}
-@media (max-width: 1200px) {
+    .titulo{
+      padding-bottom: 30px;
+    }
+  }
+  
+  @media (max-width:1200px) {
     .first {
-        width: 300px;
+      width: 300px
     }
-}
-@media (max-width: 1100px) {
+    .editarPerfil button {
+      width: 40%;
+    }
+  }
+  
+  @media (max-width:1100px) {
     .first {
-        width: 250px;
+      width: 250px
     }
-}
-@media (max-width: 1024px) {
-    header main {
-        padding: 5px 50px;
+    .fotoPerfil img{
+      width: 90%;
     }
-
-    header nav {
-        gap: 40px;
-    }
-
-    .logoHeader {
-        width: 100px;
-    }
-
-    header nav a {
-        font-size: 18px;
-    }
-
+  }
+  
+  @media (max-width:1024px) {
     section {
-        width: 32%;
+      width: 45%;
     }
-
+  
     label {
-        font-size: 20px;
+      font-size: 20px;
     }
-
+  
     input,
     select {
-        font-size: 19px;
+      font-size: 19px;
     }
-
+  
     .titulo {
-        font-size: 42px;
+      font-size: 42px;
     }
+  
     .tituloContribuicao {
-        font-size: 42px;
+      font-size: 42px;
     }
-
+  
     .editarPerfil {
-        gap: 20px;
+      gap: 20px;
     }
-
-    .editarPerfil button {
-        width: 40%;
-    }
-
     .fotoPerfil {
-        gap: 10px;
-        width: 25%;
+      gap: 10px;
+      width: 20%;
     }
-
+    
     .fotoPerfil img {
-        width: 75%;
+      width: 90%;
     }
-
+  
     .link_title {
-        font-size: 24px;
+      font-size: 24px;
     }
-
-    footer .links div a {
-        font-size: 20px;
-    }
-
-    footer .links div {
-        width: 30%;
-    }
-
-    footer .logo p {
-        font-size: 40px;
-    }
-
-    .logoFooter {
-        width: 120px;
-    }
+  
     table {
-        font-size: 20px;
+      font-size: 20px;
     }
+  
     .doacoes h1 {
-        font-size: 23px;
+      font-size: 23px;
     }
+  
     .titulo3 {
-        font-size: 23px;
+      font-size: 23px;
     }
+  
     .button-event {
-        gap: 20px;
-        width: 85%;
-        margin: 50px 0 50px 50px;
-
-        a {
-            font-size: 17px;
-            width: 170px;
-        }
+      gap: 20px;
+      width: 85%;
+      margin: 50px 0 50px 50px;
+  
+      a {
+        font-size: 17px;
+        width: 170px;
+      }
     }
+  
     .first {
-        width: 200px;
+      width: 200px
     }
+  
     .divisoria {
-        font-size: 14px;
+      font-size: 14px;
     }
+  
     .titulo2 {
-        font-size: 25px;
+      font-size: 25px;
     }
-}
-
-@media (max-width: 890px) {
+  }
+  
+  @media (max-width:890px) {
     form {
-        flex-direction: column;
-        align-items: center;
+      flex-direction: column;
+      align-items: center;
     }
-
+  
     section {
-        width: 70%;
+      width: 70%;
     }
-
+  
     .editarPerfil {
-        order: 1;
+      gap: 30px;
     }
-
-    .editarPerfil {
-        gap: 30px;
-    }
-
+  
     .section1 {
-        margin-top: 20px;
-        order: 2;
+      margin-top: 20px;
     }
-
+  
     .section2 {
-        margin-top: 5px;
-        order: 3;
+      margin-top: 5px;
     }
-
+  
     .fotoPerfil {
-        gap: 20px;
-        width: 35%;
-        margin: 0;
+      gap: 20px;
+      width: 35%;
+      margin: 0;
     }
-
+  
     .fotoPerfil img {
-        width: 68%;
+      width: 68%;
     }
+  
     table {
-        font-size: 18px;
+      font-size: 18px;
     }
+  
     .first {
-        width: 150px;
+      width: 150px
     }
-}
-
-@media (max-width: 817px) {
+  }
+  
+  @media (max-width:817px) {
     .link_title {
-        font-size: 20px;
+      font-size: 20px;
     }
-
-    footer .links div a {
-        font-size: 18px;
-    }
-
-    footer .logo p {
-        font-size: 34px;
-    }
-
-    .logoFooter {
-        width: 100px;
-    }
-}
-
-@media (max-width: 700px) {
-    header main {
-        padding: 5px 30px;
-    }
-
-    header nav {
-        gap: 30px;
-    }
-
-    .logoHeader {
-        width: 90px;
-    }
-
-    header nav a {
-        font-size: 16px;
-    }
-
+    
+  }
+  
+  @media (max-width:700px) {
     .titulo {
-        font-size: 35px;
+      font-size: 35px;
     }
+  
     .tituloContribuicao {
-        font-size: 35px;
+      font-size: 35px;
     }
-
+  
     .fotoPerfil img {
-        width: 85%;
+      width: 85%;
     }
-
-    .logoFooter {
-        width: 90px;
+  
+    .titulo2 {
+      font-size: 20px;
+      width: 450px;
+      text-align: center;
     }
-
-    footer .logo {
-        width: 90%;
+  
+    td {
+      width: 400px;
+    }
+  
+    .td2 {
+      width: 200px;
+    }
+  }
+  @media (max-width:670px) {
+    .editarPerfil button {
+      width: 50%;
+    }
+    .editarPerfil {
+      gap: 20px;
+    }
+  }
+  @media (max-width:617px) {
+    .fotoPerfil {
+      gap: 20px;
+      width: 40%;
+      margin: 0;
+    }
+  
+    .myDoacao {
+      font-size: 25px;
+    }
+  
+    .button-event {
+      gap: 20px;
+      width: 85%;
+      margin: 50px 0 50px 0px;
+      align-items: center;
+      justify-content: center;
+  
+      a {
+        font-size: 17px;
+        width: 170px;
+      }
+    }
+    .editarPerfil button {
+      font-size: 15px;
+    }
+  }
+  @media (max-width:600px) {
+    .form{
+      flex-direction: column;
+      align-items: center;
+    }
+    .editarPerfil {
+      order: 1;
+    }
+    .form form:first-child{
+      order: 2;
+    }
+    form{
+      width: 100%;
+    }
+    section{
+      width: 80%;
+    }
+  }
+  @media (max-width:550px) {
+    .fotoPerfil img {
+      width: 95%;
+    }
+  
+    section .buttons {
+      margin-top: 8px;
+    }
+  
+    section div {
+      margin-top: 15px;
+    }
+  
+    .editarPerfil {
+      margin-top: 40px;
+    }
+  }
+  
+  @media (max-width:450px) {
+    .buttons button {
+      font-size: 15px;
+      width: 120px;
+    }
+  
+    .fotoPerfil {
+      width: 50%;
+    }
+  
+    section {
+      width: 80%;
+    }
+  
+    label {
+      font-size: 17px;
+    }
+  
+    input {
+      font-size: 16px;
+    }
+  
+    .editarPerfil {
+      flex-wrap: wrap;
+    }
+  
+    #editar {
+      width: 75%;
+    }
+    #salvar {
+      width: 65%;
+    }
+    #cancelar {
+      width: 65%;
     }
     .titulo2 {
-        font-size: 20px;
-        width: 450px;
+      width: 350px;
+    }
+  
+    .doacoes h1 {
+      font-size: 18px;
+    }
+  
+    table {
+      font-size: 15px;
+    }
+  
+    .myDoacao {
+      font-size: 20px;
+    }
+  
+    .button-event {
+      gap: 20px;
+      width: 85%;
+      margin: 50px 0 50px 0px;
+  
+      a {
+        font-size: 14px;
+        width: 140px;
+      }
+    }
+    .estatisticas p{
+        margin: 20px;
         text-align: center;
     }
-    td {
-        width: 400px;
-    }
-    .td2 {
-        width: 200px;
-    }
-}
-
-@media (max-width: 617px) {
-    .fotoPerfil {
-        gap: 20px;
-        width: 40%;
-        margin: 0;
-    }
-
-    .logoFooter {
-        width: 80px;
-    }
-
-    footer .logo p {
-        font-size: 30px;
-    }
-    .myDoacao {
-        font-size: 25px;
-    }
-    .button-event {
-        gap: 20px;
-        width: 85%;
-        margin: 50px 0 50px 0px;
-        align-items: center;
-        justify-content: center;
-
-        a {
-            font-size: 17px;
-            width: 170px;
-        }
-    }
-}
-
-@media (max-width: 550px) {
-    .logoHeader {
-        width: 80px;
-    }
-
-    header nav a {
-        font-size: 15px;
-    }
-
-    header nav {
-        gap: 20px;
-    }
-
-    .fotoPerfil img {
-        width: 95%;
-    }
-
-    section .buttons {
-        margin-top: 8px;
-    }
-
-    section div {
-        margin-top: 15px;
-    }
-
-    .editarPerfil {
-        margin-top: 40px;
-    }
-
-    .link_title {
-        font-size: 17px;
-    }
-
-    footer .links div a {
-        font-size: 15px;
-    }
-
-    .logoFooter {
-        width: 70px;
-    }
-
-    footer .logo p {
-        font-size: 25px;
-    }
-}
-
-@media (max-width: 450px) {
-    header main {
-        padding: 5px 20px;
-    }
-
-    .buttons button {
-        font-size: 15px;
-        width: 120px;
-    }
-
-    .fotoPerfil {
-        width: 55%;
-    }
-
-    section {
-        width: 80%;
-    }
-
-    label {
-        font-size: 17px;
-    }
-
-    input {
-        font-size: 16px;
-    }
-
-    .editarPerfil button {
-        font-size: 17px;
-    }
-
-    .editarPerfil {
-        flex-wrap: wrap;
-    }
-
-    #editar {
-        width: 100%;
-    }
-
-    .logoFooter {
-        width: 60px;
-    }
-
-    footer .logo p {
-        font-size: 20px;
-    }
-    .titulo2 {
-        width: 350px;
-    }
-    .doacoes h1 {
-        font-size: 18px;
-    }
-    table {
-        font-size: 15px;
-    }
-    .myDoacao {
-        font-size: 20px;
-    }
-    .button-event {
-        gap: 20px;
-        width: 85%;
-        margin: 50px 0 50px 0px;
-
-        a {
-            font-size: 14px;
-            width: 140px;
-        }
-    }
-}
-
-@media (max-width: 400px) {
-    .logoHeader {
-        width: 70px;
-    }
-
-    header nav a {
-        font-size: 13px;
-    }
-
-    form {
-        padding: 40px 40px;
-    }
-
+  }
+  
+  @media (max-width:400px) {
     .titulo {
-        font-size: 30px;
+      font-size: 30px;
     }
+  
     .tituloContribuicao {
-        font-size: 30px;
+      font-size: 30px;
     }
-
-    .logoFooter {
-        width: 50px;
-    }
+  
     .first {
-        width: 60px;
+      width: 60px;
     }
+  
     td {
-        padding: 13px;
+      padding: 13px;
     }
-}
-
-@media (max-width: 385px) {
-    .link_title {
-        font-size: 15px;
+    .upload-label{
+      font-size: 12px;
     }
-
-    footer .links div a {
-        font-size: 13px;
-    }
-
-    footer .links {
-        width: 90%;
-    }
-
-    footer .logo {
-        width: 100%;
-    }
-
-    .logoFooter {
-        width: 50px;
-    }
+  }
+  
+  @media (max-width:385px) {
     .button-event {
-        gap: 20px;
-        width: 85%;
-        margin: 50px 0 50px 0px;
-        flex-direction: column;
-
-        a {
-            font-size: 14px;
-            width: 170px;
-        }
-    }
-}
-
-@media (max-width: 350px) {
-    header main {
-        padding: 5px 15px;
-    }
-
-    .link_title {
+      gap: 20px;
+      width: 85%;
+      margin: 50px 0 50px 0px;
+      flex-direction: column;
+  
+      a {
         font-size: 14px;
+        width: 170px;
+      }
     }
-
-    footer .links div a {
-        font-size: 12px;
+    section{
+      width: 70%;
     }
-
-    .logoFooter {
-        width: 40px;
-    }
-
-    footer .logo p {
-        font-size: 16px;
-    }
+  }
+  
+  @media (max-width:350px) {
     .titulo2 {
-        font-size: 17px;
+      font-size: 17px;
     }
-}
-
-@media (max-width: 325px) {
+  }
+  
+  @media (max-width:325px) {
     .titulo {
-        font-size: 25px;
+      font-size: 25px;
     }
+  
     .tituloContribuicao {
-        font-size: 24px;
+      font-size: 24px;
     }
-
+  
     section {
-        width: 95%;
+      width: 95%;
     }
-
+  
     label {
-        font-size: 15px;
+      font-size: 15px;
     }
-
+  
     input,
     select {
-        font-size: 16px;
-        height: 45px;
+      font-size: 16px;
+      height: 45px;
     }
-
+  
     .editarPerfil button {
-        font-size: 15px;
+      font-size: 15px;
     }
-
+  
     .editarPerfil {
-        margin-top: 30px;
+      margin-top: 30px;
     }
-}
+  }

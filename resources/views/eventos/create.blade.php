@@ -12,12 +12,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/components/header.css')}}">
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>
     <script src="{{ asset('assets/js/criarEvento.js') }}" defer></script>
+    <link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}">
 </head>
 
 <body>
     <x-msg />
 
-    <x-footer />
+    <x-header />
 
     <div class="title">
         <h1 class="titulo">Novo Evento</h1>

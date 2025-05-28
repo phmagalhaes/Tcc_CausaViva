@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/components/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
     <link rel="icon" type="image/png" href="./assetstr/icons/iconsite.png">
+    <link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}">
     <title>Causa Viva - ONG</title>
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>
 </head>

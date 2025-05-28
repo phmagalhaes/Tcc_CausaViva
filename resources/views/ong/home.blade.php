@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/menu.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
+    <link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}">
     <title>Causa Viva - Nossas ONG´s</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 

@@ -238,275 +238,194 @@ main .cards .card {
     gap: 5px;
 }
 
-/* - - - - - - - - - - - - - Rodapé - - - - - - - - - - - - - */
-
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: var(--verde);
-
-    margin-top: 150px;
-    padding: 20px;
-}
-footer .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: 2px solid var(--offWhite);
-    width: 80%;
-    padding-top: 40px;
-    margin-top: 40px;
-    gap: 10px;
-}
-footer .logo p {
-    color: var(--offWhite);
-    font-family: "MoonDance";
-    font-size: 50px;
-}
-footer .links {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-}
-.link_title {
-    font-weight: 600;
-    font-size: 28px;
-    color: var(--offWhite);
-}
-footer .links div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-    width: 20%;
-}
-footer .links div a {
-    font-size: 24px;
-    font-family: "Montserrat-Light";
-    text-decoration: none;
-    color: var(--offWhite);
-}
-
-@media (max-width: 1024px) {
-    .titulo {
-        font-size: 45px;
+@media (max-width:1024px) {
+    main .cards .card {
+        width: 28%;
+        min-width: 350px;
+        max-width: 350px;
+        height: 500px;
     }
-
-    .titulo2 {
-        font-size: 36px;
-        margin-left: 40px;
+    .card .img img {
+        width: 90%;
     }
-
-    .card {
-        background-color: var(--begeClaro);
-        border-radius: 20px;
-        height: 400px;
-        width: 300px;
-        border-radius: 20px 20px 20px 20px;
+    main .ongs .cards {
+        gap: 80px;
     }
-
-    .card p {
-        width: 260px;
-        color: var(--azulEscuro);
-        font-size: 15px;
-        margin: 0px;
+}
+@media (max-width:900px) {
+    main .cards .card {
+        width: 28%;
+        min-width: 320px;
+        max-width: 320px;
+        height: 480px;
     }
-
-    .card img {
-        border-radius: 20px 20px 0px 0px;
-        width: 100%;
+}
+@media (max-width:800px) {
+    .titulo{
+        font-size: 35px;
     }
-
-    .titulo-card {
+    .titulo2{
         font-size: 28px;
     }
-
-    .card-bottom {
-        background-color: var(--bege);
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 0px 0px 20px 20px;
-        transition: all 300ms ease;
-        color: var(--azulEscuro);
+    .input-pesquisa {
+        font-size: 19px;
+        width: 380px;
+        height: 50px;
     }
-
-    .card_icons {
-        width: 80%;
-        margin: 8px auto;
-    }
-
-    .card_icons p {
-        width: 80%;
-        font-size: 14px;
-    }
-
-    .local,
-    .data {
-        background-size: 20px 20px;
-        background-repeat: no-repeat;
-        background-position: left center;
-        padding-left: 20px;
-        color: rgb(130, 130, 130);
-    }
-
-    /* - - - - - - - - - - - - - - - - - - - - - - - - FOOTER - - - - - - - - - - - - - - - - - - - - - - - - */
-
-    footer .logo {
-        display: flex;
-        width: 80%;
-        padding-top: 40px;
-        margin-top: 40px;
-        gap: 10px;
-    }
-
-    footer .logo p {
-        font-size: 35px;
-        text-align: center;
-    }
-    footer .links div a {
-        font-size: 20px;
+    .select-pesquisa {
+        font-size: 17px;
+        width: 240px;
+        height: 50px;
     }
 }
-
-@media (max-width: 768px) {
-    header main {
-        padding: 5px 30px;
-        height: 110px;
-    }
-    header nav {
-        gap: 30px;
-    }
-    header nav a {
-        font-size: 18px;
-    }
-    header p {
-        font-size: 18px;
-    }
-
-    header img {
-        width: 100px;
-    }
-
-    header .foto {
-        width: 70px;
-    }
-
-    /* - - - - - - - - - - - - - - - - - - - - - - - - HEADER - - - - - - - - - - - - - - - - - - - - - - - - */
-
-    .input-pesquisa {
-        color: var(--verdeClaro);
-        font-size: 18px;
-        text-align: start;
-        width: 400px;
-        height: 50px;
-        border: 0px;
-        border-radius: 8px;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.09);
-        padding-left: 48px;
-    }
-
-    .pesquisa {
-        margin-top: 0px;
-    }
-
-    .titulo {
-        font-size: 35px;
-    }
-
-    .titulo2 {
+@media (max-width:700px) {
+    .titulo{
         font-size: 30px;
-        margin-top: 40px;
-        margin-left: 50px;
-        margin-bottom: 40px;
     }
-
-    .card {
-        background-color: var(--begeClaro);
-        border-radius: 20px;
-        height: auto;
-        max-width: 230px;
-        border-radius: 10px 10px 10px 10px;
+    .titulo2{
+        font-size: 23px;
     }
-
-    .card p {
+    .input-pesquisa {
+        font-size: 19px;
+        width: 350px;
+        height: 50px;
+    }
+    .select-pesquisa {
+        font-size: 17px;
+        width: 230px;
+        height: 50px;
+    }
+    main .cards .card {
+        width: 28%;
+        min-width: 300px;
+        max-width: 300px;
+        height: 450px;
+    }
+    main .ongs .cards {
+        gap: 50px;
+    }
+}
+@media (max-width:600px) {
+    .input-pesquisa {
+        font-size: 18px;
+        width: 300px;
+        height: 50px;
+    }
+    .select-pesquisa {
+        font-size: 16px;
         width: 200px;
-        color: var(--azulEscuro);
-        font-size: 12px;
-        margin: 5px;
+        height: 50px;
     }
-
-    .card img {
-        border-radius: 10px 10px 0px 0px;
-        width: 100%;
+}
+@media (max-width:550px) {
+    .titulo{
+        font-size: 26px;
     }
-
-    .titulo-card {
+    .titulo2{
         font-size: 20px;
     }
-
-    .card-bottom {
-        border-radius: 0px 0px 10px 10px;
-        width: 100%;
-        height: 100%;
+    .input-pesquisa {
+        font-size: 18px;
+        width: 250px;
+        height: 50px;
+        padding-left: 35px;
+        background-size: 30px;
     }
-
-    .card-bottom h2 {
+    .select-pesquisa {
+        font-size: 16px;
+        width: 150px;
+        height: 50px;
+    }
+}
+@media (max-width:500px) {
+    main .cards .card {
+        width: 28%;
+        min-width: 280px;
+        max-width: 280px;
+        height: 400px;
+    }
+}
+@media (max-width:450px) {
+    .titulo{
+        font-size: 25px;
+    }
+    .titulo2{
         font-size: 20px;
-        margin: 14px 0px 14px 0px;
     }
-
-    .card_icons {
-        width: 80%;
-        margin: 2px auto;
+    main{
+        padding: 0;
     }
-
-    .card_icons p {
-        width: 80%;
+    form{
+        text-align: center;
+    }
+    .input-pesquisa {
+        font-size: 18px;
+        width: 300px;
+        height: 50px;
+        padding-left: 35px;
+        background-size: 30px;
+    }
+    .select-pesquisa {
+        margin-top: 15px;
+        font-size: 16px;
+        width: 250px;
+        height: 50px;
+    }
+}
+@media (max-width:400px) {
+    .titulo{
+        font-size: 20px;
+    }
+    .titulo2{
+        font-size: 17px;
+    }
+    .input-pesquisa {
+        font-size: 15px;
+        width: 300px;
+        height: 40px;
+        padding-left: 35px;
+        background-size: 30px;
+    }
+    .select-pesquisa {
+        margin-top: 13px;
+        font-size: 16px;
+        width: 250px;
+        height: 40px;
+    }
+    main .cards .card {
+        width: 28%;
+        min-width: 250px;
+        max-width: 250px;
+        height: 380px;
+    }
+    .card .ong {
+        font-size: 15px;
+    }
+    .card .bottom {
         font-size: 10px;
     }
-
-    .local,
-    .data {
-        background-size: 18px 18px;
-        background-repeat: no-repeat;
-        background-position: left center;
-        padding-left: 20px;
-        color: rgb(130, 130, 130);
+    .meta .legenda {
+        font-size: 10px;
     }
-
-    /* - - - - - - - - - - - - - - - - - - - - - - - - FOOTER - - - - - - - - - - - - - - - - - - - - - - - - */
-
-    footer {
-        margin-top: 80px;
-        padding: 15px;
+    .card .description {
+        font-size: 11px;
     }
-    footer .logo {
-        width: 80%;
-        padding-top: 40px;
-        margin-top: 40px;
-        gap: 10px;
+    .meta .grafico {
+        height: 13px;
     }
-    footer .logo p {
-        font-size: 30px;
+}
+@media (max-width:320px) {
+    .input-pesquisa {
+        font-size: 15px;
+        width: 250px;
+        height: 40px;
+        padding-left: 35px;
+        background-size: 30px;
     }
-    .link_title {
-        font-weight: 600;
-        font-size: 20px;
-        color: var(--offWhite);
-    }
-    footer .links div a {
-        font-size: 20px;
-        font-family: "Montserrat-Light";
-        text-decoration: none;
-        color: var(--offWhite);
+    .select-pesquisa {
+        margin-top: 13px;
+        font-size: 16px;
+        width: 200px;
+        height: 40px;
     }
 }

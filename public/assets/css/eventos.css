@@ -199,11 +199,11 @@ select option {
         font-size: 30px;
     }
     .card-bottom {
-        height: 80px;
+        height: 70px;
         position: absolute;
     }
     .card-bottom h2 {
-        font-size: 30px;
+        font-size: 28px;
         margin: 20px
     }
 }
@@ -286,7 +286,8 @@ select option {
         font-size: 18px;
         width: 260px;
         height: 45px;
-        padding-left: 20px;
+        padding-left: 35px;
+        background-size: 30px;
     }
     .select-pesquisa {
         font-size: 18px;
@@ -328,7 +329,8 @@ select option {
         font-size: 17px;
         width: 350px;
         height: 40px;
-        padding-left: 20px;
+        padding-left: 35px;
+        background-size: 30px;
     }
     .select-pesquisa {
         margin-top: 20px;
@@ -377,7 +379,8 @@ select option {
         font-size: 17px;
         width: 320px;
         height: 40px;
-        padding-left: 20px;
+        padding-left: 35px;
+        background-size: 30px;
     }
     .select-pesquisa {
         margin-top: 20px;
@@ -401,7 +404,8 @@ select option {
         font-size: 15px;
         width: 280px;
         height: 40px;
-        padding-left: 20px;
+        padding-left: 35px;
+        background-size: 30px;
     }
     .select-pesquisa {
         margin-top: 20px;
@@ -437,7 +441,8 @@ select option {
         font-size: 15px;
         width: 250px;
         height: 40px;
-        padding-left: 20px;
+        padding-left: 35px;
+        background-size: 30px;
     }
     .select-pesquisa {
         margin-top: 20px;
