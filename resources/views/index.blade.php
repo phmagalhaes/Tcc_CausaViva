@@ -201,7 +201,7 @@
                                 <p>{{ $total }}%</p>
                                 <p>R${{ $valor }} Arrecadados</p>
                             </div>
-                        </div>+
+                        </div>
                         <div class="bottom">
                             <div class="cidade">
                                 <i class="fa-solid fa-location-dot"></i>

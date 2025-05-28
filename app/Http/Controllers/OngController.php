@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doacao;
+use App\Models\Evento;
 use App\Models\Galeria;
 use App\Models\Ong;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +20,15 @@ class OngController extends Controller
     public function show($id)
     {
         $ong = Ong::find($id);
-        return view('ong.show', ["ong" => $ong]);
+        $fotos = Galeria::where("id_ong", $ong->id)->get();
+
+        $now = Carbon::now()->format('Y-m-d H:i:s');
+        $eventos = Evento::where('id_ong', $ong->id)
+            ->whereRaw("STR_TO_DATE(CONCAT(data, ' ', horario_inicio), '%Y-%m-%d %H:%i:%s') > ?", [$now])
+            ->orderByRaw("STR_TO_DATE(CONCAT(data, ' ', horario_inicio), '%Y-%m-%d %H:%i:%s') ASC")
+            ->get();
+
+        return view('ong.show', ["ong" => $ong, "fotos" => $fotos, "eventos" => $eventos]);
     }
 
     public function store(Request $request)
