@@ -2,6 +2,9 @@ main {
   width: 100%;
   background-color: var(--offWhite);
 }
+
+/*- - - - - - - - - - conteúdo - - - - - - - - - -*/
+
 .banner {
   width: 100%;
   height: 100vh;
@@ -82,6 +85,13 @@ main {
     width: 50%;
     font-family: "Montserrat-Light";
 }
+.banner .text .content2{
+  font-size: 30px;
+  color: var(--begeClaro);
+  width: 50%;
+  font-family: "Montserrat-Light";
+  display: none;
+}
 .banner .text a{
     font-size: 20px;
     color: var(--begeClaro);
@@ -130,13 +140,11 @@ main {
     justify-content: center;
     gap: 50px;
 }
-
 .color{
   width: 100%;
   height: 40px;
   background-color: var(--begeClaro);
 }
-
 .doar{
   width: 90%;
   margin: 0 auto;
@@ -174,7 +182,6 @@ main {
   background-color: var(--begeClaro);
   padding: 30px 0 60px 0;
 }
-
 .causas .title {
   width: 90%;
   font-size: 28px;
@@ -182,7 +189,6 @@ main {
   margin: 20px auto;
   color: var(--azulEscuro);
 }
-
 .causas_cards {
   display: flex;
   align-items: center;
@@ -191,7 +197,6 @@ main {
   gap: 15px;
   margin: 0 auto;
 }
-
 .causa_card {
   width: 18%;
   height: 300px;
@@ -199,7 +204,6 @@ main {
   perspective: 1000px;
   min-width: 150px;
 }
-
 .card_inner {
   width: 100%;
   height: 100%;
@@ -207,25 +211,21 @@ main {
   transform-style: preserve-3d;
   transition: transform 0.6s;
 }
-
 .causa_card:hover .card_inner {
   transform: rotateY(180deg);
 }
-
 .face {
   width: 100%;
   height: 100%;
   position: absolute;
   backface-visibility: hidden;
 }
-
 .face.front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
-
 .face.back {
   background-color: var(--verdeEscuro);
   color: var(--bege);
@@ -237,17 +237,14 @@ main {
   border-radius: 10px;
   transform: rotateY(180deg);
 }
-
 .descricao {
   font-size: 16px;
   font-weight: 500;
   cursor: default;
 }
-
 .descricao2{
   display: none;
 }
-
 .causa_card .causa {
   position: absolute;
   bottom: -10px;
@@ -262,7 +259,6 @@ main {
   width: max-content;
   text-align: center;
 }
-
 main .ongs{
   width: 90%;
   margin: 0 auto;
@@ -276,11 +272,12 @@ main .ongs .title{
 main .ongs .cards {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 40px;
   width: 100%;
-  padding: 20px;
-  overflow-x: auto;
+  margin-top: 20px;
 }
 main .cards .card {
   width: 28%;
@@ -316,10 +313,9 @@ main .cards .card {
   justify-content: center;
   position: relative;
   cursor: pointer;
-  max-height: 280px;
 }
 .card .img img {
-  height: 100%;
+  width: 100%;
 }
 .card .ong {
   position: absolute;
@@ -397,57 +393,7 @@ main .cards .card {
   gap: 5px;
 }
 
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: var(--verde);
-
-  padding: 20px;
-}
-footer .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 2px solid var(--offWhite);
-  width: 80%;
-  padding-top: 40px;
-  margin-top: 40px;
-  gap: 10px;
-}
-footer .logo p {
-  color: var(--offWhite);
-  font-family: "MoonDance";
-  font-size: 50px;
-}
-footer .links{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
-}
-.link_title{
-  font-weight: 600;
-  font-size: 28px;
-  color: var(--offWhite);
-}
-footer .links div{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  gap: 15px;
-  width: 20%;
-}
-footer .links div a{
-  font-size: 24px;
-  font-family: 'Montserrat-Light';
-  text-decoration: none;
-  color: var(--offWhite);
-}
+/*- - - - - - - - - - responsividade - - - - - - - - - -*/
 
 @media (max-width:1440px) {
   .banner .text a{
@@ -458,7 +404,6 @@ footer .links div a{
     overflow-x: scroll;
   }
 }
-
 @media (max-width:1390px) {
   .banner .text a{
     font-size: 15px;
@@ -486,14 +431,7 @@ footer .links div a{
   .doar .content img{
     width: 45%;
   }
-  .link_title{
-    font-size: 26px;
-  }
-  footer .links div a{
-    font-size: 23px;
-  }
 }
-
 @media (max-width:1339px) {
   .banner .text .title{
     font-size: 34px;
@@ -513,14 +451,7 @@ footer .links div a{
   .doar .content img{
     width: 48%;
   } 
-  .link_title{
-    font-size: 25px;
-  }
-  footer .links div a{
-    font-size: 22px;
-  }
 }
-
 @media (max-width:1290px) {
   .banner .text .title{
     font-size: 33px;
@@ -538,7 +469,6 @@ footer .links div a{
     font-size: 24px;
   }
 }
-
 @media (max-width:1280px) {
   .banner .text a{
     font-size: 13.5px;
@@ -546,11 +476,7 @@ footer .links div a{
   .banner .logo{
     width: 100px;
   }
-  footer .links div a{
-    font-size: 21px;
-  }
 }
-
 @media (max-width:1265px) {
   .banner .text a{
     font-size: 13.2px;
@@ -569,7 +495,6 @@ footer .links div a{
     height: 460px;
   }
 }
-
 @media (max-width:1251px) {
   .links2{
     flex-direction: column;
@@ -603,7 +528,6 @@ footer .links div a{
     display: block;
   }
 }
-
 @media (max-width:1161px) {
   .descricao {
     font-size: 13px;
@@ -632,20 +556,7 @@ footer .links div a{
   main .ongs .title{
     font-size: 27px;
   }
-  .link_title{
-    font-size: 22px;
-  }
-  footer .links div a{
-    font-size: 19px;
-  }
-  footer .logo p {
-    font-size: 45px;
-  }
-  footer .logo img{
-    width: 130px;
-  }
 }
-
 @media (max-width:1117px) {
   .banner .text a{
     font-size: 16px;
@@ -693,30 +604,15 @@ footer .links div a{
     min-width: 300px;
     height: 450px;
   }
-  footer .logo p {
-    font-size: 40px;
-  }
-  footer .logo img{
-    width: 120px;
-  }
-  .link_title{
-    font-size: 20px;
-  }
 }
-
 @media (max-width:1088px) {
   main .cards .card {
     min-width: 290px;
-  }
-  footer .links div a{
-    font-size: 19px;
-    font-weight: 100;
   }
   .descricao {
     font-size: 12px;
   }
 }
-
 @media (max-width:1055px) {
   main .cards .card {
     min-width: 280px;
@@ -725,19 +621,14 @@ footer .links div a{
     font-size: 11px;
   }
 }
-
 @media (max-width:1022px) {
   main .cards .card {
     min-width: 270px;
-  }
-  footer .links div{
-    width: 25%;
   }
   .links2 a{
     width: 72%;
   }
 }
-
 @media (max-width:996px) {
   .banner .text a{
     font-size: 15px;
@@ -764,7 +655,6 @@ footer .links div a{
     font-size: 11px;
   }
 }
-
 @media (max-width:955px) {
   .banner .text .title{
     font-size: 28px;
@@ -779,7 +669,6 @@ footer .links div a{
     min-width: 250px;
   }
 }
-
 @media (max-width:938px) {
   .banner .text .title{
     font-size: 26px;
@@ -844,12 +733,6 @@ footer .links div a{
     min-width: 240px;
     height: 410px;
   }
-  footer .logo p {
-    font-size: 38px;
-  }
-  footer .logo img{
-    width: 110px;
-  }
 }
 @media (max-width:902px) {
   .links2 a{
@@ -904,24 +787,175 @@ footer .links div a{
     width: 100%;
     height: 90%;
   }
-  .link_title{
-    font-size: 18px;
-  }
-  footer .links div{
-    width: 30%;
-  }
-  footer .links div a{
-    font-size: 17px;
-  }
-  footer .logo p {
-    font-size: 36px;
-  }
-  footer .logo img{
-    width: 100px;
-  }
 }
 @media (max-width:808px) {
   .banner .text a{
     font-size: 12px;
+  }
+}
+@media (max-width:746px) {
+  .links2 a{
+    width: 88%;
+  }
+  .banner .text .title{
+    font-size: 22px;
+  }
+  .banner .text .subtitle{
+    font-size: 13px;
+  }
+  .banner .text .content{
+    font-size: 18px;
+  }
+  .banner .logo{
+    width: 75px;
+  }
+  .meta .grafico {
+    height: 12px;
+  }
+}
+@media (max-width:732px) {
+  .banner .text a{
+    padding: 10px 20px;
+  }
+}
+@media (max-width:660px) {
+  .banner .text .title{
+    font-size: 20px;
+  }
+  .banner .text .subtitle{
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .banner .text .content{
+    font-size: 16px;
+  }
+  .banner .logo{
+    width: 65px;
+  }
+  .banner .text a{
+    padding: 10px 15px;
+  }
+}
+@media (max-width:629px) {
+  .banner .text a{
+    padding: 10px 10px;
+  }
+}
+@media (max-width:600px) {
+  .doar .content{
+    flex-direction: column;
+    align-items: center;
+  }
+  .doar .content p{
+    width: 100%;
+    text-align: justify;
+  }
+  .doar .content img{
+    width: 70%;
+    margin-top: 20px;
+  }
+}
+@media (max-width:545px) {
+  .banner .text{
+    width: 75%;
+    
+    gap: 40px;
+    padding: 0 60px;
+}
+  .banner .text .title{
+    font-size: 18px;
+  }
+  .banner .text .subtitle{
+    font-size: 14px;
+  }
+  .banner .text .content{
+    font-size: 15px;
+  }
+  .banner .text a{
+    padding: 10px 10px;
+  }
+}
+@media (max-width:500px) {
+  .banner .text .title{
+    font-size: 17px;
+  }
+  .banner .text .subtitle{
+    font-size: 13px;
+  }
+  .banner .text .content{
+    font-size: 14px;
+  }
+}
+@media (max-width:428px) {
+  .banner .text{
+    padding: 0 30px;
+  }
+  .banner .text .title{
+    width: 53%;
+  }
+  .banner .text .subtitle{
+    width: 53%;
+  }
+  .banner .text .content{
+    display: none;
+  }
+  .banner .text .content2{
+    font-size: 14px;
+    display: block;
+    width: 53%;
+}
+.card .description{
+  padding: 18px;
+}
+  .doar .content img{
+    width: 80%;
+  }
+}
+@media (max-width:390px) {
+  .banner .text .title{
+    font-size: 15px;
+  }
+  .banner .text .subtitle{
+    font-size: 11px;
+  }
+  .banner .text .content{
+    font-size: 12px;
+  }
+  .doar .content p{
+    font-size: 14px;
+  }
+  .banner .text a{
+    font-size: 10px;
+  }
+}
+@media (max-width:350px) {
+  .banner .text .title{
+    font-size: 13px;
+  }
+  .banner .text .subtitle{
+    font-size: 9px;
+  }
+  .banner .text .content{
+    font-size: 10px;
+  }
+  .banner .text a{
+    font-size: 11px;
+  }
+}
+@media (max-width:320px) {
+  .banner .text .title{
+    font-size: 12px;
+  }
+  .banner .text .subtitle{
+    font-size: 10px;
+  }
+  .banner .text .content{
+    font-size: 8px;
+  }
+  main .cards .card {
+    height: 380px;
+  }
+  .banner .text a{
+    font-size: 8px;
   }
 }

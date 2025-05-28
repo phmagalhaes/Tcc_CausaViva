@@ -18,7 +18,7 @@
     </div>
     <div class="logo">
         <p>Conectando corações</p>
-        <img src="{{ asset('assets/images/logo footer.png') }}" alt="logo" />
+        <img class="logoFooter" src="{{ asset('./assets/images/logo footer.png') }}" alt="logo" />
         <p>transformando vidas</p>
     </div>
 </footer>

@@ -7,6 +7,7 @@
     <title>Causa Viva</title>
     <link rel="stylesheet" href="{{ asset('./style.css') }}" />
     <link rel="stylesheet" href="{{ asset('./assets/css/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}" />
     <script src="{{ asset('assets/js/index.js') }}" defer></script>
     <script src="{{ asset('assets/js/redirect.js') }}" defer></script>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -26,6 +27,8 @@
                     que desejam fortalecer causas sociais, garantindo eficiência e
                     credibilidade na gestão de recursos.
                 </p>
+                <p class="content2">Nossa plataforma conecta organizações e doadores, fortalecendo causas sociais com
+                    eficiência e credibilidade na gestão de recursos.</p>
                 <div class="links2">
                     @guest
                         <a href="{{ route('login') }}">Sua Boa Ação Começa Aqui!</a>
@@ -219,30 +222,8 @@
 
         </section>
     </main>
-    <footer>
-        <div class="links">
-            <div>
-                <p class="link_title">Seja Bem Vindo</p>
-                <a href="#sobre">Descubra quem somos</a>
-                <a href="#sobre">De uma olhada nas nossas redes sociais :</a>
-            </div>
-            <div>
-                <p class="link_title">Ajuda</p>
-                <a href="#sobre">Fale conosco</a>
-                <a href="#sobre">Central de Suporte</a>
-            </div>
-            <div>
-                <p class="link_title">Contato</p>
-                <a href="#sobre">Instagram</a>
-                <a href="#sobre">Whatsapp</a>
-            </div>
-        </div>
-        <div class="logo">
-            <p>Conectando corações</p>
-            <img src="./assets/images/logo footer.png" alt="logo" />
-            <p>transformando vidas</p>
-        </div>
-    </footer>
+    
+    <x-footer />
 </body>
 
 </html>
