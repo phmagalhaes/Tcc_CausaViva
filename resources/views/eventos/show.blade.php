@@ -30,7 +30,7 @@
                 @php
                     $ong = App\Models\Ong::where('id', $evento->id)->first();
                 @endphp
-                <p class="subtitulo-p">Organizado por <b class="subtitulo-b">{{ $ong->nome }}</b></p>
+                <p class="subtitulo-p">Organizado por <a style="color: var(--azul)" href="{{ route('ong.show', ["id" => $ong->id])}}" class="subtitulo-b"><strong>{{ $ong->nome }}</strong></a></p>
                 <div class="conteudo">
                     <div class="itens-esquerda">
                         <div class="descricao">

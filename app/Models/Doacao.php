@@ -11,6 +11,8 @@ class Doacao extends Model
     protected $fillable = [
         "id_ong",
         "id_doador",
-        "valor"
+        "valor",
+        "link",
+        "status"
     ];
 }

@@ -50,7 +50,8 @@ class DoacaoController extends Controller
                 'id_ong' => $request->id_ong,
                 'valor' => $request->valor,
                 'pix_qr_code' => $data['point_of_interaction']['transaction_data']['qr_code_base64'],
-                'status' => 'pendente'
+                'status' => 'pendente',
+                'link' => $ticketUrl
             ]);
             $qrcode = $data['point_of_interaction']['transaction_data']['qr_code_base64'];
             // Decodifica a string Base64 para binário
