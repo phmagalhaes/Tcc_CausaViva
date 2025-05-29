@@ -12,6 +12,8 @@
     <link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}">
     <title>Causa Viva - ONG</title>
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
@@ -79,71 +81,68 @@
     <h1 class="titulo2">Sobre Nós</h1>
     <div class="sobre_ong">
         <h2>{{ $ong->descricao }}</h2>
-        <img src="../assets/images/sobreong.png" class="sobre_ong_img">
+        @if (!$fotos->isEmpty())
+            <div class="carousel-container">
+                <div class="carousel-slide" id="carousel">
+                    @foreach ($fotos as $foto)
+                        <img src="{{ asset("/uploads/galeria/$foto->caminho") }}" alt="fotom {{ $loop->index + 1 }}">
+                    @endforeach
+                </div>
+        @endif
+
+    </div>
     </div>
     <div class="eventos">
-        <h1 class="titulo2">Eventos Registrados</h1>
+        <h1 class="titulo2">Próximos eventos</h1>
         <div class="cards">
-            <div class="card">
-                <div class="img">
-                    <img src="../assets/images/bazar.png" alt="" />
-                </div>
-                <h1 class="titulo-card">Bazar Solidário</h1>
-                <p>
-                    Venha, traga seu brinquedo e nos
-                    ajude a reunir o maior número
-                    possível de brinquedos para os
-                    nossos amiguinhos.
-                </p>
-                <div class="card_icons">
-                    <p class="local">São paulo, SP</p>
-                    <p class="data">Dia 19/01</p>
-                </div>
-                <div class="card-bottom">
-                    <a href="telaEvento.html">Marcar Presença</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../assets/images/doacaocomida.png" alt="" />
-                </div>
-                <h1 class="titulo-card">Doação de Comida</h1>
-                <p>
-                    Traga sua doação de ração e nos
-                    ajude a reunir o maior número
-                    possível de alimentos para os
-                    nossos amiguinhos
-                </p>
-                <div class="card_icons">
-                    <p class="local">São paulo, SP</p>
-                    <p class="data">Dia 23/05</p>
-                </div>
-                <div class="card-bottom">
-                    <a href="telaEvento.html">Marcar Presença</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../assets/images/feiraadocao.png" alt="" />
-                </div>
-                <h1 class="titulo-card">Feira de Adoção</h1>
-                <p>
-                    Venha, nos ajude a encontrar
-                    um lar para os nossos amiguinhos!
-                    Participe da nossa Feira de Adoção
-                </p>
-                <div class="card_icons">
-                    <p class="local">São paulo, SP</p>
-                    <p class="data">Dia 25/08</p>
-                </div>
-                <div class="card-bottom">
-                    <a href="telaEvento.html">Marcar Presença</a>
-                </div>
-            </div>
+            @if ($eventos->isEmpty())
+                <p>Essa ONG não tem próximos eventos cadastrados :(</p>
+            @else
+                @foreach ($eventos as $evento)
+                    <div class="card">
+                        <div class="img">
+                            <img src="{{ asset("uploads/eventos/$evento->foto") }}" alt="" />
+                        </div>
+                        <h1 class="titulo-card">{{ $evento->nome }}</h1>
+                        <p class="descricao">
+                            {{ $evento->descricao }}
+                        </p>
+                        <div class="card_icons">
+                            <div>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p class="local">{{ $evento->cidade }}, {{ $evento->estado }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <p class="data">Dia {{ date_format(new DateTime($evento->data), 'd/m') }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-coins"></i>
+                                <p>R$ {{ number_format($evento->valor, 2, ",", ".") }}</p>
+                            </div>
+                        </div>
+                        <div class="card-bottom">
+                            <a href="{{ route('evento.show', ['id' => $evento->id]) }}">Conferir Evento</a>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 
     <x-footer />
+    <script>
+        const carousel = document.getElementById('carousel');
+        const images = carousel.querySelectorAll('img');
+        let index = 0;
+
+        function showNextImage() {
+            index = (index + 1) % images.length;
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        setInterval(showNextImage, 3000); // troca a cada 3 segundos
+    </script>
 </body>
 
 </html>

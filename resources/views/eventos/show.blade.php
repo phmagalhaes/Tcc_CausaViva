@@ -31,7 +31,7 @@
                 @php
                     $ong = App\Models\Ong::where('id', $evento->id)->first();
                 @endphp
-                <h2 class="subtitulo-p">Organizado por <b class="subtitulo-b">{{ $ong->nome }}</b></h2>
+                <p class="subtitulo-p">Organizado por <b class="subtitulo-b">{{ $ong->nome }}</b></p>
                 <div class="conteudo">
                     <div class="itens-esquerda">
                         <div class="descricao">
@@ -50,6 +50,10 @@
                                 <p>Horário marcado:</p>
                                 <b>{{ date_format(new DateTime($evento->horario_inicio), 'H:i') }} -
                                     {{ date_format(new DateTime($evento->horario_fim), 'H:i') }}</b>
+                            </div>
+                            <div>
+                                <p>Valor:</p>
+                                <b>R$ {{ number_format($evento->valor, 2, ',', '.') }}</b>
                             </div>
                         </div>
                     </div>

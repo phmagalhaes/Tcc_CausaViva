@@ -1,0 +1,135 @@
+body {
+    background-color: var(--offWhite);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+#mensagem {
+    font-size: 1.5rem;
+    color: var(--azulEscuro);
+    max-width: 600px;
+}
+
+#link-boleto {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+#qrcode {
+    display: none;
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+}
+.image img{
+    width: 150px;
+}
+.image{
+    position: absolute;
+    top: 300px;
+}
+
+.setaVoltar{
+    top: 60px;
+    left: 70px;
+    position: absolute;
+}
+
+.setaVoltar img{
+    width: 50px;
+}
+
+@media (max-width:1440px) {
+    #mensagem {
+        margin-top: 45px;
+    }
+    .image{
+        position: absolute;
+        top: 280px;
+    }
+}
+
+@media (max-width:940px) {
+    #mensagem {
+        margin-top: 40px;
+    }
+    .image{
+        position: absolute;
+        top: 280px;
+    }
+    .setaVoltar{
+        top: 60px;
+        left: 70px;
+        position: absolute;
+    }
+    .setaVoltar img{
+        width: 38px;
+    }
+}
+
+@media (max-width:550px) {
+    #mensagem {
+        margin-top: 40px;
+        font-size: 18px;
+        width: 400px;
+    }
+    .image{
+        position: absolute;
+        top: 280px;
+    }
+    .setaVoltar{
+        top: 40px;
+        left: 40px;
+        position: absolute;
+    }
+    .setaVoltar img{
+        width: 30px;
+    }
+}
+@media (max-width:410px) {
+    #mensagem {
+        margin-top: 40px;
+        font-size: 16px;
+        width: 300px;
+    }
+    .image img{
+        width: 130px;
+    }
+    .image{
+        position: absolute;
+        top: 300px;
+    }
+    .setaVoltar{
+        top: 30px;
+        left: 30px;
+        position: absolute;
+    }
+    .setaVoltar img{
+        width: 30px;
+    }
+}
+@media (max-width:320px) {
+    .setaVoltar{
+        top: 25px;
+        left: 25px;
+        position: absolute;
+    }
+    .setaVoltar img{
+        width: 28px;
+    }
+    .image img{
+        width: 110px;
+    }
+    .image{
+        position: absolute;
+        top: 320px;
+    }
+}
