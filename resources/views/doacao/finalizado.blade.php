@@ -35,9 +35,9 @@
         i++;
         setTimeout(escrever, speed);
       } else {
-        // setTimeout(() => {
-        //   window.location.href = "{{ route('home') }}";
-        // }, 4000);
+        setTimeout(() => {
+          window.location.href = "{{ route('home') }}";
+        }, 4000);
       }
     }
 
