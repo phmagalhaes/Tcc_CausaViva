@@ -11,6 +11,8 @@
     <link rel="icon" type="image/png" href="./assetstr/icons/iconsite.png">
     <title>Causa Viva - ONG</title>
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
@@ -84,7 +86,7 @@
                     @foreach ($fotos as $foto)
                         <img src="{{ asset("/uploads/galeria/$foto->caminho") }}" alt="fotom {{ $loop->index + 1 }}">
                     @endforeach
-            </div>
+                </div>
         @endif
 
     </div>
@@ -96,25 +98,32 @@
                 <p>Essa ONG não tem próximos eventos cadastrados :(</p>
             @else
                 @foreach ($eventos as $evento)
-                <div class="card">
-                    <div class="img">
-                        <img src="../assets/images/bazar.png" alt="" />
+                    <div class="card">
+                        <div class="img">
+                            <img src="{{ asset("uploads/eventos/$evento->foto") }}" alt="" />
+                        </div>
+                        <h1 class="titulo-card">{{ $evento->nome }}</h1>
+                        <p class="descricao">
+                            {{ $evento->descricao }}
+                        </p>
+                        <div class="card_icons">
+                            <div>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p class="local">{{ $evento->cidade }}, {{ $evento->estado }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <p class="data">Dia {{ date_format(new DateTime($evento->data), 'd/m') }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-coins"></i>
+                                <p>R$ {{ number_format($evento->valor, 2, ",", ".") }}</p>
+                            </div>
+                        </div>
+                        <div class="card-bottom">
+                            <a href="{{ route('evento.show', ['id' => $evento->id]) }}">Conferir Evento</a>
+                        </div>
                     </div>
-                    <h1 class="titulo-card">Bazar Solidário</h1>
-                    <p>
-                        Venha, traga seu brinquedo e nos
-                        ajude a reunir o maior número
-                        possível de brinquedos para os
-                        nossos amiguinhos.
-                    </p>
-                    <div class="card_icons">
-                        <p class="local">São paulo, SP</p>
-                        <p class="data">Dia 19/01</p>
-                    </div>
-                    <div class="card-bottom">
-                        <a href="telaEvento.html">Marcar Presença</a>
-                    </div>
-                </div>
                 @endforeach
             @endif
         </div>

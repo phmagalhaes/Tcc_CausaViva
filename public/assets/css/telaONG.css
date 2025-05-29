@@ -206,42 +206,63 @@ header .slogan {
 .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: start;
+    width: 90%;
+    overflow-x: auto;
+    gap: 50px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .card {
     background-color: var(--begeClaro);
     border-radius: 20px;
-    height: 450px;
+    height: 550px;
+    width: 400px;
     border-radius: 20px 20px 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
 }
 
-.card p {
+.card .descricao {
     display: flex;
-    width: 350px;
     text-align: center;
     color: var(--azulEscuro);
     margin: 5px;
 }
 
-.card img {
+.card .img {
     border-radius: 20px 20px 0px 0px;
-    width: 400px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.card .img img {
+    width: 100%;
+    position: absolute;
 }
 
 .titulo-card {
     color: var(--azulEscuro);
-    font-size: 35px;
+    font-size: 30px;
+    width: 80%;
+    text-align: center;
 }
 
 .card-bottom {
     margin-top: 0px;
     background-color: var(--bege);
     width: 100%;
-    height: 100%;
+    padding: 20px 0;
     border-radius: 0px 0px 20px 20px;
     transition: all 300ms ease;
     color: var(--azulEscuro);
@@ -261,42 +282,34 @@ header .slogan {
 
 .card-bottom:hover {
     background-color: var(--azulClaro);
-    color: var(--begeClaro);
     cursor: pointer;
     user-select: none;
+
+    & a {
+        color: var(--bege);
+    }
 }
 
 .card_icons {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
-    width: 80%;
+    width: 95%;
     margin: 10px auto;
 }
-
-.card_icons p {
-    width: 70%;
+.card_icons div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 35%;
+    color: var(--azulEscuro);
+    gap: 5px;
 }
-
-.local,
-.data {
-    width: 50px;
-    background-size: 20px 20px;
-    /* Tamanho do ícone */
-    background-repeat: no-repeat;
-    background-position: left center;
-    /* Posição do ícone à esquerda */
-    padding-left: 30px;
-    /* Espaço para o ícone não se sobrepor ao texto */
-    color: rgb(130, 130, 130);
-}
-
-.local {
-    background-image: url(../assetstr/icons/location_icon.png);
-}
-
-.data {
-    background-image: url(../assetstr/icons/date_icon.png);
+.card_icons div:nth-child(2) {
+    border-right: 1px solid var(--azul);
+    border-left: 1px solid var(--azul);
 }
 
 .sobre_ong {
@@ -621,7 +634,7 @@ footer .links div a {
         flex-direction: column;
         padding: 0 40px;
     }
-    .sobre_ong .carousel-container{
+    .sobre_ong .carousel-container {
         margin-top: 10px;
         width: 100%;
     }

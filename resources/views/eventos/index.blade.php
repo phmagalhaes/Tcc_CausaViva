@@ -13,17 +13,19 @@
 
     <script src="{{ asset('/assets/js/menu.js') }}" defer></script>
     <script src="{{ asset('assets/js/search.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
 
     <title>Causa Viva - Nossos Eventos</title>
 </head>
 
 <body>
-   <x-msg />
+    <x-msg />
 
     <x-header />
 
     <div class="pesquisa">
-        <h1 class="titulo">Eventos</h1>
+        <h1 class="titulo">Confira os Próximos Eventos</h1>
         <form id="searchForm" action="{{ route('evento.index') }}" method="get">
             <input value="{{ $busca }}" name="evento" class="input-pesquisa" type="search" id="searchInput"
                 placeholder="Pesquise por um evento">
@@ -47,19 +49,29 @@
                 @foreach ($eventos as $evento)
                     <div class="card">
                         <div class="img">
-                            <img src="{{ asset('/uploads/eventos/' . $evento->foto) }}" alt="" />
+                            <img src="{{ asset("uploads/eventos/$evento->foto") }}" alt="" />
                         </div>
                         <h1 class="titulo-card">{{ $evento->nome }}</h1>
-                        <p>
+                        <p class="descricao">
                             {{ $evento->descricao }}
                         </p>
                         <div class="card_icons">
-                            <p class="local">{{ $evento->cidade }}, {{ $evento->estado }}</p>
-                            <p class="data">Dia {{ \Carbon\Carbon::parse($evento->data)->translatedFormat('d/m') }}</p>
+                            <div>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p class="local">{{ $evento->cidade }}, {{ $evento->estado }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <p class="data">Dia {{ date_format(new DateTime($evento->data), 'd/m') }}</p>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-coins"></i>
+                                <p>R$ {{ number_format($evento->valor, 2, ',', '.') }}</p>
+                            </div>
                         </div>
-                        <a href="{{ route('evento.show', ["id" => $evento->id]) }}" class="card-bottom">
-                            <h2>Conferir Evento</h2>
-                        </a>
+                        <div class="card-bottom">
+                            <a href="{{ route('evento.show', ['id' => $evento->id]) }}">Conferir Evento</a>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -68,4 +80,5 @@
 
     <x-footer />
 </body>
+
 </html>

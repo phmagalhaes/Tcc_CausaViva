@@ -23,11 +23,11 @@ class EventoController extends Controller
 
         $busca = $request->get('evento');
         $filtroCausa = $request->get('causa');
-
         $eventosPorCausa = [];
 
+        $now = now(); // Pega o momento atual (Carbon)
+
         if ($filtroCausa) {
-            // Filtra eventos onde a ONG tem a causa desejada
             $query = Evento::whereHas('ong', function ($q) use ($filtroCausa) {
                 $q->where('causa', $filtroCausa);
             });
@@ -36,10 +36,12 @@ class EventoController extends Controller
                 $query->where('nome', 'like', '%' . $busca . '%');
             }
 
+            $query->whereRaw("STR_TO_DATE(CONCAT(data, ' ', horario_inicio), '%Y-%m-%d %H:%i:%s') > ?", [$now])
+                ->orderByRaw("STR_TO_DATE(CONCAT(data, ' ', horario_inicio), '%Y-%m-%d %H:%i:%s') ASC");
+
             $eventos = $query->with('ong')->get();
             $eventosPorCausa[$filtroCausa] = $eventos;
         } else {
-            // Agrupa todos os eventos por causa da ONG
             foreach ($causas as $causa) {
                 $query = Evento::whereHas('ong', function ($q) use ($causa) {
                     $q->where('causa', $causa);
@@ -48,6 +50,9 @@ class EventoController extends Controller
                 if ($busca) {
                     $query->where('nome', 'like', '%' . $busca . '%');
                 }
+
+                $query->whereRaw("STR_TO_DATE(CONCAT(data, ' ', horario_inicio), '%Y-%m-%d %H:%i:%s') > ?", [$now])
+                    ->orderByRaw("STR_TO_DATE(CONCAT(data, ' ', horario_inicio), '%Y-%m-%d %H:%i:%s') ASC");
 
                 $eventos = $query->with('ong')->get();
                 $eventosPorCausa[$causa] = $eventos;

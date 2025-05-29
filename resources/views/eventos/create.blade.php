@@ -17,7 +17,7 @@
 <body>
     <x-msg />
 
-    <x-footer />
+    <x-header />
 
     <div class="title">
         <h1 class="titulo">Novo Evento</h1>

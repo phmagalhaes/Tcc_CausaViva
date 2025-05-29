@@ -44,7 +44,6 @@ class DoacaoController extends Controller
 
         if ($response->successful() && isset($data['status']) && $data['status'] == 'pending') {
             $ticketUrl = $data['point_of_interaction']['transaction_data']['ticket_url'];
-            return redirect()->away($ticketUrl);
 
             $doacao = Doacao::create([
                 'id_doador' => $request->id_doador,
@@ -57,15 +56,15 @@ class DoacaoController extends Controller
             // Decodifica a string Base64 para binário
             $imagemQrCode = base64_decode($qrcode);
 
-            // Retorna a imagem do QR Code no formato PNG
-            return Response::make($imagemQrCode, 200, ['Content-Type' => 'image/png']);
+            return redirect()->route('ong.pagamento_finalizado', ['ticket' => urlencode($ticketUrl)]);
         }
 
         return redirect(route('ong.pagamento'))->with('errorMsg', 'Falha ao gerar pagamento :(');
     }
 
-    public function pagamento_finalizado()
+    public function pagamento_finalizado(Request $request)
     {
-        
+        $ticketUrl = $request->query('ticket');
+        return view('doacao.finalizado', compact('ticketUrl'));
     }
 }
