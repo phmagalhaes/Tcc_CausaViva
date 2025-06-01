@@ -264,11 +264,19 @@ section div {
 
 table {
     color: var(--azulEscuro);
-    opacity: 60%;
     width: 85%;
     border-collapse: collapse;
     font-size: 25px;
     letter-spacing: 0.5px;
+}
+caption{
+    caption-side: bottom;
+    margin-top: 10px;
+    text-align: end;
+}
+caption a{
+    color: var(--azul);
+    font-size: 18px;
 }
 .estatisticas p{
     font-size: 18px;
@@ -279,10 +287,6 @@ td {
     text-align: justify;
     border-bottom: 1px solid rgb(160 160 160);
     padding: 20px;
-}
-
-.first {
-    width: 500px;
 }
 
 th:first-of-type,

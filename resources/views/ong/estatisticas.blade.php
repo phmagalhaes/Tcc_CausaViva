@@ -26,14 +26,11 @@
             <h1 class="titulo">Suas Estatísticas</h1>
         </div>
         <div style="border-top: 1px solid #ccc; width: 85%; margin: 4vh 0 4vh 0;"></div>
-        {{-- 
-        <div class="titulo2" style="color: var(--azul);">Parabéns! você alcançou mais de <b>R$10.000</b> em doações
-        </div> --}}
         <div class="divisoria" style="background-color: var(--azul);">
             <h1 class="titulo2">Doações Recebidas</h1>
         </div>
         <div class="doacoes">
-            <h1>Total doado:</h1>
+            <h1>Total recebido:</h1>
             <h1><b>R$ {{ number_format($total, 2, ',', '.') }}</b></h1>
         </div>
         <div class="doacoes">
@@ -82,30 +79,32 @@
             <thead>
                 <tr>
                     <th class="first" scope="col">Data</th>
+                    <th scope="col">Nome</th>
                     <th scope="col">Participações</th>
-                    <th scope="col">Local</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="first">20/05/2025</td> <!--BANCO DE DADOS-->
-                    <td>143 Participações</td> <!--BANCO DE DADOS-->
-                    <td>Jundiaí - SP</td> <!--BANCO DE DADOS-->
-                </tr>
-                <tr>
-                    <td class="first">24/02/2025</td> <!--BANCO DE DADOS-->
-                    <td>213 Participações</td> <!--BANCO DE DADOS-->
-                    <td>Jundiaí - SP</td> <!--BANCO DE DADOS-->
-                </tr>
-                <tr>
-                    <td class="first">18/01/2025</td> <!--BANCO DE DADOS-->
-                    <td>89 Participações</td> <!--BANCO DE DADOS-->
-                    <td>Itupeva - SP</td> <!--BANCO DE DADOS-->
-                </tr>
+                @foreach ($eventos as $evento)
+                    <tr>
+                        <td class="first">{{ date_format(new DateTime($evento->data), 'd/m/Y') }}</td>
+                        <td>{{ $evento->nome }}</td>
+
+                        @php
+                            $participacoes = App\Models\PresencaEvento::where('id_evento', $evento->id)->count();
+                        @endphp
+                        @if ($participacoes == 0)
+                            <td>Nenhuma participação :(</td>
+                        @elseif($participacoes == 1)
+                            <td>1 participação</td>
+                        @else
+                            <td>{{ $participacoes }} Participações</td>
+                        @endif
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <div class="button">
-            <a id="#">Criar Evento</a> <!--BANCO DE DADOS-->
+            <a href="{{ route('evento.create') }}">Criar Evento</a> <!--BANCO DE DADOS-->
         </div>
     </div>
 

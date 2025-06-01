@@ -89,8 +89,8 @@
 
                     @if ($user->foto == null)
                         <label for="upload" class="upload-label">Clique aqui para adicionar uma foto</label>
-                        <input type="file" id="upload" name="foto"
-                            accept="image/png, image/jpeg, image/jpg" hidden onchange="this.form.submit()" />
+                        <input type="file" id="upload" name="foto" accept="image/png, image/jpeg, image/jpg"
+                            hidden onchange="this.form.submit()" />
                     @else
                         <div class="inputfoto">
                             <label for="upload" class="upload-label">Clique aqui para alterar a foto</label>
@@ -129,11 +129,23 @@
                     <h1 class="titulo3">Últimas doações:</h1>
                 </div>
                 <table>
+                    <caption>
+                        @php
+                            $doacoes_page = $_GET['doacoes_page'] ?? 1;
+                        @endphp
+                        @if ($doacoes_page != 1)
+                            <a href="{{ '?doacoes_page=' . $doacoes_page - 1 }}">Anterior</a>
+                        @endif
+                        @if ($doacoes->hasMorePages())
+                            <a href="{{ '?doacoes_page=' . $doacoes_page + 1 }}">Próxima</a>
+                        @endif
+                    </caption>
                     <thead>
                         <tr>
                             <th class="first" scope="col">Data</th>
                             <th scope="col">ONG</th>
                             <th scope="col">Valor</th>
+                            {{-- <th scope="col">Status</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -143,8 +155,12 @@
                                 @php
                                     $ong = App\Models\Ong::where('id', $doacao->id_ong)->first();
                                 @endphp
-                                <td>{{ $ong->nome }} - {{ $ong->causa }}</td>
+                                <td style="display: flex; align-items: start; justify-content: center; flex-direction: column">
+                                    <div>{{ $ong->nome }} - {{ $ong->causa }}</div>
+                                    <a style="color: var(--azul); font-size: 15px;" target="_blank" href="{{ $doacao->link }}">Acesse aqui o ticket</a>
+                                </td>
                                 <td class="td2">R${{ number_format($doacao->valor, 2, ',', '.') }}</td>
+                                {{-- <td>{{ ucfirst($doacao->status) }}</td> --}}
                             </tr>
                         @endforeach
                     </tbody>
@@ -158,6 +174,17 @@
                 <p>Você ainda não participou de nenhum evento :(</p>
             @else
                 <table>
+                    <caption>
+                        @php
+                            $eventos_page = $_GET['eventos_page'] ?? 1;
+                        @endphp
+                        @if ($eventos_page != 1)
+                            <a href="{{ '?eventos_page=' . $eventos_page - 1 }}">Anterior</a>
+                        @endif
+                        @if ($eventos->hasMorePages())
+                            <a href="{{ '?eventos_page=' . $eventos_page + 1 }}">Próxima</a>
+                        @endif
+                    </caption>
                     <thead>
                         <tr>
                             <th class="first" scope="col">Data</th>
@@ -173,7 +200,7 @@
                                     $evento = App\Models\Evento::where('id', $evento->id_evento)->first();
                                     $ong = App\Models\Ong::where('id', $evento->id_ong)->first();
                                 @endphp
-                                <td>{{ $evento->nome }} - {{ $ong->nome }}</td>
+                                <td><a href="{{ route('evento.show', ["id" => $evento->id])}}">{{ $evento->nome }} - {{ $ong->nome }}</a></td>
                                 <td class="td2">{{ $evento->cidade }} - {{ $evento->estado }}</td>
                             </tr>
                         @endforeach
@@ -184,10 +211,10 @@
             <div class="button-event">
                 <a href="{{ route('evento.index') }}" id="">Ver mais eventos</a>
                 <!--ROTA PARA A PÁGINA DE EVENTOS-->
-                <a href="{{ route('home')}}" id="">Ver mais ONG´s</a> <!--ROTA PARA A PÁGINA DAS ONGS-->
+                <a href="{{ route('home') }}" id="">Ver mais ONG´s</a> <!--ROTA PARA A PÁGINA DAS ONGS-->
             </div>
     </main>
-    
+
     <x-footer />
 </body>
 

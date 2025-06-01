@@ -6,6 +6,7 @@ use App\Models\Doacao;
 use App\Models\Evento;
 use App\Models\Galeria;
 use App\Models\Ong;
+use App\Models\PresencaEvento;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -274,6 +275,10 @@ class OngController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(3);
 
-        return view('ong.estatisticas', ['total' => $total, 'doacoes' => $doacoes]);
+        $eventos = Evento::where('id_ong', $ong->id)
+            ->orderBy('data', 'desc')
+            ->paginate(3);
+
+        return view('ong.estatisticas', ['total' => $total, 'doacoes' => $doacoes, 'eventos' => $eventos]);
     }
 }

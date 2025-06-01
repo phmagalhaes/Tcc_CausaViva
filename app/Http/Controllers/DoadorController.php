@@ -64,12 +64,11 @@ class DoadorController extends Controller
         $causas = ["Direitos Humanos e Sociais", "Meio Ambiente", "Proteção Animal", "Saúde e Bem-Estar", "Educação e Cultura"];
         $doacoes = Doacao::where('id_doador', $user->id)
             ->orderBy('created_at', 'desc')
-            ->limit(3)
-            ->get();
+            ->paginate(3, ['*'], 'doacoes_page');
+
         $eventos = PresencaEvento::where('id_doador', $user->id)
             ->orderBy('created_at', 'desc')
-            ->limit(3)
-            ->get();
+            ->paginate(3, ['*'], 'eventos_page');
         return view("doador.perfil", ["user" => $user, "causas" => $causas, "doacoes" => $doacoes, "eventos" => $eventos]);
     }
 
