@@ -40,13 +40,13 @@
         <table>
             <caption>
                 @php
-                    $page = $_GET['page'] ?? 1;
+                    $doacoes_page = $_GET['doacoes_page'] ?? 1;
                 @endphp
-                @if ($page != 1)
-                    <a href="{{ '?page=' . $page - 1 }}">Anterior</a>
+                @if ($doacoes_page != 1)
+                    <a href="{{ '?doacoes_page=' . $doacoes_page - 1 }}">Anterior</a>
                 @endif
                 @if ($doacoes->hasMorePages())
-                    <a href="{{ '?page=' . $page + 1 }}">Próxima</a>
+                    <a href="{{ '?doacoes_page=' . $doacoes_page + 1 }}">Próxima</a>
                 @endif
             </caption>
             <thead>
@@ -76,6 +76,17 @@
         </div>
 
         <table>
+            <caption>
+                @php
+                    $eventos_page = $_GET['eventos_page'] ?? 1;
+                @endphp
+                @if ($eventos_page != 1)
+                    <a href="{{ '?eventos_page=' . $eventos_page - 1 }}">Anterior</a>
+                @endif
+                @if ($eventos->hasMorePages())
+                    <a href="{{ '?eventos_page=' . $eventos_page + 1 }}">Próxima</a>
+                @endif
+            </caption>
             <thead>
                 <tr>
                     <th class="first" scope="col">Data</th>

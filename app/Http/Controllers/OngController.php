@@ -273,11 +273,11 @@ class OngController extends Controller
 
         $doacoes = Doacao::where('id_ong', $ong->id)
             ->orderBy('created_at', 'desc')
-            ->paginate(3);
+            ->paginate(3, ['*'], 'doacoes_page');
 
         $eventos = Evento::where('id_ong', $ong->id)
             ->orderBy('data', 'desc')
-            ->paginate(3);
+            ->paginate(3, ['*'], 'eventos_page');
 
         return view('ong.estatisticas', ['total' => $total, 'doacoes' => $doacoes, 'eventos' => $eventos]);
     }
