@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>
+    <link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}">
     <title>Causa Viva - Pagamento</title>
 </head>
 

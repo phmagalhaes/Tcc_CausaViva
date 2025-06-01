@@ -11,6 +11,8 @@
     <title>Causa Viva - Nossas ONG´s</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}">
+
     <script src="{{ asset('assets/js/redirect.js') }}" defer></script>
     <script src="{{ asset('assets/js/search.js') }}" defer></script>
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>

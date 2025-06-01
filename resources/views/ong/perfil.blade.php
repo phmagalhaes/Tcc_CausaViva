@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/components/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components/header.css') }}">
 
+    <link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}">
 
     <script src="{{ asset('/assets/js/perfilONG.js') }}" defer></script>
     <script src="{{ asset('assets/js/menu.js') }}" defer></script>

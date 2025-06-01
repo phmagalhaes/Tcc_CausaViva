@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/components/footer.css') }}">
     <link rel="icon" type="image/png" href="../assetstr/icons/iconsite.png">
     <script src="{{ asset('/assets/js/menu.js') }}" defer></script>
+    <link rel="icon" href="{{ asset('assets/images/icons/logo.png') }}">
     <title>Causa Viva - Evento</title>
 </head>
 
