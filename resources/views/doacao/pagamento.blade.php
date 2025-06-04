@@ -20,13 +20,13 @@
 
     <x-header />
 
-    <a href="./telaONG.html">
-        <img class="setaVoltar" src="../assets/images/icones/iconeVoltar.png" alt="">
-    </a>
     @php
         $id = request()->segment(count(request()->segments()));
     @endphp
     <div class="pesquisa">
+        <a href="./telaONG.html">
+            <img class="setaVoltar" src="{{ asset('assets/images/icones/iconeVoltar.png') }}" alt="">
+        </a>
         <h1 class="titulo">Pagamento</h1>
         <div class="main">
             <div class="sub-main">
@@ -79,7 +79,7 @@
             </div>
         </div>
     </div>
-    
+
     <x-footer />
 </body>
 

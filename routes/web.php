@@ -39,7 +39,8 @@ Route::prefix('ong')->group(function () {
     Route::get('/pagamento/{id?}', [DoacaoController::class, 'pagamento'])->name('ong.pagamento')->middleware('auth');
     Route::post('/doacao', [DoacaoController::class, 'doacao'])->name('ong.doacao')->middleware('auth');
     Route::get('/estatisticas', [OngController::class, 'estatisticas'])->name('ong.estatisticas')->middleware('auth');
-    Route::get('/{id}', [OngController::class, 'show'])->name('ong.show');
+    Route::get('/redirect/{id}', [OngController::class, 'redirect'])->name('ong.redirect')->middleware('auth');
+    Route::get('/{id}', [OngController::class, 'show'])->name('ong.show')->middleware('auth');
 });
 
 Route::get('/eventos', [EventoController::class, 'index'])->name('evento.index')->middleware('auth');

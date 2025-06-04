@@ -281,4 +281,14 @@ class OngController extends Controller
 
         return view('ong.estatisticas', ['total' => $total, 'doacoes' => $doacoes, 'eventos' => $eventos]);
     }
+
+    public function redirect($id)
+    {
+        $ong = Ong::find($id);
+        if($ong->mercado_pago_user_id == null){
+            return redirect()->back()->with('errorMsg', 'Essa ONG ainda não se conectou com o Mercado Pago');
+        } else{
+            return redirect(route('ong.pagamento', ['id' => $id]));
+        }
+    }
 }

@@ -72,7 +72,7 @@
                 </div>
                 <form>
                     <button>
-                        <a href="{{ route('ong.pagamento', ['id' => $ong->id]) }}">Apoiar ONG</a>
+                        <a href="{{ route('ong.redirect', ['id' => $ong->id]) }}">Apoiar ONG</a>
                     </button>
                 </form>
             </div>
