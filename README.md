@@ -47,7 +47,7 @@ php artisan key:generate
 # DB_USERNAME=root
 # DB_PASSWORD=
 
-# 7. Execute as migrações (se necessário)
+# 7. Execute as migrações
 php artisan migrate
 
 # 8. Inicie o servidor local
